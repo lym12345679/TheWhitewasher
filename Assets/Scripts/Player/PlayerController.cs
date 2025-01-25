@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit2D[] hits1 = Physics2D.RaycastAll(transform.position, Vector2.right, .3f, 1 << this.gameObject.layer);
         RaycastHit2D[] hits2 = Physics2D.RaycastAll(transform.position, Vector2.left, .3f, 1 << this.gameObject.layer);
-        Debug.Log(hits1.Length);
+        //Debug.Log(hits1.Length);
         if (hits2.Length > 1)
         {
             isLeftWall = true;

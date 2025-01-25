@@ -25,7 +25,7 @@ public class AstarManagerSon : AstarManager
                 RaycastHit2D[] hit = Physics2D.RaycastAll(origin + new Vector3(j * cellSize - cellSize / 2, i * cellSize, 0), Vector2.right, cellSize, wallLayer);
                 foreach (var h in hit)
                 {
-                    if (h.collider != null&&h.collider.tag!="Player")
+                    if (h.collider != null && h.collider.tag != "Player")
                     {
                         mapData[i, j] = CheckPointMod(h.collider);
                         gameObjects[i, j] = h.collider.gameObject;
@@ -36,7 +36,7 @@ public class AstarManagerSon : AstarManager
                 hit = Physics2D.RaycastAll(origin + new Vector3(j * cellSize, i * cellSize - cellSize / 2, 0), Vector2.up, cellSize, wallLayer);
                 foreach (var h in hit)
                 {
-                    if (h.collider != null&&h.collider.tag!="Player")
+                    if (h.collider != null && h.collider.tag != "Player")
                     {
                         mapData[i, j] = CheckPointMod(h.collider);
                         gameObjects[i, j] = h.collider.gameObject;
