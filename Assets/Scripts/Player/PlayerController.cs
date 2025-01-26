@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using MizukiTool.AStar;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     public float Speed;
     public float JumpForce;
+    public PointMod ColorMod;
     public bool isGround;
     public bool isLeftWall;
     public bool isRightWall;
@@ -18,6 +18,13 @@ public class PlayerController : MonoBehaviour
     {
         CheckIsGround();
         Move();
+    }
+    void OnValidate()
+    {
+        ColorSO colorSO = Resources.Load<ColorSO>("SO/ColorSO");
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.color = colorSO.GetColor(ColorMod);
+        this.gameObject.layer = LayerMask.NameToLayer(ColorMod.ToString());
     }
     private void Move()
     {
@@ -73,7 +80,12 @@ public class PlayerController : MonoBehaviour
         {
             isRightWall = false;
         }
-
     }
 
+    public void SetColorMod(PointMod colorMod)
+    {
+        ColorMod = colorMod;
+        this.gameObject.layer = LayerMask.NameToLayer(ColorMod.ToString());
+        this.gameObject.GetComponent<SpriteRenderer>().color = SOManager.colorSO.GetColor(ColorMod);
+    }
 }

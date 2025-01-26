@@ -6,11 +6,6 @@ public class SquareController : MonoBehaviour
 {
 
     public PointMod ColorMod;
-    private LayerMask colorLayer;
-    void FixedUpdate()
-    {
-        this.gameObject.layer = LayerMask.NameToLayer(ColorMod.ToString());
-    }
     private void OnValidate()
     {
         ColorSO colorSO = Resources.Load<ColorSO>("SO/ColorSO");
@@ -31,8 +26,15 @@ public class SquareController : MonoBehaviour
                 Gizmos.DrawWireCube(transform.position, transform.parent.localScale);
             }
         }
-
-
     }
 
+    public void SetColorMod(PointMod colorMod)
+    {
+        ColorMod = colorMod;
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.color = SOManager.colorSO.GetColor(ColorMod);
+        //Debug.Log(ColorMod.ToString());
+        //Debug.Log("Layer:" + LayerMask.NameToLayer(ColorMod.ToString()));
+        this.gameObject.layer = LayerMask.NameToLayer(ColorMod.ToString());
+    }
 }

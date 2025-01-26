@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PropUIController : MonoBehaviour
 {
     public PorpEnum Prop;
-    private PointMod ColorMod;
+    public PointMod ColorMod;
     public Image UIImage;
     public void SetColorMod(PointMod colorMod)
     {
@@ -20,6 +20,6 @@ public class PropUIController : MonoBehaviour
     }
     public void OnClicked()
     {
-        PorpsManager.Instance.SetCurrentProp(new PropClass(this.Prop, this.ColorMod));
+        PorpsManager.Instance.SetCurrentProp(this.gameObject);
     }
 }

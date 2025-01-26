@@ -277,6 +277,7 @@ namespace MizukiTool.AStar
                 {
                     if (right.Mod == pointMod)
                     {
+
                         surroundPoints.Add(right);
                     }
                 }

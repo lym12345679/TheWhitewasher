@@ -183,8 +183,8 @@ namespace MizukiTool.AStar
         /// <returns></returns>
         public Point GetPointOnMap(Vector3 position)
         {
-            int x = (int)((position.x - origin.x) / cellSize);
-            int y = (int)((position.y - origin.y) / cellSize);
+            int y = Mathf.RoundToInt((position.x - origin.x) / cellSize);
+            int x = Mathf.RoundToInt((position.y - origin.y) / cellSize);
             if (x >= mapHeight || x < 0 || y >= mapWidth || y < 0)
             {
                 return null;

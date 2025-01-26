@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prop: 0
+  ColorMod: 0
   UIImage: {fileID: 7025605371287657785}
 --- !u!1 &3695976047702294652
 GameObject:
