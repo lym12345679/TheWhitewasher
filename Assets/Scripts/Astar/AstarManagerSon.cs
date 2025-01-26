@@ -50,7 +50,7 @@ public class AstarManagerSon : AstarManager
         SquareController squareController;
         if (collider2D.TryGetComponent(out squareController))
         {
-            return squareController.ColorMod;
+            return squareController.MPoint;
         }
         return PointMod.None;
     }

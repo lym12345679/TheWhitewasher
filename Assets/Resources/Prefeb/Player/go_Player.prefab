@@ -101,11 +101,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 4
   JumpForce: 510
-  ColorMod: 3
+  ColorMod: 5
   isGround: 0
   isLeftWall: 0
   isRightWall: 0
   isPlayerDead: 0
+  StayResetTime: 2
+  StayResetTimeCounter: 2
 --- !u!50 &6441464865648635799
 Rigidbody2D:
   serializedVersion: 4

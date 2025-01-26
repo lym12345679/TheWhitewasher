@@ -5,7 +5,14 @@ using UnityEngine;
 
 public class PaintBrushWasherController : MonoBehaviour
 {
-    public PointMod ColorMod;
+    public PointMod PointM
+    {
+        get
+        {
+            return SOManager.colorToPointModSO.GetPointMod(ColorMod);
+        }
+    }
+    public ColorEnum ColorMod;
     public PorpEnum Porp;
     private void OnTriggerEnter2D(Collider2D collision)
     {

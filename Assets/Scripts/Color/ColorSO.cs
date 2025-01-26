@@ -7,11 +7,11 @@ using System;
 public class ColorSO : ScriptableObject
 {
     public List<PointModWithColor> pointModWithColors = new List<PointModWithColor>();
-    public Color GetColor(PointMod pointMod)
+    public Color GetColor(ColorEnum color)
     {
         foreach (var item in pointModWithColors)
         {
-            if (item.pointMod == pointMod)
+            if (item.eColor == color)
             {
                 return item.color;
             }
@@ -22,7 +22,7 @@ public class ColorSO : ScriptableObject
 [Serializable]
 public class PointModWithColor
 {
-    public PointMod pointMod;
+    public ColorEnum eColor;
     public Color color;
 }
 

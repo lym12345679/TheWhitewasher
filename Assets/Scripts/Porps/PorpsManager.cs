@@ -90,7 +90,7 @@ public class PorpsManager : MonoBehaviour
     }
     public void UpdatePoint(Point point)
     {
-        point.Mod = CurrentProp.GetComponent<PropUIController>().ColorMod;
+        point.Mod = CurrentProp.GetComponent<PropUIController>().PointM;
         //Debug.Log("UpdatePoint:" + point.X + "," + point.Y);
         SquareController squareController;
         PropUIController propUIController = CurrentProp.GetComponent<PropUIController>();
@@ -107,8 +107,8 @@ public class PorpsManager : MonoBehaviour
 public class PropClass
 {
     public PorpEnum Porp;
-    public PointMod ColorMod;
-    public PropClass(PorpEnum porp, PointMod colorMod)
+    public ColorEnum ColorMod;
+    public PropClass(PorpEnum porp, ColorEnum colorMod)
     {
         Porp = porp;
         ColorMod = colorMod;

@@ -7,14 +7,21 @@ using UnityEngine.UI;
 public class PropUIController : MonoBehaviour
 {
     public PorpEnum Prop;
-    public PointMod ColorMod;
+    public PointMod PointM
+    {
+        get
+        {
+            return SOManager.colorToPointModSO.GetPointMod(ColorMod);
+        }
+    }
+    public ColorEnum ColorMod;
     public Image UIImage;
-    public void SetColorMod(PointMod colorMod)
+    public void SetColorMod(ColorEnum colorMod)
     {
         ColorMod = colorMod;
         SetColor(colorMod);
     }
-    public void SetColor(PointMod colorMod)
+    public void SetColor(ColorEnum colorMod)
     {
         UIImage.color = SOManager.colorSO.GetColor(colorMod);
     }

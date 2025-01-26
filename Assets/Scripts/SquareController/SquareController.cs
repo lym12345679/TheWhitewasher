@@ -6,9 +6,16 @@ public class SquareController : MonoBehaviour
 {
     void Start()
     {
-        this.gameObject.layer = LayerMask.NameToLayer(ColorMod.ToString());
+        this.gameObject.layer = LayerMask.NameToLayer(MPoint.ToString());
     }
-    public PointMod ColorMod;
+    public PointMod MPoint
+    {
+        get
+        {
+            return SOManager.colorToPointModSO.GetPointMod(ColorMod);
+        }
+    }
+    public ColorEnum ColorMod;
     private void OnValidate()
     {
         var spriteRenderer = GetComponent<SpriteRenderer>();
@@ -32,9 +39,9 @@ public class SquareController : MonoBehaviour
     {
         var spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = SOManager.colorSO.GetColor(ColorMod);
-        this.gameObject.layer = LayerMask.NameToLayer(ColorMod.ToString());
+        this.gameObject.layer = LayerMask.NameToLayer(MPoint.ToString());
     }
-    public void SetColorMod(PointMod colorMod)
+    public void SetColorMod(ColorEnum colorMod)
     {
         ColorMod = colorMod;
         ApplyColorMod();

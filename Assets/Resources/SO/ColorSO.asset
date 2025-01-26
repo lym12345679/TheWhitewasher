@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: ColorSO
   m_EditorClassIdentifier: 
   pointModWithColors:
-  - pointMod: 0
-    color: {r: 0, g: 0, b: 0, a: 0}
-  - pointMod: 1
+  - eColor: 0
+    color: {r: 1, g: 1, b: 1, a: 0}
+  - eColor: 3
+    color: {r: 0, g: 0, b: 0, a: 1}
+  - eColor: 1
     color: {r: 1, g: 1, b: 1, a: 1}
-  - pointMod: 2
+  - eColor: 4
     color: {r: 1, g: 0, b: 0, a: 1}
-  - pointMod: 3
+  - eColor: 5
     color: {r: 0, g: 1, b: 0.64693594, a: 1}
-  - pointMod: 4
+  - eColor: 6
     color: {r: 1, g: 0.38843626, b: 0, a: 1}
-  - pointMod: 5
+  - eColor: 7
     color: {r: 0.5169811, g: 0.36154887, b: 0, a: 1}

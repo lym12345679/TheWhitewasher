@@ -1,11 +1,20 @@
 using MizukiTool.AStar;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     public float Speed;
     public float JumpForce;
-    public PointMod ColorMod;
+    [HideInInspector]
+    public PointMod PointM
+    {
+        get
+        {
+            return SOManager.colorToPointModSO.GetPointMod(ColorMod);
+        }
+    }
+    public ColorEnum ColorMod;
     public bool isGround;
     public bool isLeftWall;
     public bool isRightWall;
@@ -26,7 +35,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
-        this.gameObject.layer = LayerMask.NameToLayer(ColorMod.ToString());
+        this.gameObject.layer = LayerMask.NameToLayer(PointM.ToString());
     }
     void OnValidate()
     {
@@ -104,10 +113,10 @@ public class PlayerController : MonoBehaviour
             SceneManager.Instance.Reset();
         }
     }
-    public void SetColorMod(PointMod colorMod)
+    public void SetColorMod(ColorEnum colorEnum)
     {
-        ColorMod = colorMod;
-        this.gameObject.layer = LayerMask.NameToLayer(ColorMod.ToString());
+        ColorMod = colorEnum;
+        this.gameObject.layer = LayerMask.NameToLayer(PointM.ToString());
         this.gameObject.GetComponent<SpriteRenderer>().color = SOManager.colorSO.GetColor(ColorMod);
     }
     public void CheckPlayerDead()
@@ -127,7 +136,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        if (point.Mod == this.ColorMod)
+        if (point.Mod == this.PointM)
         {
             isPlayerDead = true;
             Debug.Log("Player Dead");

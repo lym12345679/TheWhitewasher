@@ -10,8 +10,8 @@ public class PropsUI : MonoBehaviour
     void Start()
     {
         UpdateContentWidth();
-        AddProp(new PropClass(PorpEnum.PaintBrushWasher, PointMod.None));
-        AddProp(new PropClass(PorpEnum.Stainer, PointMod.None));
+        AddProp(new PropClass(PorpEnum.PaintBrushWasher, ColorEnum.None));
+        AddProp(new PropClass(PorpEnum.Stainer, ColorEnum.None));
         ClearProp();
     }
     public void UpdateContentWidth()
