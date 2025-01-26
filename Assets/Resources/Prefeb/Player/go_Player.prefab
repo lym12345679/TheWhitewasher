@@ -105,6 +105,7 @@ MonoBehaviour:
   isGround: 0
   isLeftWall: 0
   isRightWall: 0
+  isPlayerDead: 0
 --- !u!50 &6441464865648635799
 Rigidbody2D:
   serializedVersion: 4

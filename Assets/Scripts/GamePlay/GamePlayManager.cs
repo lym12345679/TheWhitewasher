@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public enum SceneEnum
 {
-    Manu,
+    Menu,
     Level1,
     Level2,
     Level3,
@@ -24,8 +24,13 @@ public static class GamePlayManager
     {
         Time.timeScale = 1;
     }
+    public static void SetCurrentScene(SceneEnum scene)
+    {
+        CurrentScene = scene;
+    }
     public static void LoadScene(SceneEnum scene)
     {
+        CurrentScene = scene;
         UnityEngine.SceneManagement.SceneManager.LoadScene(scene.ToString());
     }
 }

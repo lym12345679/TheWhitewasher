@@ -50,6 +50,6 @@ public class DestinationController : MonoBehaviour
 
     public void OnGameWin()
     {
-        Debug.Log("Game Win");
+        SceneManager.Instance.OnPlayerWin();
     }
 }

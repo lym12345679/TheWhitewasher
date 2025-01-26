@@ -9,10 +9,12 @@ public class PlayerController : MonoBehaviour
     public bool isGround;
     public bool isLeftWall;
     public bool isRightWall;
+    public bool isPlayerDead = false;
     // Update is called once per frame
     void Update()
     {
         Jump();
+        CheckPlayerDead();
     }
     void FixedUpdate()
     {
@@ -89,5 +91,29 @@ public class PlayerController : MonoBehaviour
         ColorMod = colorMod;
         this.gameObject.layer = LayerMask.NameToLayer(ColorMod.ToString());
         this.gameObject.GetComponent<SpriteRenderer>().color = SOManager.colorSO.GetColor(ColorMod);
+    }
+    public void CheckPlayerDead()
+    {
+        if (isPlayerDead)
+        {
+            return;
+        }
+        if (transform.position.y < -10)
+        {
+            isPlayerDead = true;
+            Debug.Log("Player Dead");
+            SceneManager.Instance.Reset();
+        }
+        Point point = AstarManager.Instance.map.GetPointOnMap(transform.position);
+        if(point == null)
+        {
+            return;
+        }
+        if (point.Mod == this.ColorMod)
+        {
+            isPlayerDead = true;
+            Debug.Log("Player Dead");
+            SceneManager.Instance.Reset();
+        }
     }
 }
