@@ -51,6 +51,7 @@ public class PorpsManager : MonoBehaviour
         Point point = AstarManagerSon.Instance.map.GetPointOnMap(position);
         if (point != null)
         {
+            Debug.Log("Clicked Point:" + point.X + "," + point.Y);
             switch (propUIController.Prop)
             {
                 case PorpEnum.PaintBrushWasher:
@@ -60,8 +61,6 @@ public class PorpsManager : MonoBehaviour
                         UsePaintBrushWasher(position, pointMods);
                         DestroyCurrentProp();
                         isUse = true;
-
-
                     }
                     break;
                 case PorpEnum.Stainer:
@@ -85,14 +84,14 @@ public class PorpsManager : MonoBehaviour
     }
     public void UsePaintBrushWasher(Vector3 position, PointMod[] pointMods)
     {
-        Debug.Log("Use PaintBrushWasher");
+        //Debug.Log("Use PaintBrushWasher");
 
         AstarManagerSon.Instance.UpdateAllAstarPonitInCloseList(AstarManager.Instance.map, position, pointMods, UpdatePoint);
     }
     public void UpdatePoint(Point point)
     {
         point.Mod = CurrentProp.GetComponent<PropUIController>().ColorMod;
-        Debug.Log("UpdatePoint:" + point.X + "," + point.Y);
+        //Debug.Log("UpdatePoint:" + point.X + "," + point.Y);
         SquareController squareController;
         PropUIController propUIController = CurrentProp.GetComponent<PropUIController>();
         if (point.gameObject.TryGetComponent<SquareController>(out squareController))

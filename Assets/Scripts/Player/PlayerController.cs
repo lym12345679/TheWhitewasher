@@ -19,12 +19,14 @@ public class PlayerController : MonoBehaviour
         CheckIsGround();
         Move();
     }
+    void Start()
+    {
+        this.gameObject.layer = LayerMask.NameToLayer(ColorMod.ToString());
+    }
     void OnValidate()
     {
-        ColorSO colorSO = Resources.Load<ColorSO>("SO/ColorSO");
         var spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = colorSO.GetColor(ColorMod);
-        this.gameObject.layer = LayerMask.NameToLayer(ColorMod.ToString());
+        spriteRenderer.color = SOManager.colorSO.GetColor(ColorMod);
     }
     private void Move()
     {

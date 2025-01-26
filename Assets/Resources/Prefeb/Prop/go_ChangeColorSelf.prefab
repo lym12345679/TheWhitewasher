@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3703558620759233242}
   - component: {fileID: 91260104329257110}
   m_Layer: 3
-  m_Name: Stainer
+  m_Name: go_ChangeColorSelf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

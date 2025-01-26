@@ -4,14 +4,16 @@ using MizukiTool.AStar;
 [RequireComponent(typeof(SpriteRenderer))]
 public class SquareController : MonoBehaviour
 {
-
+    void Start()
+    {
+        this.gameObject.layer = LayerMask.NameToLayer(ColorMod.ToString());
+    }
     public PointMod ColorMod;
     private void OnValidate()
     {
-        ColorSO colorSO = Resources.Load<ColorSO>("SO/ColorSO");
         var spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = colorSO.GetColor(ColorMod);
-        this.gameObject.layer = LayerMask.NameToLayer(ColorMod.ToString());
+        spriteRenderer.color = SOManager.colorSO.GetColor(ColorMod);
+        
     }
 
     void OnDrawGizmos()
@@ -27,14 +29,15 @@ public class SquareController : MonoBehaviour
             }
         }
     }
-
+    public void ApplyColorMod()
+    {
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.color = SOManager.colorSO.GetColor(ColorMod);
+        this.gameObject.layer = LayerMask.NameToLayer(ColorMod.ToString());
+    }
     public void SetColorMod(PointMod colorMod)
     {
         ColorMod = colorMod;
-        var spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = SOManager.colorSO.GetColor(ColorMod);
-        //Debug.Log(ColorMod.ToString());
-        //Debug.Log("Layer:" + LayerMask.NameToLayer(ColorMod.ToString()));
-        this.gameObject.layer = LayerMask.NameToLayer(ColorMod.ToString());
+        ApplyColorMod();
     }
 }
