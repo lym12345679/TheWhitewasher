@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckIsGround()
     {
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, .3f, 1 << this.gameObject.layer);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, .5f, 1 << this.gameObject.layer);
         if (hits.Length > 1)
         {
             isGround = true;
@@ -63,8 +63,8 @@ public class PlayerController : MonoBehaviour
     }
     private void CheckIsWall()
     {
-        RaycastHit2D[] hits1 = Physics2D.RaycastAll(transform.position, Vector2.right, .3f, 1 << this.gameObject.layer);
-        RaycastHit2D[] hits2 = Physics2D.RaycastAll(transform.position, Vector2.left, .3f, 1 << this.gameObject.layer);
+        RaycastHit2D[] hits1 = Physics2D.RaycastAll(transform.position, Vector2.right, .7f, 1 << this.gameObject.layer);
+        RaycastHit2D[] hits2 = Physics2D.RaycastAll(transform.position, Vector2.left, .7f, 1 << this.gameObject.layer);
         //Debug.Log(hits1.Length);
         if (hits2.Length > 1)
         {

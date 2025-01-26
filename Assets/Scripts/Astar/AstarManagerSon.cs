@@ -21,22 +21,11 @@ public class AstarManagerSon : AstarManager
             //十字检测
             for (int j = 0; j < width; j++)
             {
-                //从左到右发射射线
-                RaycastHit2D[] hit = Physics2D.RaycastAll(origin + new Vector3(j * cellSize - cellSize / 2, i * cellSize, 0), Vector2.right, cellSize, wallLayer);
+                //从中心到右发射射线
+                RaycastHit2D[] hit = Physics2D.RaycastAll(origin + new Vector3(j * cellSize, i * cellSize, 0), Vector2.right, cellSize / 2, wallLayer);
                 foreach (var h in hit)
                 {
-                    if (h.collider != null && h.collider.tag != "Player")
-                    {
-                        mapData[i, j] = CheckPointMod(h.collider);
-                        gameObjects[i, j] = h.collider.gameObject;
-                        break;
-                    }
-                }
-                //从下到上发射射线
-                hit = Physics2D.RaycastAll(origin + new Vector3(j * cellSize, i * cellSize - cellSize / 2, 0), Vector2.up, cellSize, wallLayer);
-                foreach (var h in hit)
-                {
-                    if (h.collider != null && h.collider.tag != "Player")
+                    if (h.collider != null && h.collider.tag != "Player" && h.collider.gameObject.layer != LayerMask.NameToLayer("Prop"))
                     {
                         mapData[i, j] = CheckPointMod(h.collider);
                         gameObjects[i, j] = h.collider.gameObject;
@@ -45,6 +34,13 @@ public class AstarManagerSon : AstarManager
                 }
             }
         }
+        /*foreach (var go in gameObjects)
+        {
+            if (go != null)
+            {
+                go.GetComponent<SpriteRenderer>().color = SOManager.colorSO.GetColor(PointMod.Red);
+            }
+        }*/
         map.SetMapData(mapData);
         map.SetGameObjects(gameObjects);
         return map;
