@@ -13,7 +13,6 @@ public class SquareController : MonoBehaviour
     {
         var spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = SOManager.colorSO.GetColor(ColorMod);
-        
     }
 
     void OnDrawGizmos()

@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public bool isLeftWall;
     public bool isRightWall;
     public bool isPlayerDead = false;
+    public float StayResetTime = 2f;
+    public float StayResetTimeCounter = 2f;
     // Update is called once per frame
     void Update()
     {
@@ -20,6 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         CheckIsGround();
         Move();
+        TryReset();
     }
     void Start()
     {
@@ -85,7 +88,22 @@ public class PlayerController : MonoBehaviour
             isRightWall = false;
         }
     }
+    public void TryReset()
+    {
+        if (StayResetTimeCounter > 0 && Input.GetKey(KeyCode.R))
+        {
+            StayResetTimeCounter -= Time.fixedDeltaTime;
+        }
+        else
+        {
+            StayResetTimeCounter = StayResetTime;
+        }
 
+        if (StayResetTimeCounter <= 0)
+        {
+            SceneManager.Instance.Reset();
+        }
+    }
     public void SetColorMod(PointMod colorMod)
     {
         ColorMod = colorMod;
@@ -105,7 +123,7 @@ public class PlayerController : MonoBehaviour
             SceneManager.Instance.Reset();
         }
         Point point = AstarManager.Instance.map.GetPointOnMap(transform.position);
-        if(point == null)
+        if (point == null)
         {
             return;
         }
