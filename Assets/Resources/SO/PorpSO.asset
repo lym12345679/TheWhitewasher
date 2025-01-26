@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PropUI:
   - Porp: 0
-    UI: {fileID: 1596728565898701410, guid: eec8ac47a745098468e3cf619b46f63c, type: 3}
+    UIPrefeb: {fileID: 1596728565898701410, guid: eec8ac47a745098468e3cf619b46f63c, type: 3}
   - Porp: 1
-    UI: {fileID: 1303600251703521019, guid: 87362f1de801b3b419130f0f56d43fe8, type: 3}
+    UIPrefeb: {fileID: 1303600251703521019, guid: 87362f1de801b3b419130f0f56d43fe8, type: 3}

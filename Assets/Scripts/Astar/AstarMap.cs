@@ -225,7 +225,7 @@ namespace MizukiTool.AStar
         }
         public void SetGameObjects(GameObject[,] gameObjects)
         {
-            Debug.Log("SetGameObjects:(" + mapWidth + "," + mapHeight + " )(" + gameObjects.Length + ")");
+            //Debug.Log("SetGameObjects:(" + mapWidth + "," + mapHeight + " )(" + gameObjects.Length + ")");
             for (int i = 0; i < mapHeight; i++)
             {
                 for (int j = 0; j < mapWidth; j++)

@@ -11,10 +11,11 @@ public class PaintBrushWasherController : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            Debug.Log("Player Enter");
+            //Debug.Log("Player Enter");
+            PorpsManager.Instance.AddProp(new PropClass(this.Porp, this.ColorMod));
+            Destroy(this.gameObject);
         }
-        PorpsManager.Instance.AddProp(new PropClass() { Porp = Porp, ColorMod = ColorMod });
-        Destroy(this.gameObject);
+
     }
     void OnValidate()
     {

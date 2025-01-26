@@ -3,7 +3,7 @@ public static class SOManager
 {
     public static ColorSO colorSO = Resources.Load<ColorSO>("SO/ColorSO");
     public static PorpSO porpSO = Resources.Load<PorpSO>("SO/PorpSO");
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    /*[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void InitializeOnLoad()
     {
         Debug.Log("SOManager InitializeOnLoad");
@@ -14,5 +14,5 @@ public static class SOManager
             GameObject prefab = porp.UIPrefeb;
         }
     }
-
+*/
 }

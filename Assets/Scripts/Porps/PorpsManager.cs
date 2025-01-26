@@ -35,4 +35,9 @@ public class PropClass
 {
     public PorpEnum Porp;
     public PointMod ColorMod;
+    public PropClass(PorpEnum porp, PointMod colorMod)
+    {
+        Porp = porp;
+        ColorMod = colorMod;
+    }
 }

@@ -20,6 +20,6 @@ public class PropUIController : MonoBehaviour
     }
     public void OnClicked()
     {
-        PorpsManager.Instance.SetCurrentProp(new PropClass() { Porp = Prop, ColorMod = ColorMod });
+        PorpsManager.Instance.SetCurrentProp(new PropClass(this.Prop, this.ColorMod));
     }
 }

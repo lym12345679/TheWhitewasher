@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using MizukiTool.AStar;
 using UnityEngine;
 
 public class PropsUI : MonoBehaviour
@@ -9,6 +10,9 @@ public class PropsUI : MonoBehaviour
     void Start()
     {
         UpdateContentWidth();
+        AddProp(new PropClass(PorpEnum.PaintBrushWasher, PointMod.None));
+        AddProp(new PropClass(PorpEnum.Stainer, PointMod.None));
+        ClearProp();
     }
     public void UpdateContentWidth()
     {
@@ -18,6 +22,18 @@ public class PropsUI : MonoBehaviour
     {
         GameObject propUI = Instantiate(SOManager.porpSO.GetPropUI(propClass.Porp), Content);
         propUI.GetComponent<PropUIController>().SetColorMod(propClass.ColorMod);
+        UpdateContentWidth();
+    }
+    public void ClearProp()
+    {
+        RectTransform[] children = Content.GetComponentsInChildren<RectTransform>();
+        foreach (var child in children)
+        {
+            if (child != Content)
+            {
+                Destroy(child.gameObject);
+            }
+        }
         UpdateContentWidth();
     }
 }
