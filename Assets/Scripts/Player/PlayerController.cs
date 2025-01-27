@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Jump();
-        CheckPlayerDead();
+        //CheckPlayerDead();
     }
     void FixedUpdate()
     {

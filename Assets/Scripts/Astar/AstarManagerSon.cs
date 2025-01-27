@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using MizukiTool.AStar;
+using MizukiTool.Box;
 using UnityEngine;
 
 public class AstarManagerSon : AstarManager
@@ -53,5 +54,9 @@ public class AstarManagerSon : AstarManager
             return squareController.MPoint;
         }
         return PointMod.None;
+    }
+    void Start()
+    {
+        MessageBox.Open(new Message("提示", "请点击地图生成路径"));
     }
 }
