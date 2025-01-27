@@ -55,8 +55,4 @@ public class AstarManagerSon : AstarManager
         }
         return PointMod.None;
     }
-    void Start()
-    {
-        MessageBox.Open(new Message("提示", "请点击地图生成路径"));
-    }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 public enum SceneEnum
 {
     Menu,
+    LevelSelect,
     Level1,
     Level2,
     Level3,
@@ -16,11 +17,12 @@ public enum SceneEnum
 public static class GamePlayManager
 {
     public static SceneEnum CurrentScene;
-    public static void Pause()
+    public static int TopUnlockedLevel = 3;
+    public static void PauseGame()
     {
         Time.timeScale = 0;
     }
-    public static void Resume()
+    public static void ContinueGame()
     {
         Time.timeScale = 1;
     }
@@ -32,5 +34,21 @@ public static class GamePlayManager
     {
         CurrentScene = scene;
         UnityEngine.SceneManagement.SceneManager.LoadScene(scene.ToString());
+    }
+    public static void ResetGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(CurrentScene.ToString());
+    }
+    public static void GoToMenu()
+    {
+        LoadScene(SceneEnum.Menu);
+    }
+    public static void GoToLevelSelect()
+    {
+        LoadScene(SceneEnum.LevelSelect);
+    }
+    public static void ExitGame()
+    {
+        Application.Quit();
     }
 }

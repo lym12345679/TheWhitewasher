@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
 
         if (StayResetTimeCounter <= 0)
         {
-            SceneManager.Instance.Reset();
+            LevelSceneManager.Instance.Reset();
         }
     }
     public void SetColorMod(ColorEnum colorEnum)
@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
         {
             isPlayerDead = true;
             Debug.Log("Player Dead");
-            SceneManager.Instance.Reset();
+            LevelSceneManager.Instance.Reset();
         }
         Point point = AstarManager.Instance.map.GetPointOnMap(transform.position);
         if (point == null)
@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
         {
             isPlayerDead = true;
             Debug.Log("Player Dead");
-            SceneManager.Instance.Reset();
+            LevelSceneManager.Instance.Reset();
         }
     }
 }

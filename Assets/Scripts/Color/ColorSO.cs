@@ -18,10 +18,18 @@ public class ColorSO : ScriptableObject
         }
         return Color.white;
     }
+    private void OnValidate() {
+        foreach (var item in pointModWithColors)
+        {
+            item.Name = item.eColor.ToString();
+        }
+    }
 }
 [Serializable]
 public class PointModWithColor
 {
+    [HideInInspector]
+    public string Name;
     public ColorEnum eColor;
     public Color color;
 }

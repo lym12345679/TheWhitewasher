@@ -50,6 +50,6 @@ public class DestinationController : MonoBehaviour
 
     public void OnGameWin()
     {
-        SceneManager.Instance.OnPlayerWin();
+        LevelSceneManager.Instance.OnPlayerWin();
     }
 }
