@@ -13,6 +13,10 @@ public class LevelSceneManager : MonoBehaviour
         Instance = this;
         GamePlayManager.SetCurrentScene(ThisScene);
     }
+    void Start()
+    {
+        LevelSceneUI.Open("1");
+    }
     public void LoadNextScene()
     {
         GamePlayManager.LoadScene(NextScene);

@@ -17,3 +17,5 @@ MonoBehaviour:
     UIPrefeb: {fileID: 1596728565898701410, guid: eec8ac47a745098468e3cf619b46f63c, type: 3}
   - Porp: 1
     UIPrefeb: {fileID: 1303600251703521019, guid: 87362f1de801b3b419130f0f56d43fe8, type: 3}
+  - Porp: 2
+    UIPrefeb: {fileID: 1303600251703521019, guid: 122d772231b0dcc4987627d067dbc17e, type: 3}

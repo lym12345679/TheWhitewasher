@@ -2,9 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using MizukiTool.Box;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuUI : GeneralBox<MenuUI, string, string>
 {
+    public RectTransform BackGround1;
+    public RectTransform BackGround2;
+    public bool IsPlayerFinishAllLevel
+    {
+        get
+        {
+            return GamePlayManager.IsPlayerFinishAllLevel;
+        }
+    }
+    void Start()
+    {
+        if (IsPlayerFinishAllLevel)
+        {
+            BackGround1.gameObject.SetActive(false);
+            BackGround2.gameObject.SetActive(true);
+        }
+        else
+        {
+            BackGround1.gameObject.SetActive(true);
+            BackGround2.gameObject.SetActive(false);
+        }
+    }
     public override void GetParams(string param)
     {
         this.param = param;

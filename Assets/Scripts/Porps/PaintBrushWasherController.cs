@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using MizukiTool.AStar;
 using UnityEngine;
 

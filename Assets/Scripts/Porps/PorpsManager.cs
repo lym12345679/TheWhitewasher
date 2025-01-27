@@ -5,10 +5,8 @@ using UnityEngine.Events;
 public class PorpsManager : MonoBehaviour
 {
     public static PorpsManager Instance;
-    public UnityEvent<PropClass> OnAddProp;
     public List<PropClass> PropList = new List<PropClass>();
     public GameObject CurrentProp;
-    public PropsUI PropsUIScript;
     private GameObject Player;
     void Awake()
     {
@@ -25,7 +23,7 @@ public class PorpsManager : MonoBehaviour
     public void AddProp(PropClass prop)
     {
         PropList.Add(prop);
-        OnAddProp.Invoke(prop);
+        PropsUI.Instance.AddProp(prop);
     }
     public void RemoveProp(PropClass prop)
     {
@@ -80,7 +78,7 @@ public class PorpsManager : MonoBehaviour
     public void DestroyCurrentProp()
     {
         Destroy(CurrentProp);
-        PropsUIScript.UpdateContentWidth();
+        PropsUI.Instance.CheckContentItemCount();
     }
     public void UsePaintBrushWasher(Vector3 position, PointMod[] pointMods)
     {

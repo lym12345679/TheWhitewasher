@@ -24,12 +24,14 @@ public class PauseUI : GeneralBox<PauseUI, string, string>
     }
     public void OnGoToLevelBtnClicked()
     {
-        Debug.Log("Go to level");
+        GamePlayManager.ContinueGame();
+        GamePlayManager.GoToLevelSelect();
         Close();
     }
     public void OnGoToMenuBtnClicked()
     {
-        Debug.Log("Go to menu");
+        GamePlayManager.ContinueGame();
+        GamePlayManager.GoToMenu();
         Close();
     }
 

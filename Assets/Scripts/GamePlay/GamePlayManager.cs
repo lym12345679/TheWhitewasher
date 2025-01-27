@@ -18,6 +18,7 @@ public static class GamePlayManager
 {
     public static SceneEnum CurrentScene;
     public static int TopUnlockedLevel = 3;
+    public static bool IsPlayerFinishAllLevel = false;
     public static void PauseGame()
     {
         Time.timeScale = 0;
@@ -50,5 +51,9 @@ public static class GamePlayManager
     public static void ExitGame()
     {
         Application.Quit();
+    }
+    public static void FinishAllLevel()
+    {
+        IsPlayerFinishAllLevel = true;
     }
 }
