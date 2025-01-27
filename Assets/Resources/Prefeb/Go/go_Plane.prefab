@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42df01fe13720d49bf1dcefad63191f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FadeTarget: {fileID: 0}
   ColorMod: 1
 --- !u!61 &2989894700075632096
 BoxCollider2D:

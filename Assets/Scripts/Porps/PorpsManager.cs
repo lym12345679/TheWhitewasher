@@ -54,7 +54,6 @@ public class PorpsManager : MonoBehaviour
             {
                 case PorpEnum.PaintBrushWasher:
                     {
-
                         PointMod[] pointMods = new PointMod[1] { point.Mod };
                         UsePaintBrushWasher(position, pointMods);
                         DestroyCurrentProp();
@@ -83,7 +82,6 @@ public class PorpsManager : MonoBehaviour
     public void UsePaintBrushWasher(Vector3 position, PointMod[] pointMods)
     {
         //Debug.Log("Use PaintBrushWasher");
-
         AstarManagerSon.Instance.UpdateAllAstarPonitInCloseList(AstarManager.Instance.map, position, pointMods, UpdatePoint);
     }
     public void UpdatePoint(Point point)

@@ -1,9 +1,13 @@
 using UnityEngine;
 using MizukiTool.AStar;
+using MizukiTool.UIEffect;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class SquareController : MonoBehaviour
 {
+    public Graphic FadeTarget;
+    private FadeEffect<Graphic> fadeModel = new FadeEffect<Graphic>();
     void Start()
     {
         this.gameObject.layer = LayerMask.NameToLayer(MPoint.ToString());
@@ -46,4 +50,5 @@ public class SquareController : MonoBehaviour
         ColorMod = colorMod;
         ApplyColorMod();
     }
+
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MouseManager : MonoBehaviour
 {
-    public bool IsMouseClickDown = false;
+    private bool isMouse0ClickDown = false;
+    private bool isMouse1ClickDown = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,15 +15,21 @@ public class MouseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !IsMouseClickDown)
+        if (Input.GetMouseButtonDown(0) && !isMouse0ClickDown)
         {
-            IsMouseClickDown = true;
-            OnMouseClickDown();
-            IsMouseClickDown = false;
+            isMouse0ClickDown = true;
+            OnMouse0ClickDown();
+            isMouse0ClickDown = false;
+        }
+        if (Input.GetMouseButtonDown(1) && !isMouse1ClickDown)
+        {
+            isMouse1ClickDown = true;
+            OnMouse1ClickDown();
+            isMouse1ClickDown = false;
         }
     }
 
-    public void OnMouseClickDown()
+    public void OnMouse0ClickDown()
     {
         Vector3 position = CheckMousePositionOnWorld();
         Debug.Log("Mouse Position: " + position);
@@ -30,6 +37,10 @@ public class MouseManager : MonoBehaviour
         {
             Debug.Log("Use Prop");
         }
+    }
+    public void OnMouse1ClickDown()
+    {
+        PorpsManager.Instance.ClearCurrentProp();
     }
 
     public Vector3 CheckMousePositionOnWorld()
