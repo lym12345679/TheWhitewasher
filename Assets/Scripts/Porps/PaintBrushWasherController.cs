@@ -9,7 +9,7 @@ public class PaintBrushWasherController : MonoBehaviour
     {
         get
         {
-            return SOManager.colorToPointModSO.GetPointMod(ColorMod);
+            return SOManager.colorSO.GetPointMod(ColorMod);
         }
     }
     public ColorEnum ColorMod;

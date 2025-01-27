@@ -18,7 +18,19 @@ public class ColorSO : ScriptableObject
         }
         return Color.white;
     }
-    private void OnValidate() {
+    public PointMod GetPointMod(ColorEnum color)
+    {
+        foreach (var item in pointModWithColors)
+        {
+            if (item.eColor == color)
+            {
+                return item.pointMod;
+            }
+        }
+        return PointMod.None;
+    }
+    private void OnValidate()
+    {
         foreach (var item in pointModWithColors)
         {
             item.Name = item.eColor.ToString();
@@ -32,5 +44,6 @@ public class PointModWithColor
     public string Name;
     public ColorEnum eColor;
     public Color color;
+    public PointMod pointMod;
 }
 
