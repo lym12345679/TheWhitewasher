@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MizukiTool.AStar;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PropsUI : MonoBehaviour
 {

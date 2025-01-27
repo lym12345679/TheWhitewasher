@@ -16,9 +16,40 @@ public enum SceneEnum
 }
 public static class GamePlayManager
 {
-    public static SceneEnum CurrentScene;
-    public static int TopUnlockedLevel = 3;
-    public static bool IsPlayerFinishAllLevel = false;
+    public static SceneEnum CurrentScene
+    {
+        get
+        {
+            return StaticDatas.CurrentScene;
+        }
+        set
+        {
+            StaticDatas.CurrentScene = value;
+        }
+    }
+
+    public static int TopUnlockedLevel
+    {
+        get
+        {
+            return StaticDatas.TopUnlockedLevel;
+        }
+        set
+        {
+            StaticDatas.TopUnlockedLevel = value;
+        }
+    }
+    public static bool IsPlayerFinishAllLevel
+    {
+        get
+        {
+            return StaticDatas.IsPlayerFinishAllLevel;
+        }
+        set
+        {
+            StaticDatas.IsPlayerFinishAllLevel = value;
+        }
+    }
     public static void PauseGame()
     {
         Time.timeScale = 0;

@@ -120,6 +120,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   param: 
   SendParam: 
+  BGMMusicSlider: {fileID: 3306028355377750906}
+  SoundEffectSlider: {fileID: 6449221517651436024}
 --- !u!1 &3022372816361952838
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,9 +205,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3022372816295168085}
     m_Modifications:
+    - target: {fileID: 2936857502431766263, guid: 7509331b14f97384a8765e4338295a89, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936857502431766263, guid: 7509331b14f97384a8765e4338295a89, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936857502431766263, guid: 7509331b14f97384a8765e4338295a89, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7205177880439266364}
+    - target: {fileID: 2936857502431766263, guid: 7509331b14f97384a8765e4338295a89, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936857502431766263, guid: 7509331b14f97384a8765e4338295a89, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnBGMMusicValueChanged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936857502431766263, guid: 7509331b14f97384a8765e4338295a89, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936857502431766263, guid: 7509331b14f97384a8765e4338295a89, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936857502431766263, guid: 7509331b14f97384a8765e4338295a89, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3330404591106727051, guid: 7509331b14f97384a8765e4338295a89, type: 3}
       propertyPath: m_Name
-      value: BGMMusic
+      value: BGMMusicScroll
       objectReference: {fileID: 0}
     - target: {fileID: 3619181538672830673, guid: 7509331b14f97384a8765e4338295a89, type: 3}
       propertyPath: m_text
@@ -316,6 +350,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7509331b14f97384a8765e4338295a89, type: 3}
+--- !u!114 &3306028355377750906 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2936857502431766263, guid: 7509331b14f97384a8765e4338295a89, type: 3}
+  m_PrefabInstance: {fileID: 369452483221259661}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4482161430966727445 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4256843936199374488, guid: 7509331b14f97384a8765e4338295a89, type: 3}
@@ -457,7 +502,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3330404591106727051, guid: 7509331b14f97384a8765e4338295a89, type: 3}
       propertyPath: m_Name
-      value: OtherMusic
+      value: SoundEffectScroll
       objectReference: {fileID: 0}
     - target: {fileID: 3619181538672830673, guid: 7509331b14f97384a8765e4338295a89, type: 3}
       propertyPath: m_text
@@ -577,3 +622,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4256843936199374488, guid: 7509331b14f97384a8765e4338295a89, type: 3}
   m_PrefabInstance: {fileID: 8161064152803673871}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6449221517651436024 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2936857502431766263, guid: 7509331b14f97384a8765e4338295a89, type: 3}
+  m_PrefabInstance: {fileID: 8161064152803673871}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
