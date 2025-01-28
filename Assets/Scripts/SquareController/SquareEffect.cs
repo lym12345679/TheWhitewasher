@@ -10,7 +10,7 @@ public class SquareEffect : GoEffectController<SpriteRenderer>
     {
         fadeMode = new FadeEffectGO<SpriteRenderer>(transform.GetComponent<SpriteRenderer>())
             .SetFadeMode(FadeMode.Once)
-            .SetFadeTime(1f)
+            .SetFadeTime(StaticDatas.ColorFadeTime)
             .SetFadeColor(Color.black);
     }
     private void Start()

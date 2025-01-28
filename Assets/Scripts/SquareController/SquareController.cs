@@ -66,7 +66,7 @@ public class SquareController : MonoBehaviour
     //改变邻居的颜色
     public bool ChangeNeighbourColor(Point asker, ColorEnum from, ColorEnum to)
     {
-        Debug.Log("ChangeNeighbourColor:" + asker.X + "," + asker.Y);
+        //Debug.Log("ChangeNeighbourColor:" + asker.X + "," + asker.Y);
         List<Point> points = new List<Point>();
         points = AstarManagerSon.Instance.GetNeighbourPoints(this.transform.position);
         foreach (var point in points)
@@ -99,14 +99,14 @@ public class SquareController : MonoBehaviour
             ColorMod = to;
             SetIsFading(true);
             isAskNeighbour = false;
-            Debug.Log("ChangeSelfColor:" + point.X + "," + point.Y);
+            //Debug.Log("ChangeSelfColor:" + point.X + "," + point.Y);
             selfSquareEffect.StartFadeEffect(SOManager.colorSO.GetColor(to),
                 (float t) =>
                 {
-                    //50%的时候询问邻居
-                    if (t > 0.3 && !isAskNeighbour)
+                    // 1/FadeSpradeSpeed%的时候询问邻居
+                    if (t > (1 / StaticDatas.FadeSpradeSpeed) && !isAskNeighbour)
                     {
-                        Debug.Log("ChangeNeighbourColor");
+                        //Debug.Log("ChangeNeighbourColor");
                         this.isAskNeighbour = true;
                         this.ChangeNeighbourColor(point, from, to);
                     }
