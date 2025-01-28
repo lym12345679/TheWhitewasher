@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +6,6 @@ namespace MizukiTool.UIEffect
     /// <summary>
     /// FixedUpdateNew()方法用于扩展,替代FixedUpdate()
     /// StartFade()方法用于开始一个渐变效果
-    /// 
     /// </summary>
     /// <typeparam name="T">Graphic及其子类</typeparam>
     public class UIEffectController<T> : MonoBehaviour where T : Graphic

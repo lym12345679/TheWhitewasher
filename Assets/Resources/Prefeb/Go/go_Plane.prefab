@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2989894700075632096}
   - component: {fileID: 6556815004670730465}
   - component: {fileID: 3962865759731501584}
+  - component: {fileID: 1307995128592685401}
   m_Layer: 9
   m_Name: go_Plane
   m_TagString: Untagged
@@ -100,7 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42df01fe13720d49bf1dcefad63191f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeTarget: {fileID: 0}
+  isFading: 0
+  isAskNeighbour: 0
+  FadeTarget: {fileID: 3353745487684662559}
+  selfSquareEffect: {fileID: 1307995128592685401}
   ColorMod: 1
 --- !u!61 &2989894700075632096
 BoxCollider2D:
@@ -219,3 +223,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1307995128592685401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7681325899782401501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b232b99296a6274ab6d3c46a0f4fcce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FadeTarget: {fileID: 3353745487684662559}

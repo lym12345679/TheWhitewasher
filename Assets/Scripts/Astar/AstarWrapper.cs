@@ -318,7 +318,33 @@ namespace MizukiTool.AStar
             return surroundPoints;
         }
 
-
+        public static List<Point> GetNeighbourPoints(AstarMap map,Point point){
+            List<Point> neighbourPoints = new List<Point>();
+            Point up = null, down = null, left = null, right = null;
+            int x = point.X;
+            int y = point.Y;
+            if (map[x, y + 1] != null)
+            {
+                right = map[x, y + 1];
+                neighbourPoints.Add(right);
+            }
+            if (map[x, y - 1] != null)
+            {
+                left = map[x, y - 1];
+                neighbourPoints.Add(left);
+            }
+            if (map[x + 1, y] != null)
+            {
+                up = map[x + 1, y];
+                neighbourPoints.Add(up);
+            }
+            if (map[x - 1, y] != null)
+            {
+                down = map[x - 1, y];
+                neighbourPoints.Add(down);
+            }
+            return neighbourPoints;
+        }
         #endregion
     }
 

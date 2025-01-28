@@ -31,7 +31,7 @@ public class PorpsManager : MonoBehaviour
     }
     public void SetCurrentProp(GameObject prop)
     {
-        Debug.Log("SetCurrentProp:" + prop.name);
+        //Debug.Log("SetCurrentProp:" + prop.name);
         CurrentProp = prop;
     }
     public void ClearCurrentProp()
@@ -46,7 +46,7 @@ public class PorpsManager : MonoBehaviour
             return false;
         }
         PropUIController propUIController = CurrentProp.GetComponent<PropUIController>();
-        Point point = AstarManagerSon.Instance.map.GetPointOnMap(position);
+        Point point = AstarManagerSon.Instance.GetPointOnMap(position);
         if (point != null)
         {
             Debug.Log("Clicked Point:" + point.X + "," + point.Y);
@@ -55,7 +55,7 @@ public class PorpsManager : MonoBehaviour
                 case PorpEnum.PaintBrushWasher:
                     {
                         PointMod[] pointMods = new PointMod[1] { point.Mod };
-                        UsePaintBrushWasher(position, pointMods);
+                        UsePaintBrushWasher(point, pointMods);
                         DestroyCurrentProp();
                         isUse = true;
                     }
@@ -79,10 +79,13 @@ public class PorpsManager : MonoBehaviour
         Destroy(CurrentProp);
         PropsUI.Instance.CheckContentItemCount();
     }
-    public void UsePaintBrushWasher(Vector3 position, PointMod[] pointMods)
+    public void UsePaintBrushWasher(Point point, PointMod[] pointMods)
     {
         //Debug.Log("Use PaintBrushWasher");
-        AstarManagerSon.Instance.UpdateAllAstarPonitInCloseList(AstarManager.Instance.map, position, pointMods, UpdatePoint);
+        //AstarManagerSon.Instance.UpdateAllAstarPonitInCloseList(AstarManager.Instance.map, position, pointMods, UpdatePoint);
+        Debug.Log(point.GameObject.transform.position + " (" + point.X + " ," + point.Y + ")");
+        SquareController squareController = point.GameObject.GetComponent<SquareController>();
+        squareController.StartBrush(point, squareController.ColorMod, CurrentProp.GetComponent<PropUIController>().ColorMod);
     }
     public void UpdatePoint(Point point)
     {
@@ -90,7 +93,7 @@ public class PorpsManager : MonoBehaviour
         //Debug.Log("UpdatePoint:" + point.X + "," + point.Y);
         SquareController squareController;
         PropUIController propUIController = CurrentProp.GetComponent<PropUIController>();
-        if (point.gameObject.TryGetComponent<SquareController>(out squareController))
+        if (point.GameObject.TryGetComponent<SquareController>(out squareController))
         {
             squareController.SetColorMod(propUIController.ColorMod);
         }

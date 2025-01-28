@@ -32,10 +32,10 @@ public class MouseManager : MonoBehaviour
     public void OnMouse0ClickDown()
     {
         Vector3 position = CheckMousePositionOnWorld();
-        Debug.Log("Mouse Position: " + position);
+        //Debug.Log("Mouse Position: " + position);
         if (PorpsManager.Instance.UseProp(position))
         {
-            Debug.Log("Use Prop");
+            //Debug.Log("Use Prop");
         }
     }
     public void OnMouse1ClickDown()

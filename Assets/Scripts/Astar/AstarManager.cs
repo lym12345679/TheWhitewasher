@@ -247,7 +247,17 @@ namespace MizukiTool.AStar
         /// <returns></returns>
         public AstarMap UpdateAllAstarPonitInCloseList(AstarMap astarMap, Vector3 startPos, PointMod[] pointMods, PointParameter func)
             => AStarWrapper.UpdateAllAstarPonitInCloseList(astarMap, startPos, pointMods, func);
+        public List<Point> GetNeighbourPoints(Vector3 position)
+        {
+            Point point = map.GetPointOnMap(position);
+            return AStarWrapper.GetNeighbourPoints(map, point);
+        }
 
+        public List<Point> GetNeighbourPoints(Point point)
+            => AStarWrapper.GetNeighbourPoints(map, point);
+
+        public Point GetPointOnMap(Vector3 position)
+            => map.GetPointOnMap(position);
         #endregion
         #region 标注地图
         [Header("显示地图标注")]

@@ -30,7 +30,7 @@ public class PropsUI : MonoBehaviour
         }
         else
         { Content.sizeDelta = new Vector2(ContentCellWidth * currentChildCount, Content.sizeDelta.y); }
-        Debug.Log("ContentWidth:" + Content.sizeDelta.x);
+        //Debug.Log("ContentWidth:" + Content.sizeDelta.x);
     }
 
     public void PreLoadProp()
@@ -75,7 +75,7 @@ public class PropsUI : MonoBehaviour
         foreach (RectTransform child in children)
         {
 
-            Debug.Log(child.name);
+            //Debug.Log(child.name);
             PropUIController propUIController;
             if (child.gameObject.TryGetComponent<PropUIController>(out propUIController))
             {

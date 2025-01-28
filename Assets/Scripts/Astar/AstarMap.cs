@@ -41,7 +41,28 @@ namespace MizukiTool.AStar
         /// <summary>
         /// 游戏对象
         /// </summary>
-        public GameObject gameObject;
+        private GameObject gameObject;
+        public GameObject GameObject
+        {
+            get { return gameObject; }
+            set
+            {
+                if (gameObject == null)
+                {
+                    gameObject = value;
+                    return;
+                }
+                if ((int)gameObject.transform.position.x != (int)value.transform.position.x)
+                {
+                    Debug.Log("SetGameObject:" + value.transform.position);
+                }
+                else if ((int)gameObject.transform.position.y != (int)value.transform.position.y)
+                {
+                    Debug.Log("SetGameObject:" + value.transform.position);
+                }
+                gameObject = value;
+            }
+        }
         public Point(int x, int y, PointMod walkable, Point parent = null, int value = 1)
         {
             this.Parent = null;
@@ -183,8 +204,8 @@ namespace MizukiTool.AStar
         /// <returns></returns>
         public Point GetPointOnMap(Vector3 position)
         {
-            int y = Mathf.RoundToInt((position.x - origin.x) / cellSize);
-            int x = Mathf.RoundToInt((position.y - origin.y) / cellSize);
+            int y = (int)((position.x - origin.x) / cellSize);
+            int x = (int)((position.y - origin.y) / cellSize);
             if (x >= mapHeight || x < 0 || y >= mapWidth || y < 0)
             {
                 return null;
@@ -232,9 +253,9 @@ namespace MizukiTool.AStar
                 {
                     /*if (gameObjects[i, j] != null)
                     {
-                        Debug.Log("SetGameObjects: (" + j + "," + i + ")" + gameObjects[i, j].name);
+                        Debug.Log("SetGameObjects: (" + j + "," + i + ")" + gameObjects[i, j].transform.position);
                     }*/
-                    astarMap[i, j].gameObject = gameObjects[i, j];
+                    astarMap[i, j].GameObject = gameObjects[i, j];
                 }
             }
         }
@@ -244,7 +265,7 @@ namespace MizukiTool.AStar
             {
                 for (int j = 0; j < mapWidth; j++)
                 {
-                    astarMap[i, j].gameObject = null;
+                    astarMap[i, j].GameObject = null;
                 }
             }
         }

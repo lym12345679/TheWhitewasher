@@ -1,15 +1,18 @@
 using UnityEngine;
 using MizukiTool.AStar;
 using MizukiTool.UIEffect;
-using UnityEngine.UI;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class SquareController : MonoBehaviour
 {
-    public Graphic FadeTarget;
-    private FadeEffect<Graphic> fadeModel = new FadeEffect<Graphic>();
+    public bool isFading = false;
+    public bool isAskNeighbour = false;
+    public SpriteRenderer FadeTarget;
+    public SquareEffect selfSquareEffect;
     void Start()
     {
+
         this.gameObject.layer = LayerMask.NameToLayer(MPoint.ToString());
     }
     public PointMod MPoint
@@ -22,8 +25,7 @@ public class SquareController : MonoBehaviour
     public ColorEnum ColorMod;
     private void OnValidate()
     {
-        var spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = SOManager.colorSO.GetColor(ColorMod);
+        FadeTarget.color = SOManager.colorSO.GetColor(ColorMod);
     }
 
     void OnDrawGizmos()
@@ -41,14 +43,90 @@ public class SquareController : MonoBehaviour
     }
     public void ApplyColorMod()
     {
-        var spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = SOManager.colorSO.GetColor(ColorMod);
-        this.gameObject.layer = LayerMask.NameToLayer(MPoint.ToString());
+        FadeTarget.color = SOManager.colorSO.GetColor(ColorMod);
+        ChanngeLayer();
     }
+
     public void SetColorMod(ColorEnum colorMod)
     {
         ColorMod = colorMod;
         ApplyColorMod();
     }
 
+    public void ChanngeLayer()
+    {
+        this.gameObject.layer = LayerMask.NameToLayer(MPoint.ToString());
+    }
+
+
+    public void StartBrush(Point point, ColorEnum from, ColorEnum to)
+    {
+        ChangeSelfColor(point, from, to);
+    }
+    //改变邻居的颜色
+    public bool ChangeNeighbourColor(Point asker, ColorEnum from, ColorEnum to)
+    {
+        Debug.Log("ChangeNeighbourColor:" + asker.X + "," + asker.Y);
+        List<Point> points = new List<Point>();
+        points = AstarManagerSon.Instance.GetNeighbourPoints(this.transform.position);
+        foreach (var point in points)
+        {
+            if (point.GameObject != null && point != asker)
+            {
+                SquareController squareController = point.GameObject.GetComponent<SquareController>();
+                if (squareController.GetIsFading())
+                {
+                    continue;
+                }
+                if (squareController.ChangeSelfColor(point, from, to))
+                {
+                    Debug.Log("ChangeNeighbourColor");
+                }
+            }
+        }
+        if (from == to)
+        {
+            return false;
+        }
+        from = to;
+        return true;
+    }
+    //改变自己的颜色
+    public bool ChangeSelfColor(Point point, ColorEnum from, ColorEnum to)
+    {
+        if (ColorMod == from)
+        {
+            ColorMod = to;
+            SetIsFading(true);
+            isAskNeighbour = false;
+            Debug.Log("ChangeSelfColor:" + point.X + "," + point.Y);
+            selfSquareEffect.StartFadeEffect(SOManager.colorSO.GetColor(to),
+                (float t) =>
+                {
+                    //50%的时候询问邻居
+                    if (t > 0.3 && !isAskNeighbour)
+                    {
+                        Debug.Log("ChangeNeighbourColor");
+                        this.isAskNeighbour = true;
+                        this.ChangeNeighbourColor(point, from, to);
+                    }
+                    return t;
+                },
+                (FadeEffectGO<SpriteRenderer> fadeEffect) =>
+                {
+                    SetIsFading(false);
+                });
+            ChanngeLayer();
+            return true;
+        }
+        return false;
+    }
+    public void SetIsFading(bool b)
+    {
+        isFading = b;
+    }
+    public bool GetIsFading()
+    {
+        return isFading;
+    }
 }
