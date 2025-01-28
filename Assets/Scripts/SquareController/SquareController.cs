@@ -103,8 +103,8 @@ public class SquareController : MonoBehaviour
             selfSquareEffect.StartFadeEffect(SOManager.colorSO.GetColor(to),
                 (float t) =>
                 {
-                    //50%的时候询问邻居
-                    if (t > 0.3 && !isAskNeighbour)
+                    // 1/FadeSpradeSpeed%的时候询问邻居
+                    if (t > (1 / StaticDatas.FadeSpradeSpeed) && !isAskNeighbour)
                     {
                         Debug.Log("ChangeNeighbourColor");
                         this.isAskNeighbour = true;
