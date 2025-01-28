@@ -14,7 +14,7 @@ public class PropsUI : MonoBehaviour
     {
         UpdateContentWidth(Content.childCount);
         PreLoadProp();
-        CheckContentItemCount(Content.childCount);
+        CheckContentItemCount();
     }
     public void UpdateContentWidth(int currentChildCount)
     {
@@ -54,14 +54,15 @@ public class PropsUI : MonoBehaviour
         GameObject gameObject = Instantiate(SOManager.porpSO.GetPropUI(PorpEnum.Blank), Content);
         UpdateContentWidth(Content.childCount);
     }
-    public void CheckContentItemCount(int childrenCount)
+    public void CheckContentItemCount()
     {
-        while (childrenCount < maxShownItemOnConotent)
+        while (Content.childCount < maxShownItemOnConotent)
         {
             AddBlank();
             //Debug.Log("childCount:" + Content.childCount);
         }
     }
+
     public bool RemoveBlankItem()
     {
         RectTransform[] children = Content.GetComponentsInChildren<RectTransform>();
@@ -83,10 +84,13 @@ public class PropsUI : MonoBehaviour
         return false;
     }
 
-    public void RemovePropUI(GameObject propUI)
+    public void OnPropDeserve()
     {
-        Destroy(propUI);
-        CheckContentItemCount(Content.childCount - 1);
+        if (Content.childCount - 1 < maxShownItemOnConotent)
+        {
+            GameObject gameObject = Instantiate(SOManager.porpSO.GetPropUI(PorpEnum.Blank), Content);
+            UpdateContentWidth(Content.childCount - 1);
+        }
     }
     public void ClearProp()
     {

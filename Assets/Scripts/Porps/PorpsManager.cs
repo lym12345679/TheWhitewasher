@@ -76,7 +76,8 @@ public class PorpsManager : MonoBehaviour
 
     public void DestroyCurrentProp()
     {
-        PropsUI.Instance.RemovePropUI(CurrentProp);
+        Destroy(CurrentProp);
+        PropsUI.Instance.OnPropDeserve();
     }
     public void UsePaintBrushWasher(Point point, PointMod[] pointMods)
     {
