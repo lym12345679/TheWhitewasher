@@ -80,7 +80,7 @@ public class SquareController : MonoBehaviour
                 }
                 if (squareController.ChangeSelfColor(point, from, to))
                 {
-                    Debug.Log("ChangeNeighbourColor");
+                    //Debug.Log("ChangeNeighbourColor");
                 }
             }
         }
