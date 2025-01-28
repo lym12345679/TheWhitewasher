@@ -1,10 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using MizukiTool.AStar;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
-
 public class PropsUI : MonoBehaviour
 {
     [HideInInspector]
@@ -20,7 +14,7 @@ public class PropsUI : MonoBehaviour
     {
         UpdateContentWidth(Content.childCount);
         PreLoadProp();
-        CheckContentItemCount();
+        CheckContentItemCount(Content.childCount);
     }
     public void UpdateContentWidth(int currentChildCount)
     {
@@ -60,9 +54,9 @@ public class PropsUI : MonoBehaviour
         GameObject gameObject = Instantiate(SOManager.porpSO.GetPropUI(PorpEnum.Blank), Content);
         UpdateContentWidth(Content.childCount);
     }
-    public void CheckContentItemCount()
+    public void CheckContentItemCount(int childrenCount)
     {
-        while (Content.childCount < maxShownItemOnConotent)
+        while (childrenCount < maxShownItemOnConotent)
         {
             AddBlank();
             //Debug.Log("childCount:" + Content.childCount);
@@ -87,6 +81,12 @@ public class PropsUI : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void RemovePropUI(GameObject propUI)
+    {
+        Destroy(propUI);
+        CheckContentItemCount(Content.childCount - 1);
     }
     public void ClearProp()
     {
