@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using MizukiTool.Box;
 
 public class SceneChangeUI : GeneralBox<SceneChangeUI, SceneChangeMessage, string>
@@ -14,20 +13,29 @@ public class SceneChangeUI : GeneralBox<SceneChangeUI, SceneChangeMessage, strin
     {
         if (param.type == SceneChangeType.In)
         {
-            SceneChangeEffectScript.SetSceneInEffect();
+            SceneChangeEffectScript.SetSceneInEffect(() =>
+            {
+                param.OnSceneChangeEnd?.Invoke();
+            });
         }
         else if (param.type == SceneChangeType.Out)
         {
-            SceneChangeEffectScript.SetSceneOutEffect();
+            SceneChangeEffectScript.SetSceneOutEffect(() =>
+            {
+                param.OnSceneChangeEnd?.Invoke();
+                Close();
+            });
         }
     }
 }
 public class SceneChangeMessage
 {
-    public SceneChangeMessage(SceneChangeType type)
+    public SceneChangeMessage(SceneChangeType type, Action OnSceneChangeEnd = null)
     {
         this.type = type;
+        this.OnSceneChangeEnd = OnSceneChangeEnd;
     }
+    public Action OnSceneChangeEnd;
     public SceneChangeType type;
 }
 public enum SceneChangeType

@@ -27,13 +27,20 @@ public class PauseUI : GeneralBox<PauseUI, string, string>
     public void OnGoToLevelBtnClicked()
     {
         GamePlayManager.ContinueGame();
-        GamePlayManager.GoToLevelSelect();
+        SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
+        {
+            GamePlayManager.GoToLevelSelect();
+        }));
+
         Close();
     }
     public void OnGoToMenuBtnClicked()
     {
         GamePlayManager.ContinueGame();
-        GamePlayManager.GoToMenu();
+        SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
+        {
+            GamePlayManager.GoToMenu();
+        }));
         Close();
     }
     public void OnBGMMusicValueChanged()

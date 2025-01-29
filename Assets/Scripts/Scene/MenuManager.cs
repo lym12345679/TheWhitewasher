@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         MenuUI.Open("1");
+        SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.Out));
     }
 
 }

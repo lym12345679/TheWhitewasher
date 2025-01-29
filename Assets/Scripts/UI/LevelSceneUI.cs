@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LevelSceneUI : GeneralBox<LevelSceneUI, string, string>
 {
-    public LevelSceneUI Instance;
+    public static LevelSceneUI Instance;
     public void Awake()
     {
         Instance = this;

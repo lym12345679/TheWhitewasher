@@ -16,22 +16,30 @@ public class LevelSceneManager : MonoBehaviour
     void Start()
     {
         LevelSceneUI.Open("1");
+        SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.Out));
     }
     public void LoadNextScene()
     {
-        GamePlayManager.LoadScene(NextScene);
+        SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
+        {
+            GamePlayManager.LoadScene(NextScene);
+        }));
     }
     public void Reset()
     {
-        GamePlayManager.LoadScene(ThisScene);
+        SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
+        {
+            GamePlayManager.LoadScene(ThisScene);
+        }));
+
     }
 
     public void OnPlayerWin()
     {
-        GamePlayManager.LoadScene(NextScene);
+        LoadNextScene();
     }
     public void OnPlayerLose()
     {
-        GamePlayManager.LoadScene(ThisScene);
+        Reset();
     }
 }

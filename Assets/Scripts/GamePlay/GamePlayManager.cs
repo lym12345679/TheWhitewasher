@@ -69,7 +69,7 @@ public static class GamePlayManager
     }
     public static void ResetGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(CurrentScene.ToString());
+        LoadScene(CurrentScene);
     }
     public static void GoToMenu()
     {

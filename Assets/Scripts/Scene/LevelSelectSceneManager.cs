@@ -5,6 +5,7 @@ public class LevelSelectScene : MonoBehaviour
     void Start()
     {
         LevelSelectUI.Open("1");
+        SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.Out));
     }
 
 }
