@@ -10,6 +10,7 @@ public class SquareController : MonoBehaviour
     public bool isAskNeighbour = false;
     public SpriteRenderer FadeTarget;
     public SquareEffect selfSquareEffect;
+    public SquareCorrectPositionMod SquareCorrectPositionMod = SquareCorrectPositionMod.Used;
     void Start()
     {
 
@@ -26,6 +27,11 @@ public class SquareController : MonoBehaviour
     private void OnValidate()
     {
         FadeTarget.color = SOManager.colorSO.GetColor(ColorMod);
+        if (SquareCorrectPositionMod == SquareCorrectPositionMod.Start)
+        {
+            CorrectPosition();
+            SquareCorrectPositionMod = SquareCorrectPositionMod.Used;
+        }
     }
 
     void OnDrawGizmos()
@@ -129,4 +135,23 @@ public class SquareController : MonoBehaviour
     {
         return isFading;
     }
+    public void CorrectPosition()
+    {
+        if (Mathf.Abs(transform.localPosition.x - (int)transform.localPosition.x) > 0.01)
+        {
+            Debug.Log("Roundx");
+            transform.localPosition = new Vector3((int)(transform.localPosition.x), (int)transform.localPosition.y, transform.localPosition.z);
+        }
+        if (Mathf.Abs(transform.localPosition.y - (int)transform.localPosition.y) > 0.01)
+        {
+            Debug.Log("Roundy");
+            transform.localPosition = new Vector3((int)transform.localPosition.x, (int)(transform.localPosition.y), transform.localPosition.z);
+        }
+    }
+}
+
+public enum SquareCorrectPositionMod
+{
+    Start,
+    Used,
 }
