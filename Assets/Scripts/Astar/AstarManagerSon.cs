@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using MizukiTool.AStar;
 using MizukiTool.Box;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class AstarManagerSon : AstarManager
