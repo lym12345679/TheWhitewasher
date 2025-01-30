@@ -6,7 +6,10 @@ using System;
 
 public class ColorSO : ScriptableObject
 {
+
     public List<PointModWithColor> pointModWithColors = new List<PointModWithColor>();
+    public string Search;
+    public List<PointModWithColor> SearchResult = new List<PointModWithColor>();
     public Color GetColor(ColorEnum color)
     {
         foreach (var item in pointModWithColors)
@@ -31,9 +34,24 @@ public class ColorSO : ScriptableObject
     }
     private void OnValidate()
     {
+        SearchResult.Clear();
         foreach (var item in pointModWithColors)
         {
             item.Name = item.eColor.ToString();
+        }
+        if (string.IsNullOrEmpty(Search))
+        {
+            SearchResult.AddRange(pointModWithColors);
+        }
+        else
+        {
+            foreach (var item in pointModWithColors)
+            {
+                if (item.eColor.ToString().Contains(Search))
+                {
+                    SearchResult.Add(item);
+                }
+            }
         }
     }
 }
