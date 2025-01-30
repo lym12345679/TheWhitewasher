@@ -105,6 +105,7 @@ MonoBehaviour:
   isAskNeighbour: 0
   FadeTarget: {fileID: 3353745487684662559}
   selfSquareEffect: {fileID: 1307995128592685401}
+  SquareCorrectPositionMod: 0
   ColorMod: 1
 --- !u!61 &2989894700075632096
 BoxCollider2D:

@@ -152,6 +152,7 @@ public class SquareController : MonoBehaviour
 
 public enum SquareCorrectPositionMod
 {
-    Start,
     Used,
+    Start,
+
 }
