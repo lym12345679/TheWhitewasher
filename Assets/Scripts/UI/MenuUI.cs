@@ -9,6 +9,7 @@ public class MenuUI : GeneralBox<MenuUI, string, string>
 {
     public RectTransform BackGround1;
     public RectTransform BackGround2;
+    public AudioEnum MenuBGM;
     public bool IsPlayerFinishAllLevel
     {
         get
@@ -27,6 +28,11 @@ public class MenuUI : GeneralBox<MenuUI, string, string>
         {
             BackGround1.gameObject.SetActive(true);
             BackGround2.gameObject.SetActive(false);
+        }
+        if (!AudioUtil.CheckEnumInLoopAudio(MenuBGM))
+        {
+            AudioUtil.ReturnAllLoopAudio();
+            AudioUtil.Play(MenuBGM, AudioMixerGroupEnum.BGM, AudioPlayMod.Loop);
         }
     }
     public override void GetParams(string param)
@@ -47,7 +53,6 @@ public class MenuUI : GeneralBox<MenuUI, string, string>
     {
         SettingUI.Open("1");
         AudioUtil.Play(AudioEnum.Button_Clicked, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
-        Close();
     }
     public void OnLevelSelectBtnClicked()
     {

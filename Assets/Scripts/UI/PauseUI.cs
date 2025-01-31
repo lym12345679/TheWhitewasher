@@ -1,3 +1,4 @@
+using System;
 using MizukiTool.Audio;
 using MizukiTool.Box;
 using UnityEngine;
@@ -10,8 +11,9 @@ public class PauseUI : GeneralBox<PauseUI, string, string>
     void Start()
     {
         GamePlayManager.PauseGame();
-        BGMMusicSlider.value = StaticDatas.BGMMusicVolume;
-        SoundEffectSlider.value = StaticDatas.SoundEffectVolume;
+        AudioUtil.PauseAllLoopAudio();
+        BGMMusicSlider.value = AudioMixerGroupManager.GetAudioMixerGroupValume(AudioMixerGroupEnum.BGM);
+        SoundEffectSlider.value = AudioMixerGroupManager.GetAudioMixerGroupValume(AudioMixerGroupEnum.Effect);
     }
     public override void GetParams(string param)
     {
@@ -25,6 +27,7 @@ public class PauseUI : GeneralBox<PauseUI, string, string>
     {
         GamePlayManager.ContinueGame();
         AudioUtil.Play(AudioEnum.Button_Clicked, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
+        AudioUtil.ContinueAllLoopAudio();
         Close();
     }
     public void OnGoToLevelBtnClicked()
@@ -46,12 +49,12 @@ public class PauseUI : GeneralBox<PauseUI, string, string>
     public void OnBGMMusicValueChanged()
     {
         //TODO：对接AudioManager
-        StaticDatas.BGMMusicVolume = BGMMusicSlider.value;
+        AudioMixerGroupManager.SetAudioVolume(AudioMixerGroupEnum.BGM, BGMMusicSlider.value);
     }
     public void OnSoundEffectValueChanged()
     {
         //TODO：对接AudioManager
-        StaticDatas.SoundEffectVolume = SoundEffectSlider.value;
+        AudioMixerGroupManager.SetAudioVolume(AudioMixerGroupEnum.Effect, SoundEffectSlider.value);
     }
 }
 

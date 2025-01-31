@@ -209,6 +209,17 @@ namespace MizukiTool.Audio
                 RetrunAudioPlayEntry(audioEntry);
             }
         }
+        public bool CheckEnumInLoopAudio(AudioEnum audioEnum)
+        {
+            foreach (var audioEntry in mAudioEntryInLoop)
+            {
+                if (audioEntry.TargetAudioSource.clip == AudioSOManager.audioSO.GetAudioClip(audioEnum))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 
     public enum AudioPlayMod

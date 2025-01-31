@@ -7,6 +7,7 @@ public class DestinationController : MonoBehaviour
     public static float StayTime = 3f;
     public static float StayTimeCounter = 3f;
     private bool IsPlayerOn = false;
+    private bool isGoingToNextScene = false;
     void Start()
     {
         StayTimeCounter = StayTime;
@@ -44,7 +45,11 @@ public class DestinationController : MonoBehaviour
         }
         else
         {
-            OnGameWin();
+            if (!isGoingToNextScene)
+            {
+                isGoingToNextScene = true;
+                OnGameWin();
+            }
         }
     }
 

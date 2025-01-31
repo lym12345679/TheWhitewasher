@@ -334,6 +334,7 @@ MonoBehaviour:
   SendParam: 
   BackGround1: {fileID: 3022372816361952837}
   BackGround2: {fileID: 2609256412074165012}
+  MenuBGM: 2
 --- !u!1 &3022372816361952838
 GameObject:
   m_ObjectHideFlags: 0

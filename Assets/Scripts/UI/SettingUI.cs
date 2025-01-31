@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using MizukiTool.Audio;
 using MizukiTool.Box;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class SettingUI : GeneralBox<SettingUI, string, string>
 {
     public Scrollbar BGMMusicSlider;
     public Scrollbar SoundEffectSlider;
+    public AudioEnum SettingBGM;
     public override void GetParams(string param)
     {
         this.param = param;
@@ -22,17 +25,20 @@ public class SettingUI : GeneralBox<SettingUI, string, string>
     }
     void Start()
     {
-        BGMMusicSlider.value = StaticDatas.BGMMusicVolume;
-        SoundEffectSlider.value = StaticDatas.SoundEffectVolume;
+        BGMMusicSlider.value = AudioMixerGroupManager.GetAudioMixerGroupValume(AudioMixerGroupEnum.BGM);
+        SoundEffectSlider.value = AudioMixerGroupManager.GetAudioMixerGroupValume(AudioMixerGroupEnum.Effect);
+        if (!AudioUtil.CheckEnumInLoopAudio(SettingBGM))
+        {
+            AudioUtil.ReturnAllLoopAudio();
+            AudioUtil.Play(SettingBGM, AudioMixerGroupEnum.BGM, AudioPlayMod.Loop);
+        }
     }
     public void OnBGMMusicValueChanged()
     {
-        //TODO:对接AudioManager
-        StaticDatas.BGMMusicVolume = BGMMusicSlider.value;
+        AudioMixerGroupManager.SetAudioVolume(AudioMixerGroupEnum.BGM, BGMMusicSlider.value);
     }
     public void OnSoundEffectValueChanged()
     {
-        //TODO:对接AudioManager
-        StaticDatas.SoundEffectVolume = BGMMusicSlider.value;
+        AudioMixerGroupManager.SetAudioVolume(AudioMixerGroupEnum.Effect, SoundEffectSlider.value);
     }
 }

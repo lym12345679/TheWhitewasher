@@ -312,6 +312,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8775456380249716177, guid: 4437e44b7bf73a843bb8d7a2d2d10b55, type: 3}
+      propertyPath: BGMEnum
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8775456380249716177, guid: 4437e44b7bf73a843bb8d7a2d2d10b55, type: 3}
       propertyPath: NextScene
       value: 4
       objectReference: {fileID: 0}

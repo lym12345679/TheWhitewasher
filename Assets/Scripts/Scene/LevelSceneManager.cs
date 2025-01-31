@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using MizukiTool.Audio;
 using UnityEngine;
 
 public class LevelSceneManager : MonoBehaviour
@@ -8,15 +9,22 @@ public class LevelSceneManager : MonoBehaviour
     public static LevelSceneManager Instance;
     public SceneEnum ThisScene;
     public SceneEnum NextScene;
+    public AudioEnum BGMEnum;
     void Awake()
     {
         Instance = this;
         GamePlayManager.SetCurrentScene(ThisScene);
+        if (!AudioUtil.CheckEnumInLoopAudio(BGMEnum))
+        {
+            AudioUtil.ReturnAllLoopAudio();
+            AudioUtil.Play(BGMEnum, AudioMixerGroupEnum.BGM, AudioPlayMod.Loop);
+        }
     }
     void Start()
     {
         LevelSceneUI.Open("1");
         SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.Out));
+
     }
     public void LoadNextScene()
     {
