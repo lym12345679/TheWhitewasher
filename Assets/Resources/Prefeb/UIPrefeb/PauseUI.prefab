@@ -536,6 +536,18 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u7EE7\u7EED"
       objectReference: {fileID: 0}
+    - target: {fileID: 6784160171713007938, guid: 7ecb109bf485de645bfa2f2e59ed9816, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e13265171bc16fe43a54e73cc48b122c, type: 2}
+    - target: {fileID: 6784160171713007938, guid: 7ecb109bf485de645bfa2f2e59ed9816, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6108113326865446198, guid: e13265171bc16fe43a54e73cc48b122c, type: 2}
+    - target: {fileID: 6784160171713007938, guid: 7ecb109bf485de645bfa2f2e59ed9816, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7005626811342296023, guid: 7ecb109bf485de645bfa2f2e59ed9816, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
