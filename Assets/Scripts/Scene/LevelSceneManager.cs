@@ -10,6 +10,7 @@ public class LevelSceneManager : MonoBehaviour
     public SceneEnum ThisScene;
     public SceneEnum NextScene;
     public AudioEnum BGMEnum;
+    public AudioEnum GameFailAudio;
     void Awake()
     {
         Instance = this;
@@ -39,7 +40,6 @@ public class LevelSceneManager : MonoBehaviour
         {
             GamePlayManager.LoadScene(ThisScene);
         }));
-
     }
 
     public void OnPlayerWin()

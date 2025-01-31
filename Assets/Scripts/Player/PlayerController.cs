@@ -1,4 +1,5 @@
 using MizukiTool.AStar;
+using MizukiTool.Audio;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -21,11 +22,12 @@ public class PlayerController : MonoBehaviour
     public bool isPlayerDead = false;
     public float StayResetTime = 2f;
     public float StayResetTimeCounter = 2f;
+    public AudioEnum PlayerDeadAudio;
     // Update is called once per frame
     void Update()
     {
         Jump();
-        //CheckPlayerDead();
+        CheckPlayerDead();
     }
     void FixedUpdate()
     {
@@ -77,8 +79,8 @@ public class PlayerController : MonoBehaviour
     }
     private void CheckIsWall()
     {
-        RaycastHit2D[] hits1 = Physics2D.RaycastAll(transform.position, Vector2.right, .7f, 1 << this.gameObject.layer);
-        RaycastHit2D[] hits2 = Physics2D.RaycastAll(transform.position, Vector2.left, .7f, 1 << this.gameObject.layer);
+        RaycastHit2D[] hits1 = Physics2D.RaycastAll(transform.position, Vector2.right, .5f, 1 << this.gameObject.layer);
+        RaycastHit2D[] hits2 = Physics2D.RaycastAll(transform.position, Vector2.left, .5f, 1 << this.gameObject.layer);
         //Debug.Log(hits1.Length);
         if (hits2.Length > 1)
         {
@@ -125,10 +127,11 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        if (transform.position.y < -10)
+        if (transform.position.y < -4)
         {
             isPlayerDead = true;
             Debug.Log("Player Dead");
+            AudioUtil.Play(PlayerDeadAudio, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
             LevelSceneManager.Instance.Reset();
         }
         Point point = AstarManager.Instance.map.GetPointOnMap(transform.position);
@@ -136,10 +139,12 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        if (point.Mod == this.PointM)
+        /*if (point.Mod == this.PointM)*/
+        if (isLeftWall && isRightWall)
         {
             isPlayerDead = true;
             Debug.Log("Player Dead");
+            AudioUtil.Play(PlayerDeadAudio, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
             LevelSceneManager.Instance.Reset();
         }
     }

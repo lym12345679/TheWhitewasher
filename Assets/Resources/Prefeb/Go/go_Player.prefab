@@ -108,6 +108,7 @@ MonoBehaviour:
   isPlayerDead: 0
   StayResetTime: 2
   StayResetTimeCounter: 2
+  PlayerDeadAudio: 8
 --- !u!50 &6441464865648635799
 Rigidbody2D:
   serializedVersion: 4
