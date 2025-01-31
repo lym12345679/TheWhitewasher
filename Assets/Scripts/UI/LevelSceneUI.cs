@@ -22,17 +22,14 @@ public class LevelSceneUI : GeneralBox<LevelSceneUI, string, string>
 
     public void OnPauseBtnClicked()
     {
-        AudioUtil.Play(AudioEnum.Button_Clicked, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
         PauseUI.Open("1");
     }
     public void OnRestartBtnClicked()
     {
-        AudioUtil.Play(AudioEnum.Button_Clicked, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
         GamePlayManager.ResetGame();
     }
     public void OnGoToMenuBtnClicked()
     {
-        AudioUtil.Play(AudioEnum.Button_Clicked, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
         GamePlayManager.GoToMenu();
     }
 

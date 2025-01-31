@@ -26,7 +26,6 @@ public class PauseUI : GeneralBox<PauseUI, string, string>
     public void OnContinueBtnClicked()
     {
         GamePlayManager.ContinueGame();
-        AudioUtil.Play(AudioEnum.Button_Clicked, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
         AudioUtil.ContinueAllLoopAudio();
         Close();
     }
@@ -37,13 +36,11 @@ public class PauseUI : GeneralBox<PauseUI, string, string>
         {
             GamePlayManager.GoToLevelSelect();
         }));
-        AudioUtil.Play(AudioEnum.Button_Clicked, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
         Close();
     }
     public void OnGoToMenuBtnClicked()
     {
         GamePlayManager.ContinueGame();
-        AudioUtil.Play(AudioEnum.Button_Clicked, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
         Close();
     }
     public void OnBGMMusicValueChanged()

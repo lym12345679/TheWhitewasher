@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 6784160170909372544}
   - component: {fileID: 7005626811342296023}
   - component: {fileID: 1044308723266339451}
+  - component: {fileID: 8818970233928825287}
   m_Layer: 5
   m_Name: EmphasizeSelectedButton
   m_TagString: Untagged
@@ -235,9 +236,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PauseUI, Assembly-CSharp
-        m_MethodName: OnContinueBtnClicked
+      - m_Target: {fileID: 8818970233928825287}
+        m_TargetAssemblyTypeName: ButtonClicked, Assembly-CSharp
+        m_MethodName: OnButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -263,6 +264,19 @@ MonoBehaviour:
   RightCursor: {fileID: 5849709255679004496}
   ButtonText: {fileID: 6784160171713007938}
   SelectedColor: 4
+--- !u!114 &8818970233928825287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6784160170909372551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2fa3b6914b11da4aa01b7dd479284c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClickedSoundEffect: 7
 --- !u!1 &6784160171713007936
 GameObject:
   m_ObjectHideFlags: 0
