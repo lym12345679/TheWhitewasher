@@ -34,6 +34,10 @@ namespace MizukiTool.Audio
         /// </summary>
         private List<AudioPlayEntry> mAudioEntryInFading = new List<AudioPlayEntry>();
         /// <summary>
+        /// 循环播放的音效
+        /// </summary>
+        private List<AudioPlayEntry> mAudioEntryInLoop = new List<AudioPlayEntry>();
+        /// <summary>
         /// 非循环，等待结束的音效
         /// </summary>
         private List<AudioPlayEntry> mAudioEntryWaitFinish = new List<AudioPlayEntry>();
@@ -106,6 +110,7 @@ namespace MizukiTool.Audio
                     {
                         mAudioEntryDic.Add(audioPlayEntry.ID, audioPlayEntry);
                         audioPlayEntry.TargetAudioSource.loop = true;
+                        mAudioEntryInLoop.Add(audioPlayEntry);
                     }
                     break;
                 case AudioPlayMod.FadeInOut:
@@ -176,6 +181,32 @@ namespace MizukiTool.Audio
             {
                 GameObject go = new GameObject("AudioManager");
                 Instance = go.AddComponent<AudioManager>();
+            }
+        }
+        public void PauseAllLoopAudio()
+        {
+            for (int i = mAudioEntryInLoop.Count - 1; i >= 0; i--)
+            {
+                var audioEntry = mAudioEntryInLoop[i];
+                audioEntry.Pause();
+            }
+        }
+        public void ContinueAllLoopAudio()
+        {
+            for (int i = mAudioEntryInLoop.Count - 1; i >= 0; i--)
+            {
+                var audioEntry = mAudioEntryInLoop[i];
+                audioEntry.UnPause();
+            }
+        }
+        public void ReturnAllLoopAudio()
+        {
+            for (int i = mAudioEntryInLoop.Count - 1; i >= 0; i--)
+            {
+                var audioEntry = mAudioEntryInLoop[i];
+                mAudioEntryDic.Remove(audioEntry.ID);
+                mAudioEntryInLoop.Remove(audioEntry);
+                RetrunAudioPlayEntry(audioEntry);
             }
         }
     }

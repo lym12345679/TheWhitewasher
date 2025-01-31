@@ -1,3 +1,4 @@
+using MizukiTool.Audio;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,6 +24,7 @@ public class LevelSelectItem : MonoBehaviour
     public void OnItemClicked()
     {
         GoToTargetScene();
+        AudioUtil.Play(AudioEnum.Button_Clicked, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
         OnLevelSelectItemClicked?.Invoke();
     }
     public void SetLock()

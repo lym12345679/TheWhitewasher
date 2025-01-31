@@ -23,11 +23,8 @@ public class PauseUI : GeneralBox<PauseUI, string, string>
     }
     public void OnContinueBtnClicked()
     {
-        AudioUtil.Play(AudioEnum.BGM_Arknight_Babel1, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal, (entry) =>
-        {
-            AudioUtil.Play(AudioEnum.BGM_Arknight_Babel2, AudioMixerGroupEnum.Effect, AudioPlayMod.Loop);
-        });
         GamePlayManager.ContinueGame();
+        AudioUtil.Play(AudioEnum.Button_Clicked, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
         Close();
     }
     public void OnGoToLevelBtnClicked()
@@ -37,16 +34,13 @@ public class PauseUI : GeneralBox<PauseUI, string, string>
         {
             GamePlayManager.GoToLevelSelect();
         }));
-
+        AudioUtil.Play(AudioEnum.Button_Clicked, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
         Close();
     }
     public void OnGoToMenuBtnClicked()
     {
         GamePlayManager.ContinueGame();
-        SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
-        {
-            GamePlayManager.GoToMenu();
-        }));
+        AudioUtil.Play(AudioEnum.Button_Clicked, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
         Close();
     }
     public void OnBGMMusicValueChanged()
