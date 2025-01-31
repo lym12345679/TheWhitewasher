@@ -43,19 +43,16 @@ public class MenuUI : GeneralBox<MenuUI, string, string>
     {
         return "关闭UI";
     }
-    public void OnStartBtnClicked()
-    {
-        GamePlayManager.LoadScene(SceneEnum.Level1);
-        Close();
-    }
     public void OnSettingBtnClicked()
     {
         SettingUI.Open("1");
     }
     public void OnLevelSelectBtnClicked()
     {
-        GamePlayManager.GoToLevelSelect();
-        Close();
+        SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
+        {
+            GamePlayManager.GoToLevelSelect();
+        }));
     }
     public void OnExitBtnClicked()
     {

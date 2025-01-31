@@ -184,6 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetScene: 0
   LevelText: {fileID: 6784160171713007938}
+  ClickedSoundEffect: 7
 --- !u!1 &6784160171713007936
 GameObject:
   m_ObjectHideFlags: 0

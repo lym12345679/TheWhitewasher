@@ -7,6 +7,7 @@ public class LevelSelectItem : MonoBehaviour
 {
     public SceneEnum TargetScene;
     public TextMeshProUGUI LevelText;
+    public AudioEnum ClickedSoundEffect;
     public delegate void OnLevelSelectItemClickedCallback();
     public OnLevelSelectItemClickedCallback OnLevelSelectItemClicked;
     public void SetLevelText(string text)
@@ -23,8 +24,7 @@ public class LevelSelectItem : MonoBehaviour
     }
     public void OnItemClicked()
     {
-        GoToTargetScene();
-        AudioUtil.Play(AudioEnum.Button_Clicked, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
+        AudioUtil.Play(ClickedSoundEffect, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
         OnLevelSelectItemClicked?.Invoke();
     }
     public void SetLock()

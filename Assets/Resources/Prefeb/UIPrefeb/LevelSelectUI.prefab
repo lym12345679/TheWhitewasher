@@ -120,6 +120,7 @@ MonoBehaviour:
   param: 
   SendParam: 
   LevelScelectContent: {fileID: 6237293584665212105}
+  LevelSelectBGM: 2
 --- !u!1 &3022372816361952838
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,8 +393,36 @@ PrefabInstance:
       value: "\u8FD4\u56DE"
       objectReference: {fileID: 0}
     - target: {fileID: 7005626811342296023, guid: df6b640aecbf107449c7dfb44a55088e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005626811342296023, guid: df6b640aecbf107449c7dfb44a55088e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005626811342296023, guid: df6b640aecbf107449c7dfb44a55088e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 5261200784051951132}
+    - target: {fileID: 7005626811342296023, guid: df6b640aecbf107449c7dfb44a55088e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005626811342296023, guid: df6b640aecbf107449c7dfb44a55088e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnContinueBtnClicked
+      value: OnButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005626811342296023, guid: df6b640aecbf107449c7dfb44a55088e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnReturnBtnClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005626811342296023, guid: df6b640aecbf107449c7dfb44a55088e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: LevelSelectUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005626811342296023, guid: df6b640aecbf107449c7dfb44a55088e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
