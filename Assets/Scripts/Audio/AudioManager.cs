@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 namespace MizukiTool.Audio
 {
     public class AudioManager : MonoBehaviour
@@ -10,10 +9,6 @@ namespace MizukiTool.Audio
         /// 单体实例
         /// </summary>
         public static AudioManager Instance;
-        /// <summary>
-        /// 使用的混音器
-        /// </summary>
-        public AudioMixer mAudioMixer;
         /// <summary>
         /// 外部提供的资源加载接口
         /// </summary>
@@ -43,6 +38,18 @@ namespace MizukiTool.Audio
         /// </summary>
         private List<AudioPlayEntry> mAudioEntryWaitFinish = new List<AudioPlayEntry>();
         /// <summary>
+        /// 未使用的AudioPlayEntry
+        /// </summary>
+        private List<AudioPlayEntry> UnusedAudioPlayEntry = new List<AudioPlayEntry>();
+        void Start()
+        {
+            OnStart();
+        }
+        void Update()
+        {
+            OnUpdate();
+        }
+        /// <summary>
         /// 启动
         /// </summary>
         private void OnStart()
@@ -50,5 +57,142 @@ namespace MizukiTool.Audio
             DontDestroyOnLoad(this);
             Instance = this;
         }
+        private void CreatNewAudioPlayEntry()
+        {
+            AudioPlayEntry audioPlayEntry = new AudioPlayEntry(mNextAudioID);
+            UnusedAudioPlayEntry.Add(audioPlayEntry);
+            mNextAudioID++;
+        }
+        public AudioPlayEntry GetAudioPlayEntry()
+        {
+            if (UnusedAudioPlayEntry.Count == 0)
+            {
+                CreatNewAudioPlayEntry();
+            }
+
+            AudioPlayEntry audioPlayEntry = UnusedAudioPlayEntry[0];
+            UnusedAudioPlayEntry.RemoveAt(0);
+            audioPlayEntry.Init();
+            GameObject go = mAudioSourceObjectPool.Get();
+            audioPlayEntry.SetTargetGO(go.transform);
+            return audioPlayEntry;
+        }
+        public bool RetrunAudioPlayEntry(AudioPlayEntry audioPlayEntry)
+        {
+            if (audioPlayEntry == null)
+            {
+                return false;
+            }
+            if (audioPlayEntry.TargetAudioSource.isPlaying)
+            {
+                audioPlayEntry.TargetAudioSource.Stop();
+            }
+            UnusedAudioPlayEntry.Add(audioPlayEntry);
+            mAudioSourceObjectPool.Free(audioPlayEntry.SelfTransform.gameObject);
+            audioPlayEntry.SetTargetGO(null);
+            return true;
+        }
+        public void StartAudioPlayEntry(AudioPlayMod audioPlayMod, AudioPlayEntry audioPlayEntry)
+        {
+            switch (audioPlayMod)
+            {
+                case AudioPlayMod.Normal:
+                    {
+                        mAudioEntryDic.Add(audioPlayEntry.ID, audioPlayEntry);
+                        mAudioEntryWaitFinish.Add(audioPlayEntry);
+                    }
+                    break;
+                case AudioPlayMod.Loop:
+                    {
+                        mAudioEntryDic.Add(audioPlayEntry.ID, audioPlayEntry);
+                        audioPlayEntry.TargetAudioSource.loop = true;
+                    }
+                    break;
+                case AudioPlayMod.FadeInOut:
+                    {
+                        mAudioEntryDic.Add(audioPlayEntry.ID, audioPlayEntry);
+                        mAudioEntryInFading.Add(audioPlayEntry);
+                    }
+                    break;
+            }
+            audioPlayEntry.Play();
+        }
+        private void OnUpdate()
+        {
+
+
+            for (int i = mAudioEntryInFading.Count - 1; i >= 0; i--)
+            {
+                var audioEntry = mAudioEntryInFading[i];
+                if (audioEntry.TargetAudioSource.isPlaying)
+                {
+                    audioEntry.TargetAudioSource.volume = Mathf.Min(1, audioEntry.TargetAudioSource.volume + Time.deltaTime);
+                }
+                else
+                {
+                    mAudioEntryDic.Remove(audioEntry.ID);
+                    mAudioEntryInFading.Remove(audioEntry);
+                    RetrunAudioPlayEntry(audioEntry);
+                }
+            }
+
+            for (int i = mAudioEntryWaitFinish.Count - 1; i >= 0; i--)
+            {
+                var audioEntry = mAudioEntryWaitFinish[i];
+                if (!audioEntry.IsPlaying())
+                {
+                    audioEntry.OnAudioEnd();
+                    mAudioEntryDic.Remove(audioEntry.ID);
+                    mAudioEntryWaitFinish.Remove(audioEntry);
+                    RetrunAudioPlayEntry(audioEntry);
+                }
+            }
+            foreach (var audioEnty in mAudioEntryDic)
+            {
+                audioEnty.Value.OnUpdate();
+            }
+        }
+
+        public long Play(AudioEnum audioEnum, AudioMixerGroupEnum audioMixerGroupEnum, AudioPlayMod audioPlayMod, Action<AudioSource> endEventHander = null, Action<AudioSource> updateEventHander = null)
+        {
+            EnsureInstance();
+            AudioPlayEntry audioPlayEntry = GetAudioPlayEntry();
+            audioPlayEntry.TargetAudioSource.clip = AudioSOManager.audioSO.GetAudioClip(audioEnum);
+            audioPlayEntry.TargetAudioSource.outputAudioMixerGroup = AudioMixerGroupManager.GetAudioMixerGroup(audioMixerGroupEnum);
+            if (endEventHander != null)
+            {
+                audioPlayEntry.SetEndHander(endEventHander);
+            }
+            if (updateEventHander != null)
+            {
+                audioPlayEntry.SetUpdateHander(updateEventHander);
+            }
+            StartAudioPlayEntry(audioPlayMod, audioPlayEntry);
+            return audioPlayEntry.ID;
+        }
+        public static void EnsureInstance()
+        {
+            if (Instance == null)
+            {
+                GameObject go = new GameObject("AudioManager");
+                Instance = go.AddComponent<AudioManager>();
+            }
+        }
+    }
+
+    public enum AudioPlayMod
+    {
+        /// <summary>
+        /// 普通播放
+        /// </summary>
+        Normal,
+        /// <summary>
+        /// 循环播放
+        /// </summary>
+        Loop,
+        /// <summary>
+        /// 淡入淡出
+        /// </summary>
+        FadeInOut,
     }
 }

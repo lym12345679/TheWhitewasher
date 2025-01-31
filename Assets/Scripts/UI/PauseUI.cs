@@ -1,4 +1,6 @@
+using MizukiTool.Audio;
 using MizukiTool.Box;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PauseUI : GeneralBox<PauseUI, string, string>
@@ -21,6 +23,10 @@ public class PauseUI : GeneralBox<PauseUI, string, string>
     }
     public void OnContinueBtnClicked()
     {
+        AudioUtil.Play(AudioEnum.BGM_Arknight_Babel1, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal, (entry) =>
+        {
+            AudioUtil.Play(AudioEnum.BGM_Arknight_Babel2, AudioMixerGroupEnum.Effect, AudioPlayMod.Loop);
+        });
         GamePlayManager.ContinueGame();
         Close();
     }
