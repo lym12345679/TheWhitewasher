@@ -26,11 +26,17 @@ public class LevelSceneUI : GeneralBox<LevelSceneUI, string, string>
     }
     public void OnRestartBtnClicked()
     {
-        GamePlayManager.ResetGame();
+        SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
+        {
+            GamePlayManager.ResetGame();
+        }));
     }
     public void OnGoToMenuBtnClicked()
     {
-        GamePlayManager.GoToMenu();
+        SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
+        {
+            GamePlayManager.GoToMenu();
+        }));
     }
 
 
