@@ -37,7 +37,7 @@ public class ColorSO : ScriptableObject
         //SearchResult.Clear();
         foreach (var item in pointModWithColors)
         {
-            item.Name = item.eColor.ToString();
+            item.Name = item.eColor.ToString() + "_" + item.pointMod.ToString();
         }
         /*if (string.IsNullOrEmpty(Search))
         {
