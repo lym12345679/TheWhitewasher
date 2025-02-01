@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class DestinationController : MonoBehaviour
@@ -8,9 +9,25 @@ public class DestinationController : MonoBehaviour
     public static float StayTimeCounter = 3f;
     private bool IsPlayerOn = false;
     private bool isGoingToNextScene = false;
+    public Vector3 PositionFixer = new Vector3(0, 0, 0);
+    public TextMeshProUGUI WinText;
     void Start()
     {
         StayTimeCounter = StayTime;
+        WinText.gameObject.SetActive(false);
+        WinText.transform.position = Camera.main.WorldToScreenPoint(transform.position + PositionFixer);
+    }
+    void Update()
+    {
+        if (IsPlayerOn)
+        {
+            WinText.gameObject.SetActive(true);
+            WinText.text = StayTimeCounter.ToString("F1");
+        }
+        else
+        {
+            WinText.gameObject.SetActive(false);
+        }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -48,7 +65,7 @@ public class DestinationController : MonoBehaviour
             if (!isGoingToNextScene)
             {
                 isGoingToNextScene = true;
-                OnGameWin();
+                //OnGameWin();
             }
         }
     }

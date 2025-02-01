@@ -130,13 +130,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 329717876827090779, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: PositionFixer.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2612464504107084615, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.028484
       objectReference: {fileID: 0}
     - target: {fileID: 2612464504107084615, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.072596
+      value: 11.39
       objectReference: {fileID: 0}
     - target: {fileID: 2612464504107084615, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: m_LocalPosition.z
@@ -177,6 +181,30 @@ PrefabInstance:
     - target: {fileID: 6879879225754590618, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: m_Name
       value: go_LevelGoal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390914868424911973, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390914868424911973, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390914868424911973, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390914868424911973, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390914868424911973, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390914868424911973, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

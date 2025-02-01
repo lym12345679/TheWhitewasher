@@ -117,9 +117,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: IsWalking
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: IsGround
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5089788722011710282}
   m_Solo: 0
@@ -329,7 +326,7 @@ AnimatorStateMachine:
     m_Position: {x: 580, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7551094567937793054}
-    m_Position: {x: 300, y: 10, z: 0}
+    m_Position: {x: 290, y: 10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1814984853569017596}
     m_Position: {x: 320, y: -70, z: 0}
@@ -460,9 +457,6 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: IsWalking
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: IsGround
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8722351791110109399}
