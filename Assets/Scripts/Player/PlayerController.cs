@@ -1,12 +1,12 @@
 using MizukiTool.AStar;
 using MizukiTool.Audio;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     public float Speed;
     public float JumpForce;
+    private PlayerAnimator playerAnimator;
     [HideInInspector]
     public PointMod PointM
     {
@@ -16,12 +16,41 @@ public class PlayerController : MonoBehaviour
         }
     }
     public ColorEnum ColorMod;
-    public bool isGround;
-    public bool isLeftWall;
-    public bool isRightWall;
-    public bool isPlayerDead = false;
+    #region Animator相关
+    private bool _isGroud;
+    public bool IsGround
+    {
+        get
+        {
+            return _isGroud;
+        }
+        set
+        {
+            _isGroud = value;
+            playerAnimator.IsGround = value;
+        }
+    }
+    private bool _isWalking;
+    public bool IsWalking
+    {
+        get
+        {
+            return _isWalking;
+        }
+        set
+        {
+            _isWalking = value;
+            playerAnimator.IsWalking = value;
+        }
+    }
+    #endregion
+    public bool IsLeftWall;
+    public bool IsRightWall;
+    public bool IsPlayerDead = false;
+
     public float StayResetTime = 2f;
     public float StayResetTimeCounter = 2f;
+    public int OriginalDirection = 1;
     public AudioEnum PlayerDeadAudio;
     // Update is called once per frame
     void Update()
@@ -35,6 +64,10 @@ public class PlayerController : MonoBehaviour
         Move();
         TryReset();
     }
+    void Awake()
+    {
+        playerAnimator = GetComponent<PlayerAnimator>();
+    }
     void Start()
     {
         this.gameObject.layer = LayerMask.NameToLayer(PointM.ToString());
@@ -47,34 +80,43 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         CheckIsWall();
-        if (Input.GetKey(KeyCode.A) && !isLeftWall)
+        if (Input.GetKey(KeyCode.A) && !IsLeftWall)
         {
             transform.Translate(Vector3.left * Speed * Time.deltaTime);
+            IsWalking = true;
+            transform.localScale = new Vector3(-OriginalDirection, 1, 1);
         }
-        if (Input.GetKey(KeyCode.D) && !isRightWall)
+        else if (Input.GetKey(KeyCode.D) && !IsRightWall)
         {
             transform.Translate(Vector3.right * Speed * Time.deltaTime);
+            IsWalking = true;
+            transform.localScale = new Vector3(OriginalDirection, 1, 1);
+        }
+        else
+        {
+            IsWalking = false;
         }
 
     }
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGround)
+        if (Input.GetKeyDown(KeyCode.Space) && IsGround)
         {
+            playerAnimator.Jump();
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * JumpForce);
         }
     }
 
     private void CheckIsGround()
     {
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, .5f, 1 << this.gameObject.layer);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.down, 1.1f, 1 << this.gameObject.layer);
         if (hits.Length > 1)
         {
-            isGround = true;
+            IsGround = true;
         }
         else
         {
-            isGround = false;
+            IsGround = false;
         }
     }
     private void CheckIsWall()
@@ -84,19 +126,19 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(hits1.Length);
         if (hits2.Length > 1)
         {
-            isLeftWall = true;
+            IsLeftWall = true;
         }
         else
         {
-            isLeftWall = false;
+            IsLeftWall = false;
         }
         if (hits1.Length > 1)
         {
-            isRightWall = true;
+            IsRightWall = true;
         }
         else
         {
-            isRightWall = false;
+            IsRightWall = false;
         }
     }
     public void TryReset()
@@ -123,13 +165,13 @@ public class PlayerController : MonoBehaviour
     }
     public void CheckPlayerDead()
     {
-        if (isPlayerDead)
+        if (IsPlayerDead)
         {
             return;
         }
         if (transform.position.y < -4)
         {
-            isPlayerDead = true;
+            IsPlayerDead = true;
             Debug.Log("Player Dead");
             AudioUtil.Play(PlayerDeadAudio, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
             LevelSceneManager.Instance.Reset();
@@ -140,9 +182,9 @@ public class PlayerController : MonoBehaviour
             return;
         }
         /*if (point.Mod == this.PointM)*/
-        if (isLeftWall && isRightWall)
+        if (IsLeftWall && IsRightWall)
         {
-            isPlayerDead = true;
+            IsPlayerDead = true;
             Debug.Log("Player Dead");
             AudioUtil.Play(PlayerDeadAudio, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
             LevelSceneManager.Instance.Reset();
