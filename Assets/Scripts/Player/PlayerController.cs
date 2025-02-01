@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && IsGround)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && IsGround)
         {
             playerAnimator.Jump();
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * JumpForce);

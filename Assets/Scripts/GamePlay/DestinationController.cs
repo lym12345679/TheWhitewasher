@@ -65,7 +65,7 @@ public class DestinationController : MonoBehaviour
             if (!isGoingToNextScene)
             {
                 isGoingToNextScene = true;
-                //OnGameWin();
+                OnGameWin();
             }
         }
     }

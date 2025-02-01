@@ -185,7 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prop: 1
   ColorMod: 0
-  UIImage: {fileID: 1834814076283946998}
+  UIImage: {fileID: 167136248822403886}
 --- !u!222 &8482588706709871454
 CanvasRenderer:
   m_ObjectHideFlags: 0
