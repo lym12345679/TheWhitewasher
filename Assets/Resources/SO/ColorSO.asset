@@ -13,69 +13,39 @@ MonoBehaviour:
   m_Name: ColorSO
   m_EditorClassIdentifier: 
   pointModWithColors:
-  - Name: None
+  - Name: None_None
     eColor: 0
     color: {r: 1, g: 1, b: 1, a: 0}
     pointMod: 0
-  - Name: Black
+  - Name: Black_Layer1
     eColor: 3
     color: {r: 0, g: 0, b: 0, a: 1}
     pointMod: 1
-  - Name: White
+  - Name: White_Layer2
     eColor: 1
     color: {r: 1, g: 1, b: 1, a: 1}
     pointMod: 2
-  - Name: Red
+  - Name: Red_Layer3
     eColor: 4
     color: {r: 1, g: 0, b: 0, a: 1}
     pointMod: 3
-  - Name: Blue_Green
+  - Name: Blue_Green_Layer4
     eColor: 5
     color: {r: 0, g: 1, b: 0.64693594, a: 1}
     pointMod: 4
-  - Name: Oriange
+  - Name: Oriange_Layer5
     eColor: 6
     color: {r: 1, g: 0.38843626, b: 0, a: 1}
     pointMod: 5
-  - Name: Brown
+  - Name: Brown_Layer6
     eColor: 7
     color: {r: 0.5169811, g: 0.36154887, b: 0, a: 1}
     pointMod: 6
-  - Name: Gray
+  - Name: Gray_Layer7
     eColor: 2
-    color: {r: 0.4566037, g: 0.4566037, b: 0.4566037, a: 1}
+    color: {r: 0.4188679, g: 0.4188679, b: 0.4188679, a: 1}
     pointMod: 7
-  Search: 
-  SearchResult:
-  - Name: None
-    eColor: 0
-    color: {r: 1, g: 1, b: 1, a: 0}
-    pointMod: 0
-  - Name: Black
-    eColor: 3
-    color: {r: 0, g: 0, b: 0, a: 1}
-    pointMod: 1
-  - Name: White
-    eColor: 1
-    color: {r: 1, g: 1, b: 1, a: 1}
-    pointMod: 2
-  - Name: Red
-    eColor: 4
-    color: {r: 1, g: 0, b: 0, a: 1}
-    pointMod: 3
-  - Name: Blue_Green
-    eColor: 5
-    color: {r: 0, g: 1, b: 0.64693594, a: 1}
-    pointMod: 4
-  - Name: Oriange
-    eColor: 6
-    color: {r: 1, g: 0.38843626, b: 0, a: 1}
-    pointMod: 5
-  - Name: Brown
-    eColor: 7
-    color: {r: 0.5169811, g: 0.36154887, b: 0, a: 1}
-    pointMod: 6
-  - Name: Gray
-    eColor: 2
-    color: {r: 0.4566037, g: 0.4566037, b: 0.4566037, a: 1}
-    pointMod: 7
+  - Name: Yellow_Layer8
+    eColor: 8
+    color: {r: 0.41960785, g: 0.41960785, b: 0.41960785, a: 1}
+    pointMod: 8

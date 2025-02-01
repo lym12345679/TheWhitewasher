@@ -43,6 +43,7 @@ public class PlayerAnimator : MonoBehaviour
     void Update()
     {
         animator.SetFloat("VelocityY", velocity.y);
+        OutlineAnimator.SetFloat("VelocityY", velocity.y);
     }
 
 }
