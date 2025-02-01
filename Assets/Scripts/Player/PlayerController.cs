@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
     public float Speed;
     public float JumpForce;
     private PlayerAnimator playerAnimator;
@@ -53,6 +54,11 @@ public class PlayerController : MonoBehaviour
     public int OriginalDirection = 1;
     public AudioEnum PlayerDeadAudio;
     // Update is called once per frame
+    private void Awake()
+    {
+        Instance = this;
+        playerAnimator = GetComponent<PlayerAnimator>();
+    }
     void Update()
     {
         Jump();
@@ -63,10 +69,6 @@ public class PlayerController : MonoBehaviour
         CheckIsGround();
         Move();
         TryReset();
-    }
-    void Awake()
-    {
-        playerAnimator = GetComponent<PlayerAnimator>();
     }
     void Start()
     {

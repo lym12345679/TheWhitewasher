@@ -447,7 +447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4838889447518359702, guid: d4ff653510a9456469729ae2d2f6eeb2, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 7743564526356448120, guid: d4ff653510a9456469729ae2d2f6eeb2, type: 3}
       propertyPath: ColorMod

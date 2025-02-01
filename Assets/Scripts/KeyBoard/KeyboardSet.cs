@@ -13,27 +13,13 @@ public static class KeyboardSet
             { KeyEnum.Left, KeyCode.A },
             { KeyEnum.Right, KeyCode.D },
 
-            { KeyEnum.Attack, KeyCode.Mouse0 },
-            { KeyEnum.Skill, KeyCode.Q },
+            { KeyEnum.Interact, KeyCode.E },
 
-            { KeyEnum.Interact, KeyCode.F },
-            /**{ KeyEnum.Skill1, KeyCode.Alpha3 },
-            { KeyEnum.Skill2, KeyCode.Alpha4 },
-            { KeyEnum.Skill3, KeyCode.Alpha5 },
-            { KeyEnum.Skill4, KeyCode.Alpha6 },
-            { KeyEnum.Skill5, KeyCode.Alpha7 },
-            { KeyEnum.Skill6, KeyCode.Alpha8 },
-            { KeyEnum.Skill7, KeyCode.Alpha9 },**/
-
-            { KeyEnum.Running, KeyCode.Mouse1 },
-            { KeyEnum.Struggle, KeyCode.Space },
             // Camera
             { KeyEnum.Click1, KeyCode.Mouse0 },
             { KeyEnum.Click2, KeyCode.Mouse1 },
             { KeyEnum.ZoomOut, KeyCode.KeypadMinus },
             { KeyEnum.ZoomIn, KeyCode.KeypadPlus },
-            /**{ KeyEnum.RotatetToRight, KeyCode.Q },
-            { KeyEnum.RotatetToLeft, KeyCode.E },**/
             { KeyEnum.CameraMoveUp, KeyCode.UpArrow },
             { KeyEnum.CameraMoveDown, KeyCode.DownArrow },
             { KeyEnum.CameraMoveLeft, KeyCode.LeftArrow },

@@ -3,6 +3,16 @@ using UnityEngine;
 
 public class PaintBrushWasherController : MonoBehaviour
 {
+    private bool isPlayerEnter = false;
+    void Update()
+    {
+        if (isPlayerEnter && KeyboardSet.IsKeyDown(KeyEnum.Interact))
+        {
+            PorpsManager.Instance.AddProp(new PropClass(this.Porp, this.ColorMod));
+            Destroy(this.gameObject);
+        }
+    }
+
     public PointMod PointM
     {
         get
@@ -17,10 +27,16 @@ public class PaintBrushWasherController : MonoBehaviour
         if (collision.tag == "Player")
         {
             //Debug.Log("Player Enter");
-            PorpsManager.Instance.AddProp(new PropClass(this.Porp, this.ColorMod));
-            Destroy(this.gameObject);
+            isPlayerEnter = true;
         }
-
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            //Debug.Log("Player Exit");
+            isPlayerEnter = false;
+        }
     }
     void OnValidate()
     {
