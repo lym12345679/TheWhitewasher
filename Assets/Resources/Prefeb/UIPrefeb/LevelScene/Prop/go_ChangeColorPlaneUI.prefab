@@ -55,7 +55,7 @@ MonoBehaviour:
   Prop: 0
   ColorMod: 0
   UIImage: {fileID: 7723968033920613957}
-  button: {fileID: 8898139150009424088}
+  SelectedImage: {fileID: 7025605371287657785}
 --- !u!222 &5568166406169661752
 CanvasRenderer:
   m_ObjectHideFlags: 0

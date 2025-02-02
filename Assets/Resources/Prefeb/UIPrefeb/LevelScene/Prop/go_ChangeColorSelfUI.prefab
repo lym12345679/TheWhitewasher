@@ -185,9 +185,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prop: 1
-  ColorMod: 0
+  ColorMod: 1
   UIImage: {fileID: 167136248822403886}
-  button: {fileID: 0}
+  SelectedImage: {fileID: 1834814076283946998}
 --- !u!222 &8482588706709871454
 CanvasRenderer:
   m_ObjectHideFlags: 0

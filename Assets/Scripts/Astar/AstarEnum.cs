@@ -11,5 +11,9 @@ namespace MizukiTool.AStar
         Layer6,
         Layer7,
         Layer8,
+        Layer9,
+        Layer10,
+        Layer11,
+        Layer12
     }
 }
