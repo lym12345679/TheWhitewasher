@@ -1,6 +1,7 @@
 using MizukiTool.AStar;
 using MizukiTool.UIEffect;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class PropUIController : UIEffectController<Image>
@@ -16,12 +17,12 @@ public class PropUIController : UIEffectController<Image>
     public ColorEnum ColorMod;
     public Image UIImage;
     private bool isSelected;
-    private bool isScaling = false;
     private bool isScalingBigger = false;
     private ScaleEffect scaleEffectBigger;
     private ScaleEffect scaleEffectBack;
     private ScaleEffect currentScaleBiggerEffect;
     private ScaleEffect currentScaleBackEffect;
+
     private GameObject currentProp
     {
         get
@@ -29,30 +30,30 @@ public class PropUIController : UIEffectController<Image>
             return PorpsManager.Instance.CurrentProp;
         }
     }
-    void Start()
+    public Button button;
+
+    void Awake()
     {
         scaleEffectBigger = new ScaleEffect()
-            .SetDuration(0.3f)
+            .SetDuration(0.2f)
             .SetEffectMode(ScaleEffectMode.Once)
-            .SetEndScale(new Vector3(2f, 2f, 2f))
-            .SetEndHandler((ScaleEffect s) =>
-            {
-                isScaling = false;
-                isScalingBigger = true;
-            });
+            .SetEndScale(new Vector3(2f, 2f, 2f));
         scaleEffectBack = new ScaleEffect()
-            .SetDuration(0.3f)
+            .SetDuration(0.2f)
             .SetEffectMode(ScaleEffectMode.Once)
-            .SetEndScale(new Vector3(1f, 1f, 1f))
-            .SetEndHandler((ScaleEffect s) =>
-            {
-                isScaling = false;
-                isScalingBigger = false;
-            });
+            .SetEndScale(new Vector3(1f, 1f, 1f));
     }
     void Update()
     {
-        UpdateEffect();
+        //UpdateEffect();
+    }
+    public void OnPointerEnter()
+    {
+        AmplificateSelf();
+    }
+    public void OnPointerExit()
+    {
+        ReduceSelf();
     }
     void UpdateEffect()
     {
@@ -60,46 +61,47 @@ public class PropUIController : UIEffectController<Image>
         {
             if (currentProp != null && currentProp == this.gameObject)
             {
+
                 isSelected = true;
-                if (currentScaleBackEffect != null)
-                {
-                    currentScaleBackEffect.StartEndHandler();
-                    currentScaleBackEffect.FinishImmediately();
-                    currentScaleBackEffect = null;
-                }
-                AmplificationSelf();
+                AmplificateSelf();
             }
             else
             {
+
                 isSelected = false;
-                if (currentScaleBiggerEffect != null)
-                {
-                    currentScaleBiggerEffect.StartEndHandler();
-                    currentScaleBiggerEffect.FinishImmediately();
-                    currentScaleBiggerEffect = null;
-                }
                 ReduceSelf();
             }
         }
     }
-    public void AmplificationSelf()
+    public void AmplificateSelf()
     {
-        if (isScaling || isScalingBigger)
+        Debug.Log("AmplificateSelf");
+        if (currentScaleBiggerEffect != null)
+        {
+            currentScaleBiggerEffect.FinishImmediately();
+            currentScaleBiggerEffect = null;
+        }
+        if (isScalingBigger)
         {
             return;
         }
-        Debug.Log("AmplificationSelf:" + "isScaling:" + isScaling + " isScalingBigger:" + isScalingBigger);
-        isScaling = true;
+        isScalingBigger = true;
         currentScaleBiggerEffect = scaleEffectBigger.Copy(scaleEffectBigger);
-        StartScaleEffect(transform, currentScaleBiggerEffect);
+        StartScaleEffect(this.transform, currentScaleBiggerEffect);
     }
     public void ReduceSelf()
     {
-        if (isScaling || isSelected || !isScalingBigger)
+        Debug.Log("ReduceSelf");
+        if (currentScaleBackEffect != null)
+        {
+            currentScaleBackEffect.FinishImmediately();
+            currentScaleBackEffect = null;
+        }
+        if (!isScalingBigger)
         {
             return;
         }
-        isScaling = true;
+        isScalingBigger = false;
         currentScaleBackEffect = scaleEffectBack.Copy(scaleEffectBack);
         StartScaleEffect(transform, currentScaleBackEffect);
     }
