@@ -1,25 +1,25 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace MizukiTool.RecyclePool
 {
 
-    public class RecyclePool
+    public static class RecyclePool
     {
         internal static Dictionary<string, RecycleContext> contextDic = new Dictionary<string, RecycleContext>();
         internal static Dictionary<string, Stack<RecyclableObject>> componentDic = new Dictionary<string, Stack<RecyclableObject>>();
-
+        private static bool isPrefabRegistered = false;
+        private static EnumIdentifier identifier = new EnumIdentifier();
         //注册所有回收物
-        public static void RegisterAllPrefab()
+        //格式:RigisterOnePrefab(Enum,GameObject)
+        public static void RigisterAllPrefab()
         {
-            RigisterOnePrefab(TestEnum.Test1, Resources.Load<GameObject>("Text/Text123"));
+
         }
         //注册一个回收物
         public static void RigisterOnePrefab<T>(T id, GameObject prefab) where T : Enum
         {
             Debug.Log("RigisterOnePrefab:" + id + ":" + prefab.name);
-            EnumIdentifier identifier = new EnumIdentifier();
             identifier.SetEnum(id);
             RecycleContext context = new RecycleContext();
             context.Prefab = prefab;
@@ -30,14 +30,17 @@ namespace MizukiTool.RecyclePool
         //检查是否存在该回收物
         public static bool CheckIdentifer<T>(T id) where T : Enum
         {
-            EnumIdentifier identifier = new EnumIdentifier();
             identifier.SetEnum(id);
-            return contextDic.ContainsKey(identifier.GetID());
+            if (contextDic.TryGetValue(identifier.GetID(), out RecycleContext context))
+            {
+                return true;
+            }
+            Debug.LogError("RecyclePool:No such RecycleObject:" + id + ",注册请转:MizukiTool.RecyclePool.RigisterAllPrefab");
+            return false;
         }
         //创建一个回收物
         public static GameObject Create<T>(T id) where T : Enum
         {
-            EnumIdentifier identifier = new EnumIdentifier();
             identifier.SetEnum<T>(id);
             RecycleContext context = contextDic[identifier.GetID()];
             GameObject go = GameObject.Instantiate(context.Prefab);
@@ -57,33 +60,33 @@ namespace MizukiTool.RecyclePool
         //请求一个回收物
         public static void Request<T>(T id, Action<RecycleCollection> hander = null, Transform parent = null) where T : Enum
         {
-            Debug.Log("Request");
+            //Debug.Log("Request");
+            EnsureContextExist();
             GameObject target;
             RecycleCollection collection = new RecycleCollection();
             RecyclableObject controller;
             if (CheckIdentifer(id))
             {
-                EnumIdentifier identifier = new EnumIdentifier();
                 identifier.SetEnum(id);
                 if (componentDic.TryGetValue(identifier.GetID(), out Stack<RecyclableObject> stack))
                 {
-                    Debug.Log("Recycle");
+                    while (stack.Count > 0 && stack.Peek() == null)
+                    {
+                        controller = stack.Pop();
+                    }
                     if (stack.Count == 0)
                     {
                         target = Create(id);
-                        collection.RecyclingController = target.GetComponent<RecyclableObject>();
+                        controller = target.GetComponent<RecyclableObject>();
                     }
                     else
                     {
                         controller = stack.Pop();
-                        target = controller.gameObject;
-                        target.gameObject.SetActive(true);
-                        controller.OnReset.Invoke();
-                        collection.RecyclingController = controller;
                     }
-                    collection.GameObject = target;
-                    collection.Transform = target.transform;
-                    target.transform.SetParent(parent);
+                    target = controller.gameObject;
+                    target.gameObject.SetActive(true);
+                    controller.OnReset.Invoke();
+                    collection.RecyclingController = controller;
                     if (hander != null)
                     {
                         hander.Invoke(collection);
@@ -97,23 +100,43 @@ namespace MizukiTool.RecyclePool
         {
             EnsureSceneRecycleGuardExist();
             go.SetActive(false);
+            if (!componentDic.ContainsKey(controller.id))
+            {
+                Debug.LogError("RecyclePool:对象的预制体未注册:" + controller.id + "默认删除,注册请转:MizukiTool.RecyclePool.RigisterAllPrefab");
+                GameObject.Destroy(go);
+                return;
+            }
             componentDic[controller.id].Push(controller);
             go.transform.SetParent(SceneRecycleGuard.Instance.transform);
         }
-
+        public static void ReturnToPool(GameObject go)
+        {
+            RecyclableObject controller;
+            if (go.TryGetComponent<RecyclableObject>(out controller))
+            {
+                CollectRecycleObject(go, controller);
+            }
+            else
+            {
+                Debug.LogError("RecyclePool:对象不存在组件RecyclableObject:" + go.name + "默认删除");
+                GameObject.Destroy(go);
+            }
+        }
         #region 确认是否存在        
         public static void EnsureContextExist()
         {
-            if (contextDic.Count == 0)
+            if (isPrefabRegistered)
             {
-                RegisterAllPrefab();
+                return;
             }
+            isPrefabRegistered = true;
+            RigisterAllPrefab();
         }
         public static void EnsureSceneRecycleGuardExist()
         {
             if (SceneRecycleGuard.Instance == null)
             {
-                GameObject go = new GameObject("SceneRecycleGuard");
+                GameObject go = new GameObject("SceneRecyclePool");
                 go.AddComponent<SceneRecycleGuard>();
             }
         }

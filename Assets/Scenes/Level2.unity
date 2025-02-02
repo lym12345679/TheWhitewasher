@@ -324,11 +324,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4437e44b7bf73a843bb8d7a2d2d10b55, type: 3}
---- !u!1 &343606259 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8515191840204763243, guid: d4ff653510a9456469729ae2d2f6eeb2, type: 3}
-  m_PrefabInstance: {fileID: 1483141587}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &944175111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -398,7 +393,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8130fd9ee5ea2754585b022743ac1cd8, type: 3}
---- !u!1001 &1483141587
+--- !u!1001 &1195842365
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -408,11 +403,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2249526648776413957, guid: d4ff653510a9456469729ae2d2f6eeb2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.6233935
+      value: 1.58
       objectReference: {fileID: 0}
     - target: {fileID: 2249526648776413957, guid: d4ff653510a9456469729ae2d2f6eeb2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.270953
+      value: 4.92
       objectReference: {fileID: 0}
     - target: {fileID: 2249526648776413957, guid: d4ff653510a9456469729ae2d2f6eeb2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -445,10 +440,6 @@ PrefabInstance:
     - target: {fileID: 2249526648776413957, guid: d4ff653510a9456469729ae2d2f6eeb2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4838889447518359702, guid: d4ff653510a9456469729ae2d2f6eeb2, type: 3}
-      propertyPath: m_SortingOrder
-      value: 9999
       objectReference: {fileID: 0}
     - target: {fileID: 8515191840204763243, guid: d4ff653510a9456469729ae2d2f6eeb2, type: 3}
       propertyPath: m_Name
@@ -514,7 +505,7 @@ PrefabInstance:
     - target: {fileID: 7955281270632628647, guid: d553926b42e3173499fcaa31cf167d0b, type: 3}
       propertyPath: FollowTarget
       value: 
-      objectReference: {fileID: 343606259}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -618,5 +609,5 @@ SceneRoots:
   - {fileID: 263898859}
   - {fileID: 249342972}
   - {fileID: 249444274}
-  - {fileID: 1483141587}
   - {fileID: 944175111}
+  - {fileID: 1195842365}

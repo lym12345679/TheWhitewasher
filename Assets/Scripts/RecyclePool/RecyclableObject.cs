@@ -24,7 +24,7 @@ namespace MizukiTool.RecyclePool
             if (recycleTick >= AutoRecycleTime)
             {
                 //todo:回收该物体
-                Debug.Log("RecycleObject");
+                //Debug.Log("RecycleObject");
                 RecyclePool.CollectRecycleObject(this.gameObject, this);
             }
         }
