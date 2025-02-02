@@ -185,9 +185,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prop: 1
-  ColorMod: 1
+  ColorMod: 0
   UIImage: {fileID: 167136248822403886}
   SelectedImage: {fileID: 1834814076283946998}
+  SelectedMaterial: {fileID: 2100000, guid: ce79a870a3d810a479f84848bd1c1a09, type: 2}
 --- !u!222 &8482588706709871454
 CanvasRenderer:
   m_ObjectHideFlags: 0

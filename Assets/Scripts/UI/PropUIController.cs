@@ -16,10 +16,12 @@ public class PropUIController : UIEffectController<Image>
     public ColorEnum ColorMod;
     public Image UIImage;
     public Image SelectedImage;
-    private Color SelectedImageOriginColor;
-    private float grayColorFixer = 0.5f;
+    private Material OriginMaterial;
+    public Material SelectedMaterial;
     private bool isSelected;
     private bool isScalingBigger = false;
+    private bool tryToReduceSelf = false;
+    private bool tryToAmplificateSelf = false;
     private ScaleEffect scaleEffectBigger;
     private ScaleEffect scaleEffectBack;
     private ScaleEffect currentScaleBiggerEffect;
@@ -42,11 +44,25 @@ public class PropUIController : UIEffectController<Image>
             .SetDuration(0.2f)
             .SetEffectMode(ScaleEffectMode.Once)
             .SetEndScale(new Vector3(1f, 1f, 1f));
-        if (SelectedImage != null)
-        { SelectedImageOriginColor = SelectedImage.color; }
+    }
+    void Start()
+    {
+        OriginMaterial = UIImage.material;
+        //SetColor(ColorMod);
     }
     void Update()
     {
+
+        if (tryToAmplificateSelf)
+        {
+            AmplificateSelf();
+            tryToAmplificateSelf = false;
+        }
+        else if (tryToReduceSelf)
+        {
+            ReduceSelf();
+            tryToReduceSelf = false;
+        }
         UpdateEffect();
     }
     public void OnPointerEnter()
@@ -66,6 +82,8 @@ public class PropUIController : UIEffectController<Image>
                 if (isSelected == false)
                 {
                     isSelected = true;
+                    tryToReduceSelf = true;
+                    tryToAmplificateSelf = true;
                     SetColorToGray();
                 }
             }
@@ -78,23 +96,13 @@ public class PropUIController : UIEffectController<Image>
     }
     public void SetColorToGray()
     {
-        Color color1 = UIImage.color;
-        UIImage.color = new Color(
-                Mathf.Max(color1.r - grayColorFixer, 0),
-                Mathf.Max(color1.g - grayColorFixer, 0),
-                Mathf.Max(color1.b - grayColorFixer, 0), color1.a);
-        Color color2 = SelectedImage.color;
-        SelectedImage.color = new Color(
-                Mathf.Max(color2.r - grayColorFixer, 0),
-                Mathf.Max(color2.g - grayColorFixer, 0),
-                Mathf.Max(color2.b - grayColorFixer, 0), color2.a);
+        UIImage.material = SelectedMaterial;
+        SelectedImage.material = SelectedMaterial;
     }
     public void ResetColor()
     {
-
-        Color color = SOManager.colorSO.GetColor(ColorMod);
-        UIImage.color = color;
-        SelectedImage.color = SelectedImageOriginColor;
+        UIImage.material = OriginMaterial;
+        SelectedImage.material = OriginMaterial;
     }
     public void AmplificateSelf()
     {
@@ -118,7 +126,7 @@ public class PropUIController : UIEffectController<Image>
             currentScaleBackEffect.FinishImmediately();
             currentScaleBackEffect = null;
         }
-        if (!isScalingBigger)
+        if (!isScalingBigger || isSelected)
         {
             return;
         }
