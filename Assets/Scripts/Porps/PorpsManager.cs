@@ -31,8 +31,16 @@ public class PorpsManager : MonoBehaviour
     }
     public void SetCurrentProp(GameObject prop)
     {
-        //Debug.Log("SetCurrentProp:" + prop.name);
-        CurrentProp = prop;
+
+        if (CurrentProp != null && CurrentProp == prop)
+        {
+            CurrentProp = null;
+        }
+        else
+        {
+            CurrentProp = prop;
+        }
+        //Debug.Log("SetCurrentProp:" + CurrentProp.name);
     }
     public void ClearCurrentProp()
     {

@@ -225,7 +225,13 @@ namespace MizukiTool.UIEffect
         {
             isPause = false;
         }
-
+        /// <summary>
+        /// 立刻调用一次结束处理器
+        /// </summary>
+        public void StartEndHandler()
+        {
+            this.effectEndHandler?.Invoke(this);
+        }
         #endregion
         #region 其他
         public ScaleEffect Start(Transform targetTransform)
