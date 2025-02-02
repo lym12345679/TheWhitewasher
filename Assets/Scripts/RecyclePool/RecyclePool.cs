@@ -4,7 +4,7 @@ using UnityEngine;
 namespace MizukiTool.RecyclePool
 {
 
-    public static class RecyclePool
+    public  class RecyclePool
     {
         internal static Dictionary<string, RecycleContext> contextDic = new Dictionary<string, RecycleContext>();
         internal static Dictionary<string, Stack<RecyclableObject>> componentDic = new Dictionary<string, Stack<RecyclableObject>>();
