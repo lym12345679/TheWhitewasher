@@ -121,6 +121,8 @@ public class SquareController : MonoBehaviour
                 (FadeEffectGO<SpriteRenderer> fadeEffect) =>
                 {
                     SetIsFading(false);
+                    Point p = AstarManagerSon.Instance.GetPointOnMap(transform.position);
+                    p.Mod = MPoint;
                 });
             ChanngeLayer();
             return true;
