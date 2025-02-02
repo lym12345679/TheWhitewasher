@@ -55,6 +55,7 @@ public class PorpsManager : MonoBehaviour
         }
         PropUIController propUIController = CurrentProp.GetComponent<PropUIController>();
         Point point = AstarManagerSon.Instance.GetPointOnMap(position);
+
         if (point != null)
         {
             Debug.Log("Clicked Point:" + point.X + "," + point.Y);
@@ -62,6 +63,11 @@ public class PorpsManager : MonoBehaviour
             {
                 case PorpEnum.PaintBrushWasher:
                     {
+                        if (propUIController.PointM == point.Mod)
+                        {
+                            Debug.Log("不能在同一个颜色的点使用道具");
+                            return false;
+                        }
                         PointMod[] pointMods = new PointMod[1] { point.Mod };
                         UsePaintBrushWasher(point, pointMods);
                         DestroyCurrentProp();

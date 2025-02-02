@@ -24,7 +24,7 @@ public class AstarManagerSon : AstarManager
             for (int j = 0; j < width; j++)
             {
                 //从中心到右发射射线
-                RaycastHit2D[] hit = Physics2D.RaycastAll(origin + new Vector3(j * cellSize, i * cellSize, 0), Vector2.right, cellSize / 2 - 0.1f, wallLayer);
+                RaycastHit2D[] hit = Physics2D.RaycastAll(origin + new Vector3(j * cellSize, i * cellSize, 0), Vector2.right, cellSize / 2 - 0.01f, wallLayer);
                 foreach (var h in hit)
                 {
                     if (h.collider != null && h.collider.tag != "Player" && h.collider.gameObject.layer != LayerMask.NameToLayer("Prop"))

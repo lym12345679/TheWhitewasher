@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThisScene: 0
   NextScene: 0
+  BGMEnum: 0
+  GameFailAudio: 0
 --- !u!1 &1267479742466593020
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +143,7 @@ MonoBehaviour:
   EndTransform: {fileID: 1436756487174516489}
   wallLayer:
     serializedVersion: 2
-    m_Bits: 32640
+    m_Bits: 1015680
   PathFindingDistance: 20
   PathFindingInterval: 0.5
   UseSimplePath: 0

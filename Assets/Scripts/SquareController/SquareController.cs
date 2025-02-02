@@ -105,7 +105,7 @@ public class SquareController : MonoBehaviour
             ColorMod = to;
             SetIsFading(true);
             isAskNeighbour = false;
-            //Debug.Log("ChangeSelfColor:" + point.X + "," + point.Y);
+            Debug.Log("ChangeSelfColor:" + point.X + "," + point.Y);
             selfSquareEffect.StartFadeEffect(SOManager.colorSO.GetColor(to),
                 (float t) =>
                 {
