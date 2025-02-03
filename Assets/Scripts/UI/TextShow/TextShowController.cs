@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using MizukiTool.Audio;
 using MizukiTool.RecyclePool;
@@ -12,10 +13,14 @@ public class TextShowController : MonoBehaviour
 {
     public RectTransform Panel;
     public static TextShowController Instance;
-    public static float ShowInterval = 0.05f;
+    private static float originalShowInterval = 0.05f;
+    private static float correctedShowInterval = 0.01f;
+    public static float ShowInterval = originalShowInterval;
     private float ShowTick = 0f;
     private Stack<string> LineStack = new Stack<string>();
     private Stack<char> WordStack = new Stack<char>();
+    private bool IsShowing = true;
+    private Action OnTextOver;
 
     void FixedUpdate()
     {
@@ -63,8 +68,12 @@ public class TextShowController : MonoBehaviour
             {
                 r.GetMainComponent<TextMeshProUGUI>().text = word.ToString();
             }, Panel);
-
         }
+        else
+        {
+            IsShowing = false;
+        }
+
     }
     private void ClearPanel()
     {
@@ -75,6 +84,27 @@ public class TextShowController : MonoBehaviour
     }
     public void ShowNextLine()
     {
-        ShowOneLine();
+        if (IsShowing)
+        {
+            ShowInterval = correctedShowInterval;
+            return;
+        }
+        ShowInterval = originalShowInterval;
+        IsShowing = true;
+        if (!ShowOneLine())
+        {
+            if (OnTextOver != null)
+            {
+                OnTextOver.Invoke();
+            }
+            else
+            {
+                Debug.Log("该文本已经读完，但你没有设置任何后续操作");
+            }
+        }
+    }
+    public void SetEndHander(Action endHander)
+    {
+        OnTextOver = endHander;
     }
 }

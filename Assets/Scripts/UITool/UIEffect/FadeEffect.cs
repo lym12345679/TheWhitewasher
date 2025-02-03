@@ -132,7 +132,7 @@ namespace MizukiTool.UIEffect
                 return;
             }
             float t = (timeTrick - fadeDelay) / fadeTime;
-            Debug.Log(t);
+            //Debug.Log(t);
 
             UpdateColor(t);
             if ((timeTrick - fadeDelay) >= fadeTime)
