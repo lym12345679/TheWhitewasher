@@ -227,7 +227,13 @@ namespace MizukiTool.UIEffect
         {
             isPause = false;
         }
-
+        /// <summary>
+        /// 立刻触发结束处理器
+        /// </summary> 
+        public void StartEndHander()
+        {
+            effectEndHandler?.Invoke(this);
+        }
         #endregion
         #region 其他
         public PositionEffect Start(Transform targetTransform)

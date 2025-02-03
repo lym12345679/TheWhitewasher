@@ -4,6 +4,7 @@ public static class SOManager
 {
     public static ColorSO colorSO = Resources.Load<ColorSO>("SO/ColorSO");
     public static PorpSO porpSO = Resources.Load<PorpSO>("SO/PorpSO");
+    public static LevelSelectItemMessageSO levelSelectItemMessageSO = Resources.Load<LevelSelectItemMessageSO>("SO/LevelSelectItemMessageSO");
     public static Dictionary<CGEnum, CGGroupsSO> CGGroups = new Dictionary<CGEnum, CGGroupsSO>(){
         {CGEnum.Begin, Resources.Load<CGGroupsSO>("SO/CGSO/BeginCG")},
         {CGEnum.Dialoge, Resources.Load<CGGroupsSO>("SO/CGSO/EndCG")},
