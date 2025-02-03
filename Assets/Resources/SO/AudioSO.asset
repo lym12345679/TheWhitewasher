@@ -28,12 +28,12 @@ MonoBehaviour:
   - Name: Test_BGM3
     audioEnum: 4
     audioClip: {fileID: 8300000, guid: a613b1766c22b4246af223f10510308f, type: 3}
+  - Name: Test_BGM4
+    audioEnum: 5
+    audioClip: {fileID: 8300000, guid: a613b1766c22b4246af223f10510308f, type: 3}
   - Name: Button_Clicked
     audioEnum: 7
     audioClip: {fileID: 8300000, guid: b2302ae8e64cbc749868023b75db47d2, type: 3}
   - Name: Game_Fail
     audioEnum: 8
     audioClip: {fileID: 8300000, guid: fbef3b3143e32654fbd8c3fe3a1d367d, type: 3}
-  - Name: Test_BGM4
-    audioEnum: 5
-    audioClip: {fileID: 8300000, guid: a613b1766c22b4246af223f10510308f, type: 3}
