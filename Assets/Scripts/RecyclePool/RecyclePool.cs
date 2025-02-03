@@ -4,17 +4,18 @@ using UnityEngine;
 namespace MizukiTool.RecyclePool
 {
 
-    public  class RecyclePool
+    public class RecyclePool
     {
         internal static Dictionary<string, RecycleContext> contextDic = new Dictionary<string, RecycleContext>();
         internal static Dictionary<string, Stack<RecyclableObject>> componentDic = new Dictionary<string, Stack<RecyclableObject>>();
         private static bool isPrefabRegistered = false;
         private static EnumIdentifier identifier = new EnumIdentifier();
+        private static RecycleCollection collection = new RecycleCollection();
         //注册所有回收物
         //格式:RigisterOnePrefab(Enum,GameObject)
         public static void RigisterAllPrefab()
         {
-
+            RigisterOnePrefab(TextShowEnum.Item1, Resources.Load<GameObject>("Prefeb/UIPrefeb/TextShow/TextShowItem"));
         }
         //注册一个回收物
         public static void RigisterOnePrefab<T>(T id, GameObject prefab) where T : Enum
@@ -63,7 +64,7 @@ namespace MizukiTool.RecyclePool
             //Debug.Log("Request");
             EnsureContextExist();
             GameObject target;
-            RecycleCollection collection = new RecycleCollection();
+            collection = new RecycleCollection();
             RecyclableObject controller;
             if (CheckIdentifer(id))
             {
@@ -87,6 +88,11 @@ namespace MizukiTool.RecyclePool
                     target.gameObject.SetActive(true);
                     controller.OnReset.Invoke();
                     collection.RecyclingController = controller;
+                    collection.MainComponent = controller.MainComponent;
+                    if (parent != null)
+                    {
+                        target.transform.SetParent(parent);
+                    }
                     if (hander != null)
                     {
                         hander.Invoke(collection);

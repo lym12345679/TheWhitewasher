@@ -13,6 +13,8 @@ namespace MizukiTool.RecyclePool
         public UnityEvent OnReset;
         private float recycleTick = 0f;
         public Component MainComponent;
+
+        [HideInInspector]
         public string id;
         private void FixedUpdate()
         {
