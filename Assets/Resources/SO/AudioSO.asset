@@ -19,21 +19,51 @@ MonoBehaviour:
   - Name: BGM_Arknight_Babel2
     audioEnum: 1
     audioClip: {fileID: 8300000, guid: 3144aec3c54f6874c82cbd0b3f4cf1b2, type: 3}
-  - Name: Test_BGM1
+  - Name: BGM_Test1
     audioEnum: 2
     audioClip: {fileID: 8300000, guid: ea95b72118b5a1748beb73a3846e6859, type: 3}
-  - Name: Test_BGM2
+  - Name: BGM_Test2
     audioEnum: 3
     audioClip: {fileID: 8300000, guid: ad18b234e60cf5246b41f01cb6edfc96, type: 3}
-  - Name: Test_BGM3
+  - Name: BGM_Test3
     audioEnum: 4
     audioClip: {fileID: 8300000, guid: a613b1766c22b4246af223f10510308f, type: 3}
-  - Name: Test_BGM4
+  - Name: BGM_Test4
     audioEnum: 5
     audioClip: {fileID: 8300000, guid: a613b1766c22b4246af223f10510308f, type: 3}
-  - Name: Button_Clicked
+  - Name: SE_Button_Clicked
     audioEnum: 7
-    audioClip: {fileID: 8300000, guid: b2302ae8e64cbc749868023b75db47d2, type: 3}
-  - Name: Game_Fail
+    audioClip: {fileID: 8300000, guid: 49a9fd315daa1dc44ae38515a4dc3375, type: 3}
+  - Name: SE_Button_Hover
     audioEnum: 8
+    audioClip: {fileID: 8300000, guid: dfabc22ed7705b74cbe3691705af4fde, type: 3}
+  - Name: SE_Player_Fail
+    audioEnum: 9
     audioClip: {fileID: 8300000, guid: fbef3b3143e32654fbd8c3fe3a1d367d, type: 3}
+  - Name: SE_Player_Jump
+    audioEnum: 10
+    audioClip: {fileID: 8300000, guid: b8bc323875d2d8340b016b6427bf9083, type: 3}
+  - Name: SE_Player_Land
+    audioEnum: 11
+    audioClip: {fileID: 8300000, guid: 30c91292125866f40b94373eaec78432, type: 3}
+  - Name: SE_Word_Shown
+    audioEnum: 12
+    audioClip: {fileID: 8300000, guid: 30c91292125866f40b94373eaec78432, type: 3}
+  - Name: Se_Square_Paint
+    audioEnum: 13
+    audioClip: {fileID: 8300000, guid: 26546017141355f499616aca78f8998f, type: 3}
+  - Name: SE_Prop_Get
+    audioEnum: 14
+    audioClip: {fileID: 8300000, guid: 6f2f883402d18e140bf522957366b1d6, type: 3}
+  - Name: SE_Prop_Use1
+    audioEnum: 15
+    audioClip: {fileID: 8300000, guid: 0469782e849d8b74d88af4ecb9e492b9, type: 3}
+  - Name: SE_Prop_Use2
+    audioEnum: 16
+    audioClip: {fileID: 8300000, guid: f7bacd0b55248334a88391bdcfc712b6, type: 3}
+  - Name: SE_Prop_FailUse
+    audioEnum: 17
+    audioClip: {fileID: 8300000, guid: 3460f3e7b4dbdb94f8f901c9eda7265a, type: 3}
+  - Name: SE_Prop_Cancel
+    audioEnum: 18
+    audioClip: {fileID: 8300000, guid: 0f767ec03a7b248438762074b704e928, type: 3}

@@ -36,16 +36,5 @@ namespace MizukiTool.Audio
         public AudioEnum audioEnum;
         public AudioClip audioClip;
     }
-    public enum AudioEnum
-    {
-        BGM_Arknight_Babel1,
-        BGM_Arknight_Babel2,
-        Test_BGM1,
-        Test_BGM2,
-        Test_BGM3,
-        Test_BGM4,
-        Test_BGM5,
-        Button_Clicked,
-        Game_Fail,
-    }
+
 }
