@@ -14,7 +14,7 @@ public class TextShowController : MonoBehaviour
     public RectTransform Panel;
     public static TextShowController Instance;
     private static float originalShowInterval = 0.05f;
-    private static float correctedShowInterval = 0.01f;
+    private static float correctedShowInterval = 0f;
     public static float ShowInterval = originalShowInterval;
     private float ShowTick = 0f;
     private Stack<string> LineStack = new Stack<string>();

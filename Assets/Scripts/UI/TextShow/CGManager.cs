@@ -11,35 +11,38 @@ public class CGManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        LoadCGMessage();
     }
 
-    public List<CGMessage> CGMessageList = new List<CGMessage>();
-    private Stack<CGMessage> cgMessageStack = new Stack<CGMessage>();
+
+    public CGEnum CGEnum;
 
     void Start()
     {
-        StartCG();
+        CGUI.Open(new CGGroup()
+        {
+            CGEnum = CGEnum,
+            EndHander = () =>
+            {
+                Debug.Log("CG Over");
+            }
+        });
     }
-    public void StartCG()
+    /*public void StartCG()
     {
         if (cgMessageStack.Count > 0)
         {
-            CGMessage cgMessage = cgMessageStack.Pop();
-            CGUI.Open(cgMessage);
+            CGGroup cgGroup = new CGGroup()
+            {
+                CGMessageStack = cgMessageStack,
+
+            };
+            cgGroup.SkipHander = StartCG;
+            CGUI.Open(cgGroup);
         }
         else
         {
             Debug.Log("CG Over");
         }
-    }
-    public void LoadCGMessage()
-    {
-        cgMessageStack.Clear();
-        for (int i = CGMessageList.Count - 1; i >= 0; i--)
-        {
-            CGMessageList[i].endHander = StartCG;
-            cgMessageStack.Push(CGMessageList[i]);
-        }
-    }
+    }*/
+
 }
