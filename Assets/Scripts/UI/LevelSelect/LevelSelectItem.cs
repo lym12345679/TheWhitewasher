@@ -1,6 +1,6 @@
+using System;
 using MizukiTool.Audio;
-using TMPro;
-using Unity.VisualScripting;
+using MizukiTool.UIEffect;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,9 +14,12 @@ public class LevelSelectItem : MonoBehaviour
     public AudioEnum ClickedSoundEffect;
     public RectTransform selfRectTransform;
     private LevelSelectItemEffect levelSelectItemEffect;
+    private Sprite sceneBackground;
     private float tinyPeopleOffset = 30;
     public delegate void OnLevelSelectItemClickedCallback();
     public OnLevelSelectItemClickedCallback OnLevelSelectItemClicked;
+    private bool interactable = true;
+    public Action<Sprite> OnPointEnterHandle;
     void Awake()
     {
         selfRectTransform = this.GetComponent<RectTransform>();
@@ -27,6 +30,7 @@ public class LevelSelectItem : MonoBehaviour
         BtnBackground.sprite = message.BtnBackground;
         NumImg.sprite = message.NumSprite;
         TargetScene = message.LevelScene;
+        sceneBackground = message.SceneBackground;
         selfRectTransform.sizeDelta = new Vector2(selfRectTransform.sizeDelta.x, btnHight);
         Vector3 posOffset = new Vector3(0, btnHight / 2 + tinyPeopleOffset, 0);
         TinyPeople.localPosition = posOffset;
@@ -41,19 +45,37 @@ public class LevelSelectItem : MonoBehaviour
     }
     public void OnPointerEnter()
     {
-        levelSelectItemEffect.StartPositionUpEffect(null);
+        if (interactable && !LevelSelectSceneManager.Instance.LockScene)
+        {
+            if (OnPointEnterHandle != null)
+            {
+                OnPointEnterHandle(sceneBackground);
+            }
+            TinyPeople.gameObject.SetActive(true);
+        }
+
     }
     public void OnPointExit()
     {
-        levelSelectItemEffect.StartPositionDownEffect(null);
+        if (interactable && !LevelSelectSceneManager.Instance.LockScene)
+        {
+            TinyPeople.gameObject.SetActive(false);
+        }
+        //levelSelectItemEffect.StartPositionDownEffect(null);
     }
     public void OnItemClicked()
     {
+        LevelSelectSceneManager.Instance.LockScene = true;
         AudioUtil.Play(ClickedSoundEffect, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
-        OnLevelSelectItemClicked?.Invoke();
+        levelSelectItemEffect.StartPositionUpEffect((PositionEffect e) =>
+        {
+            OnLevelSelectItemClicked?.Invoke();
+        });
+
     }
     public void SetLock()
     {
+        interactable = false;
         this.GetComponent<Button>().interactable = false;
         BtnBackground.color = new Color(0.5f, 0.5f, 0.5f, 1);
         NumImg.color = new Color(0.5f, 0.5f, 0.5f, 0);
