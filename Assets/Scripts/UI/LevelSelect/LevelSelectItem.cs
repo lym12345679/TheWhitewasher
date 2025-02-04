@@ -1,6 +1,7 @@
 using System;
 using MizukiTool.Audio;
 using MizukiTool.UIEffect;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ public class LevelSelectItem : MonoBehaviour
 {
     public SceneEnum TargetScene;
     public Image NumImg;
+    public TextMeshProUGUI NumText;
     public RectTransform NumRect;
     public Image BtnBackground;
     public RectTransform TinyPeople;
@@ -73,12 +75,17 @@ public class LevelSelectItem : MonoBehaviour
         });
 
     }
+    public void SetLevelText(string s)
+    {
+        NumText.text = s;
+    }
     public void SetLock()
     {
         interactable = false;
         this.GetComponent<Button>().interactable = false;
         BtnBackground.color = new Color(0.5f, 0.5f, 0.5f, 1);
         NumImg.color = new Color(0.5f, 0.5f, 0.5f, 0);
+        NumText.color = new Color(0.5f, 0.5f, 0.5f, 0);
         TinyPeople.gameObject.SetActive(false);
     }
 }
