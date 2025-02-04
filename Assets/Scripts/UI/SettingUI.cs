@@ -9,7 +9,9 @@ using UnityEngine.UI;
 public class SettingUI : GeneralBox<SettingUI, string, string>
 {
     public Scrollbar BGMMusicSlider;
+    public GeneralScrollbar BGMScrollbarController;
     public Scrollbar SoundEffectSlider;
+    public GeneralScrollbar SoundEffectScrollbarController;
     public AudioEnum SettingBGM;
     public override void GetParams(string param)
     {
@@ -32,6 +34,8 @@ public class SettingUI : GeneralBox<SettingUI, string, string>
             AudioUtil.ReturnAllLoopAudio();
             AudioUtil.Play(SettingBGM, AudioMixerGroupEnum.BGM, AudioPlayMod.Loop);
         }
+        /*BGMScrollbarController.StartUse();
+        SoundEffectScrollbarController.StartUse();*/
     }
     public void OnBGMMusicValueChanged()
     {

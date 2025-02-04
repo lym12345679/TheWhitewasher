@@ -8,7 +8,7 @@ public class EmphasizeSelectedButton : MonoBehaviour
 {
     public RectTransform LeftCursor;
     public RectTransform RightCursor;
-    public TextMeshProUGUI ButtonText;
+    public Image ButtonText;
     public ColorEnum SelectedColor;
     private Color orignColor;
     private Button button;

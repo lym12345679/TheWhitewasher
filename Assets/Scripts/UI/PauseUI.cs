@@ -41,6 +41,11 @@ public class PauseUI : GeneralBox<PauseUI, string, string>
     public void OnGoToMenuBtnClicked()
     {
         GamePlayManager.ContinueGame();
+        SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
+        {
+            GamePlayManager.GoToMenu();
+        }));
+
         Close();
     }
     public void OnBGMMusicValueChanged()
