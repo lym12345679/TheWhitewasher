@@ -48,7 +48,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 30c91292125866f40b94373eaec78432, type: 3}
   - Name: SE_Word_Shown
     audioEnum: 12
-    audioClip: {fileID: 8300000, guid: 30c91292125866f40b94373eaec78432, type: 3}
+    audioClip: {fileID: 8300000, guid: 49a9fd315daa1dc44ae38515a4dc3375, type: 3}
   - Name: Se_Square_Paint
     audioEnum: 13
     audioClip: {fileID: 8300000, guid: 26546017141355f499616aca78f8998f, type: 3}

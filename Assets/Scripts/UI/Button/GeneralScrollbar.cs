@@ -15,7 +15,7 @@ public class GeneralScrollbar : MonoBehaviour
     public void Init()
     {
         penelWidth = Penel.rect.width;
-        Debug.Log(Penel.localPosition + " " + Content.localPosition);
+        //Debug.Log(Penel.localPosition + " " + Content.localPosition);
         PenelOriginPos = Penel.transform.position;
         ContentOriginPos = Content.transform.position;
     }
@@ -26,7 +26,7 @@ public class GeneralScrollbar : MonoBehaviour
             Init();
             isInit = true;
         }
-        Debug.Log("UpdateScrollbar: " + TheScrollbar.value);
+        //Debug.Log("UpdateScrollbar: " + TheScrollbar.value);
         float persentage = TheScrollbar.value;
         float offset = penelWidth * (1 - persentage);
         Penel.transform.position = PenelOriginPos - new Vector3(offset, 0, 0);

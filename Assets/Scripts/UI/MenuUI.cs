@@ -45,7 +45,7 @@ public class MenuUI : GeneralBox<MenuUI, string, string>
     }
     public void OnSettingBtnClicked()
     {
-        SettingUI.Open("1");
+        SettingUI.Open(new SettingUIMessage());
     }
     public void OnLevelSelectBtnClicked()
     {

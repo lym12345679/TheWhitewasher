@@ -118,7 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640c7e2977c4d5c40924bd0ad62809d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  param: 
   SendParam: 
   BGMMusicSlider: {fileID: 2386830580793417676}
   BGMScrollbarController: {fileID: 7124248757682011620}
@@ -318,7 +317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4256843936199374488, guid: 7509331b14f97384a8765e4338295a89, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4256843936199374488, guid: 7509331b14f97384a8765e4338295a89, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -490,7 +489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4256843936199374488, guid: 7509331b14f97384a8765e4338295a89, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 200
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4256843936199374488, guid: 7509331b14f97384a8765e4338295a89, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

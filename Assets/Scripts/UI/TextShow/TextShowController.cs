@@ -68,6 +68,10 @@ public class TextShowController : MonoBehaviour
             {
                 r.GetMainComponent<TextMeshProUGUI>().text = word.ToString();
             }, Panel);
+            if (ShowInterval > correctedShowInterval)
+            {
+                AudioUtil.Play(AudioEnum.SE_Word_Shown, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
+            }
         }
         else
         {
@@ -106,5 +110,16 @@ public class TextShowController : MonoBehaviour
     public void SetEndHander(Action endHander)
     {
         OnTextOver = endHander;
+    }
+    public void OpenSettingUI()
+    {
+        GamePlayManager.PauseGame();
+        SettingUI.Open(new SettingUIMessage()
+        {
+            EndHander = () =>
+            {
+                GamePlayManager.ContinueGame();
+            }
+        });
     }
 }

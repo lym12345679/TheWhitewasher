@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using MizukiTool.Audio;
 using MizukiTool.Box;
 using MizukiTool.UIEffect;
 using UnityEngine;
@@ -36,7 +37,7 @@ public class CGUI : GeneralBox<CGUI, CGGroup, string>
             CGMessage cgMessage = cgMessageStack.Pop();
             TargetImage.sprite = cgMessage.CGSprite;
             TargetImage.color = new Color(0, 0, 0, 1);
-
+            StartCGBGM(cgMessage.BGMEnum);
             effect.StartFadeIn(
                 (FadeEffect<Image> e) =>
                 {
@@ -79,12 +80,21 @@ public class CGUI : GeneralBox<CGUI, CGGroup, string>
     {
         cgMessageStack.Clear();
     }
+    public void StartCGBGM(AudioEnum e)
+    {
+        if (!AudioUtil.CheckEnumInLoopAudio(e))
+        {
+            AudioUtil.ReturnAllLoopAudio();
+            AudioUtil.Play(e, AudioMixerGroupEnum.BGM, AudioPlayMod.Loop);
+        }
+    }
 }
 [Serializable]
 public class CGMessage
 {
     public Sprite CGSprite;
     public TextAsset TextAsset;
+    public AudioEnum BGMEnum;
 }
 
 public class CGGroup
