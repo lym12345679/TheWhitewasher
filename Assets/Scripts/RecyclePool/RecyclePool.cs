@@ -20,7 +20,7 @@ namespace MizukiTool.RecyclePool
         //注册一个回收物
         public static void RigisterOnePrefab<T>(T id, GameObject prefab) where T : Enum
         {
-            Debug.Log("RigisterOnePrefab:" + id + ":" + prefab.name);
+            //Debug.Log("RigisterOnePrefab:" + id + ":" + prefab.name);
             identifier.SetEnum(id);
             RecycleContext context = new RecycleContext();
             context.Prefab = prefab;

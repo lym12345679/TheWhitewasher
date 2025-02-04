@@ -5,14 +5,16 @@ public static class SOManager
     public static ColorSO colorSO = Resources.Load<ColorSO>("SO/ColorSO");
     public static PorpSO porpSO = Resources.Load<PorpSO>("SO/PorpSO");
     public static LevelSelectItemMessageSO levelSelectItemMessageSO = Resources.Load<LevelSelectItemMessageSO>("SO/LevelSelectItemMessageSO");
+    public static GameCharacterSpriteSO gameCharacterSpriteSO = Resources.Load<GameCharacterSpriteSO>("SO/GameCharacterSpriteSO");
     public static Dictionary<CGEnum, CGGroupsSO> CGGroups = new Dictionary<CGEnum, CGGroupsSO>(){
         {CGEnum.Begin, Resources.Load<CGGroupsSO>("SO/CGSO/BeginCG")},
-        {CGEnum.Dialoge, Resources.Load<CGGroupsSO>("SO/CGSO/EndCG")},
-        {CGEnum.End, Resources.Load<CGGroupsSO>("SO/CGSO/DialogCG")},
+        {CGEnum.Dialoge, Resources.Load<CGGroupsSO>("SO/CGSO/DialogCG")},
+        {CGEnum.End, Resources.Load<CGGroupsSO>("SO/CGSO/EndCG")},
         {CGEnum.Test, Resources.Load<CGGroupsSO>("SO/CGSO/TestCG")},
     };
     public static List<CGMessage> GetCGMessageList(CGEnum cgEnum)
     {
+        //Debug.Log("GetCGMessageList:" + cgEnum.ToString());
         return CGGroups[cgEnum].CGList;
     }
     /*[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]

@@ -4,6 +4,7 @@ using MizukiTool.Audio;
 using MizukiTool.RecyclePool;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum TextShowEnum
 {
@@ -12,15 +13,27 @@ public enum TextShowEnum
 public class TextShowController : MonoBehaviour
 {
     public RectTransform Panel;
+    public Image LeftImg;
+    public Image RightImg;
     public static TextShowController Instance;
     private static float originalShowInterval = 0.05f;
     private static float correctedShowInterval = 0f;
     public static float ShowInterval = originalShowInterval;
     private float ShowTick = 0f;
-    private Stack<string> LineStack = new Stack<string>();
+    private Stack<TextLineReader> LineStack = new Stack<TextLineReader>();
     private Stack<char> WordStack = new Stack<char>();
     private bool IsShowing = true;
     private Action OnTextOver;
+    private GridLayoutGroup gridLayoutGroup;
+    private int leftLongPadding = 125;
+    private int leftShortPadding = 20;
+    private int rightLongPadding = 275;
+    private int rightShortPadding = 20;
+    void Awake()
+    {
+        Instance = this;
+        gridLayoutGroup = Panel.GetComponent<GridLayoutGroup>();
+    }
 
     void FixedUpdate()
     {
@@ -33,31 +46,6 @@ public class TextShowController : MonoBehaviour
             ShowTick = ShowInterval;
             ShowOneWord();
         }
-    }
-    public void GetTextAsset(TextAsset textAsset)
-    {
-        string[] textLines = textAsset.text.Split('\n');
-        for (int i = textLines.Length - 1; i >= 0; i--)
-        {
-            //Debug.Log(textLines[i]);
-            LineStack.Push(textLines[i]);
-        }
-        ShowOneLine();
-    }
-    private bool ShowOneLine()
-    {
-        ClearPanel();
-        if (LineStack.Count > 0)
-        {
-            string line = LineStack.Pop();
-            char[] words = line.ToCharArray();
-            for (int i = words.Length - 1; i >= 0; i--)
-            {
-                WordStack.Push(words[i]);
-            }
-            return true;
-        }
-        return false;
     }
     private void ShowOneWord()
     {
@@ -77,14 +65,45 @@ public class TextShowController : MonoBehaviour
         {
             IsShowing = false;
         }
-
     }
-    private void ClearPanel()
+    public void GetTextAsset(TextAsset textAsset)
     {
-        for (int i = Panel.childCount - 1; i >= 0; i--)
+        string[] textLines = textAsset.text.Split('\n');
+        for (int i = textLines.Length - 1; i >= 0; i--)
         {
-            RecyclePoolUtil.ReturnToPool(Panel.GetChild(i).gameObject);
+            LineStack.Push(new TextLineReader(textLines[i]));
         }
+        ShowOneLine();
+    }
+    #region 单行处理
+    private bool ShowOneLine()
+    {
+        ClearPanel();
+        if (LineStack.Count > 0)
+        {
+            TextLineReader line = LineStack.Pop();
+            while (!line.canRead)
+            {
+                if (LineStack.Count > 0)
+                {
+                    line = LineStack.Pop();
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            SetLeftSprite(line.leftCharacter, line.leftSprite);
+            SetRightSprite(line.rightCharacter, line.rightSprite);
+            SortImg(line.dialogSortEnum);
+            char[] words = line.dialogText.ToCharArray();
+            for (int i = words.Length - 1; i >= 0; i--)
+            {
+                WordStack.Push(words[i]);
+            }
+            return true;
+        }
+        return false;
     }
     public void ShowNextLine()
     {
@@ -107,6 +126,97 @@ public class TextShowController : MonoBehaviour
             }
         }
     }
+    private void SetLeftSprite(GameCharacterEnum gameCharacterEnum, Sprite sprite)
+    {
+        if (gameCharacterEnum == GameCharacterEnum.None)
+        {
+            LeftImg.gameObject.SetActive(false);
+        }
+        else
+        {
+            LeftImg.gameObject.SetActive(true);
+            LeftImg.sprite = sprite;
+        }
+    }
+    private void SetRightSprite(GameCharacterEnum gameCharacterEnum, Sprite sprite)
+    {
+        if (gameCharacterEnum == GameCharacterEnum.None)
+        {
+            RightImg.gameObject.SetActive(false);
+        }
+        else
+        {
+            RightImg.gameObject.SetActive(true);
+            RightImg.sprite = sprite;
+        }
+    }
+    private void SortImg(DialogSortEnum dialogSortEnum)
+    {
+        switch (dialogSortEnum)
+        {
+            case DialogSortEnum.left:
+                {
+                    gridLayoutGroup.padding.left = leftLongPadding;
+                    gridLayoutGroup.padding.right = rightShortPadding;
+                    LockCharacter(RightImg);
+                    UnLockCharacter(LeftImg);
+                    SortSilbing(LeftImg.gameObject, Panel.gameObject, RightImg.gameObject);
+                }
+                break;
+            case DialogSortEnum.right:
+                {
+                    gridLayoutGroup.padding.left = leftShortPadding;
+                    gridLayoutGroup.padding.right = rightLongPadding;
+                    LockCharacter(LeftImg);
+                    UnLockCharacter(RightImg);
+                    SortSilbing(RightImg.gameObject, Panel.gameObject, LeftImg.gameObject);
+                }
+                break;
+            case DialogSortEnum.none:
+                {
+                    gridLayoutGroup.padding.left = leftShortPadding;
+                    gridLayoutGroup.padding.right = rightShortPadding;
+                    LockCharacter(LeftImg);
+                    LockCharacter(RightImg);
+                    SortSilbing(Panel.gameObject, LeftImg.gameObject, RightImg.gameObject);
+                }
+                break;
+            case DialogSortEnum.all:
+                {
+                    gridLayoutGroup.padding.left = leftLongPadding;
+                    gridLayoutGroup.padding.right = rightLongPadding;
+                    UnLockCharacter(LeftImg);
+                    UnLockCharacter(RightImg);
+                    SortSilbing(LeftImg.gameObject, RightImg.gameObject, Panel.gameObject);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    private void SortSilbing(GameObject first, GameObject second, GameObject third)
+    {
+        first.transform.SetAsFirstSibling();
+        second.transform.SetAsFirstSibling();
+        third.transform.SetAsFirstSibling();
+    }
+    private void LockCharacter(Image img)
+    {
+        img.color = new Color(0.5f, 0.5f, 0.5f, 1);
+    }
+    private void UnLockCharacter(Image img)
+    {
+        img.color = new Color(1, 1, 1, 1);
+    }
+    #endregion
+    #region 其他
+    private void ClearPanel()
+    {
+        for (int i = Panel.childCount - 1; i >= 0; i--)
+        {
+            RecyclePoolUtil.ReturnToPool(Panel.GetChild(i).gameObject);
+        }
+    }
     public void SetEndHander(Action endHander)
     {
         OnTextOver = endHander;
@@ -122,4 +232,5 @@ public class TextShowController : MonoBehaviour
             }
         });
     }
+    #endregion
 }
