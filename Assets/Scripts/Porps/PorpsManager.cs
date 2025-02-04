@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using MizukiTool.AStar;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class PorpsManager : MonoBehaviour
     public List<PropClass> PropList = new List<PropClass>();
     public GameObject CurrentProp;
     private GameObject Player;
+    public Action CurrentPropClearOrChangeAction;
     void Awake()
     {
         Instance = this;
@@ -31,19 +33,21 @@ public class PorpsManager : MonoBehaviour
     }
     public void SetCurrentProp(GameObject prop)
     {
-
-        if (CurrentProp != null && CurrentProp == prop)
+        if (CurrentPropClearOrChangeAction != null)
         {
-            CurrentProp = null;
+            CurrentPropClearOrChangeAction();
+            CurrentPropClearOrChangeAction = null;
         }
-        else
-        {
-            CurrentProp = prop;
-        }
+        CurrentProp = prop;
         //Debug.Log("SetCurrentProp:" + CurrentProp.name);
     }
     public void ClearCurrentProp()
     {
+        if (CurrentPropClearOrChangeAction != null)
+        {
+            CurrentPropClearOrChangeAction();
+            CurrentPropClearOrChangeAction = null;
+        }
         CurrentProp = null;
     }
     public bool UseProp(Vector3 position)
@@ -53,6 +57,7 @@ public class PorpsManager : MonoBehaviour
         {
             return false;
         }
+
         PropUIController propUIController = CurrentProp.GetComponent<PropUIController>();
         Point point = AstarManagerSon.Instance.GetPointOnMap(position);
 
@@ -68,6 +73,7 @@ public class PorpsManager : MonoBehaviour
                             Debug.Log("不能在同一个颜色的点使用道具");
                             return false;
                         }
+
                         PointMod[] pointMods = new PointMod[1] { point.Mod };
                         UsePaintBrushWasher(point, pointMods);
                         DestroyCurrentProp();
@@ -84,6 +90,7 @@ public class PorpsManager : MonoBehaviour
                 default:
                     break;
             }
+            CurrentPropClearOrChangeAction = null;
         }
         return isUse;
     }

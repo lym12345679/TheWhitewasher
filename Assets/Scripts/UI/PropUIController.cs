@@ -20,8 +20,6 @@ public class PropUIController : UIEffectController<Image>
     public Material SelectedMaterial;
     private bool isSelected;
     private bool isScalingBigger = false;
-    private bool tryToReduceSelf = false;
-    private bool tryToAmplificateSelf = false;
     private ScaleEffect scaleEffectBigger;
     private ScaleEffect scaleEffectBack;
     private ScaleEffect currentScaleBiggerEffect;
@@ -52,17 +50,6 @@ public class PropUIController : UIEffectController<Image>
     }
     void Update()
     {
-
-        if (tryToAmplificateSelf)
-        {
-            AmplificateSelf();
-            tryToAmplificateSelf = false;
-        }
-        else if (tryToReduceSelf)
-        {
-            ReduceSelf();
-            tryToReduceSelf = false;
-        }
         UpdateEffect();
     }
     public void OnPointerEnter()
@@ -77,21 +64,25 @@ public class PropUIController : UIEffectController<Image>
     {
         if (Prop != PorpEnum.Blank)
         {
-            if (currentProp != null && currentProp == this.gameObject)
+            /*if (currentProp != null && currentProp == this.gameObject)
             {
                 if (isSelected == false)
                 {
                     isSelected = true;
-                    tryToReduceSelf = true;
-                    tryToAmplificateSelf = true;
+                    PorpsManager.Instance.CurrentPropClearOrChangeAction = () =>
+                    {
+                        isSelected = false;
+                        ReduceSelf();
+                        ResetColor();
+                    };
                     SetColorToGray();
                 }
-            }
-            else
+            }*/
+            /*else
             {
                 isSelected = false;
                 ResetColor();
-            }
+            }*/
         }
     }
     public void SetColorToGray()
@@ -145,7 +136,28 @@ public class PropUIController : UIEffectController<Image>
     }
     public void OnClicked()
     {
-        PorpsManager.Instance.SetCurrentProp(this.gameObject);
+        if (KeyboardSet.IsKeyUp(KeyEnum.Click2))
+        {
+            return;
+        }
+        if (isSelected == false)
+        {
+            isSelected = true;
+            PorpsManager.Instance.SetCurrentProp(this.gameObject);
+            PorpsManager.Instance.CurrentPropClearOrChangeAction = () =>
+            {
+                isSelected = false;
+                ReduceSelf();
+                ResetColor();
+            };
+            AmplificateSelf();
+            SetColorToGray();
+        }
+        else
+        {
+            PorpsManager.Instance.ClearCurrentProp();
+        }
+
     }
 
 }

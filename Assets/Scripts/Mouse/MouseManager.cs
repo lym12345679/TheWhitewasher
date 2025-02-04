@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MouseManager : MonoBehaviour
 {
-    private bool isMouse0ClickDown = false;
-    private bool isMouse1ClickDown = false;
+    public static bool isMouse0ClickDown = false;
+    public static bool isMouse1ClickDown = false;
     // Start is called before the first frame update
     void Start()
     {
