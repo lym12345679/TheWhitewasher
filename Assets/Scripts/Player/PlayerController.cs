@@ -82,13 +82,13 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         CheckIsWall();
-        if (Input.GetKey(KeyCode.A) && !IsLeftWall)
+        if (KeyboardSet.IsPressing(KeyEnum.Left) && !IsLeftWall)
         {
             transform.Translate(Vector3.left * Speed * Time.deltaTime);
             IsWalking = true;
             transform.localScale = new Vector3(-OriginalDirection, 1, 1);
         }
-        else if (Input.GetKey(KeyCode.D) && !IsRightWall)
+        else if (KeyboardSet.IsPressing(KeyEnum.Right) && !IsRightWall)
         {
             transform.Translate(Vector3.right * Speed * Time.deltaTime);
             IsWalking = true;
@@ -102,7 +102,8 @@ public class PlayerController : MonoBehaviour
     }
     private void Jump()
     {
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && IsGround)
+
+        if ((KeyboardSet.IsKeyDown(KeyEnum.Jump) || KeyboardSet.IsKeyDown(KeyEnum.Up)) && IsGround)
         {
             playerAnimator.Jump();
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * JumpForce);
@@ -145,7 +146,7 @@ public class PlayerController : MonoBehaviour
     }
     public void TryReset()
     {
-        if (StayResetTimeCounter > 0 && Input.GetKey(KeyCode.R))
+        if (StayResetTimeCounter > 0 && KeyboardSet.IsPressing(KeyEnum.Reset))
         {
             StayResetTimeCounter -= Time.fixedDeltaTime;
         }

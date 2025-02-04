@@ -12,9 +12,9 @@ public static class KeyboardSet
             { KeyEnum.Down, KeyCode.S },
             { KeyEnum.Left, KeyCode.A },
             { KeyEnum.Right, KeyCode.D },
-
+            { KeyEnum.Jump, KeyCode.Space },
             { KeyEnum.Interact, KeyCode.E },
-
+            { KeyEnum.Reset, KeyCode.R },
             // Camera
             { KeyEnum.Click1, KeyCode.Mouse0 },
             { KeyEnum.Click2, KeyCode.Mouse1 },

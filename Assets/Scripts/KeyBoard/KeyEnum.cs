@@ -4,6 +4,8 @@ public enum KeyEnum
     Down,
     Left,
     Right,
+    Jump,
+    Reset,
     Interact,
     Click1,
     Click2,
