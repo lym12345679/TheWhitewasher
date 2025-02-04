@@ -7,6 +7,12 @@ using UnityEngine;
 
 public class AstarManagerSon : AstarManager
 {
+    public static new AstarManagerSon Instance;
+
+    new void Awake()
+    {
+        Instance = this;
+    }
     /// <summary>
     /// 更新地图信息
     /// </summary>
@@ -18,6 +24,7 @@ public class AstarManagerSon : AstarManager
         int height = map.GetMapHeight();
         PointMod[,] mapData = new PointMod[height, width];
         GameObject[,] gameObjects = new GameObject[height, width];
+        Component[,] mainCompoments = new Component[height, width];
         for (int i = 0; i < height; i++)
         {
             //十字检测
@@ -32,6 +39,7 @@ public class AstarManagerSon : AstarManager
                         //Debug.Log("Hit:" + h.collider.transform.position + " (" + i + "," + j + ")");
                         mapData[i, j] = CheckPointMod(h.collider);
                         gameObjects[i, j] = h.collider.gameObject;
+                        mainCompoments[i, j] = h.collider.gameObject.GetComponent<SquareController>();
                         break;
                     }
                 }
@@ -46,6 +54,8 @@ public class AstarManagerSon : AstarManager
         }*/
         map.SetMapData(mapData);
         map.SetGameObjects(gameObjects);
+        map.SetMainCompoment(mainCompoments);
+        CheckAllPointNeighbour();
         return map;
     }
     public override PointMod CheckPointMod(Collider2D collider2D)
@@ -56,5 +66,15 @@ public class AstarManagerSon : AstarManager
             return squareController.MPoint;
         }
         return PointMod.None;
+    }
+    public void CheckAllPointNeighbour()
+    {
+        for (int i = 0; i < map.GetMapHeight(); i++)
+        {
+            for (int j = 0; j < map.GetMapWidth(); j++)
+            {
+                map[i, j].GetMainCompoment<SquareController>().CheckNeighbourPoint();
+            }
+        }
     }
 }

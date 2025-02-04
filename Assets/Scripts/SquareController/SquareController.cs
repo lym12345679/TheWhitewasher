@@ -13,7 +13,6 @@ public class SquareController : MonoBehaviour
     public SquareCorrectPositionMod SquareCorrectPositionMod = SquareCorrectPositionMod.Used;
     void Start()
     {
-
         this.gameObject.layer = LayerMask.NameToLayer(MPoint.ToString());
     }
     public PointMod MPoint
@@ -24,6 +23,7 @@ public class SquareController : MonoBehaviour
         }
     }
     public ColorEnum ColorMod;
+    #region OnValidate
     private void OnValidate()
     {
         FadeTarget.color = SOManager.colorSO.GetColor(ColorMod);
@@ -47,6 +47,20 @@ public class SquareController : MonoBehaviour
             }
         }
     }
+    public void CorrectPosition()
+    {
+        if (Mathf.Abs(transform.localPosition.x - (int)transform.localPosition.x) > 0.01)
+        {
+            Debug.Log("Roundx");
+            transform.localPosition = new Vector3((int)(transform.localPosition.x), (int)transform.localPosition.y, transform.localPosition.z);
+        }
+        if (Mathf.Abs(transform.localPosition.y - (int)transform.localPosition.y) > 0.01)
+        {
+            Debug.Log("Roundy");
+            transform.localPosition = new Vector3((int)transform.localPosition.x, (int)(transform.localPosition.y), transform.localPosition.z);
+        }
+    }
+    #endregion
     public void ApplyColorMod()
     {
         FadeTarget.color = SOManager.colorSO.GetColor(ColorMod);
@@ -73,28 +87,29 @@ public class SquareController : MonoBehaviour
     public bool ChangeNeighbourColor(Point asker, ColorEnum from, ColorEnum to)
     {
         //Debug.Log("ChangeNeighbourColor:" + asker.X + "," + asker.Y);
-        List<Point> points = new List<Point>();
-        points = AstarManagerSon.Instance.GetNeighbourPoints(this.transform.position);
+        List<Point> points = AstarManagerSon.Instance.GetNeighbourPoints(this.transform.position); ;
+
         foreach (var point in points)
         {
             if (point.GameObject != null && point != asker)
             {
-                SquareController squareController = point.GameObject.GetComponent<SquareController>();
+                SquareController squareController = point.GetMainCompoment<SquareController>();
                 if (squareController.GetIsFading())
                 {
+                    CheckNeighbourPoint();
                     continue;
                 }
                 if (squareController.ChangeSelfColor(point, from, to))
                 {
                     //Debug.Log("ChangeNeighbourColor");
                 }
+                CheckNeighbourPoint();
             }
         }
         if (from == to)
         {
             return false;
         }
-        from = to;
         return true;
     }
     //改变自己的颜色
@@ -102,9 +117,13 @@ public class SquareController : MonoBehaviour
     {
         if (ColorMod == from)
         {
+            Point p = AstarManagerSon.Instance.GetPointOnMap(transform.position);
+            p.Mod = MPoint;
             ColorMod = to;
             SetIsFading(true);
             isAskNeighbour = false;
+            ChanngeLayer();
+
             //Debug.Log("ChangeSelfColor:" + point.X + "," + point.Y);
             selfSquareEffect.StartFadeEffect(SOManager.colorSO.GetColor(to),
                 (float t) =>
@@ -121,13 +140,38 @@ public class SquareController : MonoBehaviour
                 (FadeEffectGO<SpriteRenderer> fadeEffect) =>
                 {
                     SetIsFading(false);
-                    Point p = AstarManagerSon.Instance.GetPointOnMap(transform.position);
-                    p.Mod = MPoint;
+
                 });
-            ChanngeLayer();
+
             return true;
         }
+        else
+        {
+            CheckNeighbourPoint();
+        }
+
         return false;
+    }
+    public void CheckNeighbourPoint()
+    {
+        Point upPoint = AstarManagerSon.Instance.GetPointOnMap(transform.position + new Vector3(0, 1, 0));
+        if (ColorMod != PlayerController.Instance.ColorMod)
+        {
+            selfSquareEffect.PlaneFadeOut();
+            return;
+        }
+        if (upPoint == null)
+        {
+            return;
+        }
+        if (ColorMod != upPoint.GetMainCompoment<SquareController>().ColorMod)
+        {
+            selfSquareEffect.PlaneFadeIn();
+        }
+        else
+        {
+            selfSquareEffect.PlaneFadeOut();
+        }
     }
     public void SetIsFading(bool b)
     {
@@ -137,19 +181,7 @@ public class SquareController : MonoBehaviour
     {
         return isFading;
     }
-    public void CorrectPosition()
-    {
-        if (Mathf.Abs(transform.localPosition.x - (int)transform.localPosition.x) > 0.01)
-        {
-            Debug.Log("Roundx");
-            transform.localPosition = new Vector3((int)(transform.localPosition.x), (int)transform.localPosition.y, transform.localPosition.z);
-        }
-        if (Mathf.Abs(transform.localPosition.y - (int)transform.localPosition.y) > 0.01)
-        {
-            Debug.Log("Roundy");
-            transform.localPosition = new Vector3((int)transform.localPosition.x, (int)(transform.localPosition.y), transform.localPosition.z);
-        }
-    }
+
 }
 
 public enum SquareCorrectPositionMod

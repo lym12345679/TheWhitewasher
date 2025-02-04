@@ -165,6 +165,7 @@ public class PlayerController : MonoBehaviour
         ColorMod = colorEnum;
         this.gameObject.layer = LayerMask.NameToLayer(PointM.ToString());
         this.gameObject.GetComponent<SpriteRenderer>().color = SOManager.colorSO.GetColor(ColorMod);
+        AstarManagerSon.Instance.CheckAllPointNeighbour();
     }
     public void CheckPlayerDead()
     {
@@ -179,7 +180,7 @@ public class PlayerController : MonoBehaviour
             AudioUtil.Play(PlayerDeadAudio, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
             LevelSceneManager.Instance.Reset();
         }
-        Point point = AstarManager.Instance.map.GetPointOnMap(transform.position);
+        Point point = AstarManagerSon.Instance.map.GetPointOnMap(transform.position);
         if (point == null)
         {
             return;

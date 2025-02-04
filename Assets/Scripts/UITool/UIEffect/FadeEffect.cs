@@ -463,7 +463,7 @@ namespace MizukiTool.UIEffect
             }
             else
             {
-                Debug.Log("percentageHander is null");
+                //Debug.Log("percentageHander is null");
             }
             if (FadeTarget is SpriteRenderer spriteRenderer)
             {
@@ -539,6 +539,13 @@ namespace MizukiTool.UIEffect
         public void Continue()
         {
             isPause = true;
+        }
+        /// <summary>
+        /// 立刻执行一次结束处理
+        /// /// </summary>
+        public void StartEndHander()
+        {
+            endHander?.Invoke(this);
         }
         /// <summary>
         /// 改变最终颜色

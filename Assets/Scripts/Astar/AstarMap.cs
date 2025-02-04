@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 namespace MizukiTool.AStar
 {
@@ -42,6 +43,16 @@ namespace MizukiTool.AStar
         /// 游戏对象
         /// </summary>
         private GameObject gameObject;
+        public Component MainCompoment;
+        public T GetMainCompoment<T>() where T : Component
+        {
+            if (MainCompoment == null)
+            {
+                Debug.Log("(" + X + "," + Y + "):MainCompoment is null");
+                return null;
+            }
+            return MainCompoment as T;
+        }
         public GameObject GameObject
         {
             get { return gameObject; }
@@ -256,6 +267,16 @@ namespace MizukiTool.AStar
                         Debug.Log("SetGameObjects: (" + j + "," + i + ")" + gameObjects[i, j].transform.position);
                     }*/
                     astarMap[i, j].GameObject = gameObjects[i, j];
+                }
+            }
+        }
+        public void SetMainCompoment(Component[,] mainCompoments)
+        {
+            for (int i = 0; i < mapHeight; i++)
+            {
+                for (int j = 0; j < mapWidth; j++)
+                {
+                    astarMap[i, j].MainCompoment = mainCompoments[i, j];
                 }
             }
         }
