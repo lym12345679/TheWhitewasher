@@ -18,38 +18,54 @@ MonoBehaviour:
     BtnBackground: {fileID: 21300000, guid: 27f40422289b7974b8040f44638d59a4, type: 3}
     SceneBackground: {fileID: 21300000, guid: 3d34ebb19e281b94ea615c993d544dda, type: 3}
     NumSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    BottomSprite: {fileID: 21300000, guid: 57c125f01eb52294d90a377e4bd7b613, type: 3}
+    TopSprite: {fileID: 21300000, guid: 1e18803455db19c49a98b92590c437f0, type: 3}
   - Name: Level2
     LevelScene: 3
     BtnBackground: {fileID: 21300000, guid: 52bd40fd12c4b5d4eb384daf5205c7f6, type: 3}
     SceneBackground: {fileID: 21300000, guid: 771e1a121167d3d42bddcac28b96c026, type: 3}
     NumSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    BottomSprite: {fileID: 21300000, guid: 5b8b02e4af089d54aa1e9ad0f68595cb, type: 3}
+    TopSprite: {fileID: 21300000, guid: a0217968765f3e64cb9372f9d2270de3, type: 3}
   - Name: Level3
     LevelScene: 4
     BtnBackground: {fileID: 21300000, guid: 5e440e19e04163d40a6dcb797d4b3eea, type: 3}
     SceneBackground: {fileID: 21300000, guid: 98ab77cc7034f8c45bb4e4a3f119e54b, type: 3}
     NumSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    BottomSprite: {fileID: 21300000, guid: f3ad599e3c2776f4ba8d11439e61b099, type: 3}
+    TopSprite: {fileID: 21300000, guid: 0ca93efe0baa1c94eb4229d5c9bd9655, type: 3}
   - Name: Level4
     LevelScene: 5
     BtnBackground: {fileID: 21300000, guid: 80f7d2c5c77a0714e8f41ed010ac00c8, type: 3}
     SceneBackground: {fileID: 21300000, guid: 7237e5e434fafdc4aae9bb9cac0d0e20, type: 3}
     NumSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    BottomSprite: {fileID: 21300000, guid: 5bd19f537877df34084e86cb0d5b14b2, type: 3}
+    TopSprite: {fileID: 21300000, guid: 6d350027e1c5cfd40808a2a1e749783e, type: 3}
   - Name: Level5
     LevelScene: 6
     BtnBackground: {fileID: 21300000, guid: c9279b0758be81947b7362b66d79cb73, type: 3}
     SceneBackground: {fileID: 21300000, guid: 35ead72dead830544acd956a195eca08, type: 3}
     NumSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    BottomSprite: {fileID: 21300000, guid: 977e804855fbc3b41a3f2adbe915fb10, type: 3}
+    TopSprite: {fileID: 21300000, guid: b9745deb4348cf7488d1c31db7b06b78, type: 3}
   - Name: Level6
     LevelScene: 7
     BtnBackground: {fileID: 21300000, guid: 333ca5a6d68d72844a4c26a3b8af714f, type: 3}
     SceneBackground: {fileID: 21300000, guid: 333ca5a6d68d72844a4c26a3b8af714f, type: 3}
     NumSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    BottomSprite: {fileID: 21300000, guid: 371041f8a7981a44f87288fc414522ab, type: 3}
+    TopSprite: {fileID: 21300000, guid: 8762a50fc416a8b47ae5281d42d3338d, type: 3}
   - Name: Level7
     LevelScene: 8
     BtnBackground: {fileID: 21300000, guid: 9e1d3819b8ca3334d9a98044dcd4d2bf, type: 3}
     SceneBackground: {fileID: 21300000, guid: 341272b56fb60d3489506fb5739baf56, type: 3}
     NumSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    BottomSprite: {fileID: 21300000, guid: d8c2d4fc32251644ba711e382a2e3415, type: 3}
+    TopSprite: {fileID: 21300000, guid: b14708c170417cf438ceef57526b56c9, type: 3}
   - Name: Level8
     LevelScene: 9
     BtnBackground: {fileID: 21300000, guid: 09a6c890e46f99f429d777a0bd01f548, type: 3}
     SceneBackground: {fileID: 21300000, guid: ebeb26c92409f5f40903eed5b6580bbe, type: 3}
     NumSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    BottomSprite: {fileID: 21300000, guid: 3585a6954f4be984f8acc2118aaaed6f, type: 3}
+    TopSprite: {fileID: 21300000, guid: 680ae4b0310adf1478ae10e1eecb7d11, type: 3}

@@ -27,4 +27,6 @@ public class LevelSelectItemMessage
     public Sprite BtnBackground;
     public Sprite SceneBackground;
     public Sprite NumSprite;
+    public Sprite BottomSprite;
+    public Sprite TopSprite;
 }

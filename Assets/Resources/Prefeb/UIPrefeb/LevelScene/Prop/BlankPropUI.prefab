@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: c4ab5e93a0e5a5e46b83528ce5fbb7f5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -184,3 +184,5 @@ MonoBehaviour:
   Prop: 2
   ColorMod: 0
   UIImage: {fileID: 1834814076283946998}
+  SelectedImage: {fileID: 0}
+  SelectedMaterial: {fileID: 0}

@@ -37,7 +37,7 @@ public class PropUIController : UIEffectController<Image>
         scaleEffectBigger = new ScaleEffect()
             .SetDuration(0.2f)
             .SetEffectMode(ScaleEffectMode.Once)
-            .SetEndScale(new Vector3(2f, 2f, 2f));
+            .SetEndScale(new Vector3(1.75f, 1.75f, 1.75f));
         scaleEffectBack = new ScaleEffect()
             .SetDuration(0.2f)
             .SetEffectMode(ScaleEffectMode.Once)
@@ -62,28 +62,7 @@ public class PropUIController : UIEffectController<Image>
     }
     void UpdateEffect()
     {
-        if (Prop != PorpEnum.Blank)
-        {
-            /*if (currentProp != null && currentProp == this.gameObject)
-            {
-                if (isSelected == false)
-                {
-                    isSelected = true;
-                    PorpsManager.Instance.CurrentPropClearOrChangeAction = () =>
-                    {
-                        isSelected = false;
-                        ReduceSelf();
-                        ResetColor();
-                    };
-                    SetColorToGray();
-                }
-            }*/
-            /*else
-            {
-                isSelected = false;
-                ResetColor();
-            }*/
-        }
+
     }
     public void SetColorToGray()
     {
@@ -108,7 +87,7 @@ public class PropUIController : UIEffectController<Image>
         }
         isScalingBigger = true;
         currentScaleBiggerEffect = scaleEffectBigger.Copy(scaleEffectBigger);
-        StartScaleEffect(this.transform, currentScaleBiggerEffect);
+        StartScaleEffect(UIImage.transform, currentScaleBiggerEffect);
     }
     public void ReduceSelf()
     {
@@ -123,7 +102,7 @@ public class PropUIController : UIEffectController<Image>
         }
         isScalingBigger = false;
         currentScaleBackEffect = scaleEffectBack.Copy(scaleEffectBack);
-        StartScaleEffect(transform, currentScaleBackEffect);
+        StartScaleEffect(UIImage.transform, currentScaleBackEffect);
     }
     public void SetColorMod(ColorEnum colorMod)
     {
@@ -136,7 +115,7 @@ public class PropUIController : UIEffectController<Image>
     }
     public void OnClicked()
     {
-        if (KeyboardSet.IsKeyUp(KeyEnum.Click2))
+        if (KeyboardSet.IsKeyUp(KeyEnum.Click2) || Prop == PorpEnum.Blank)
         {
             return;
         }

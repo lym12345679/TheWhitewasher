@@ -10,8 +10,14 @@ public class SquareEffect : GoEffectController<SpriteRenderer>
     private FadeEffectGO<SpriteRenderer> fadeInEffect;
     private FadeEffectGO<SpriteRenderer> fadeOutEffect;
     private FadeEffectGO<SpriteRenderer> currentEffect;
+    private bool isInit = false;
     private void SetFadeEffect()
     {
+        if (isInit)
+        {
+            return;
+        }
+        isInit = true;
         fadeMode = new FadeEffectGO<SpriteRenderer>(transform.GetComponent<SpriteRenderer>())
             .SetFadeMode(FadeMode.Once)
             .SetFadeTime(StaticDatas.ColorFadeTime)
@@ -27,10 +33,11 @@ public class SquareEffect : GoEffectController<SpriteRenderer>
     }
     private void Start()
     {
-        SetFadeEffect();
+
     }
     private FadeEffectGO<SpriteRenderer> SetFadeColor(Color color, FadeEffectGO<SpriteRenderer>.PercentageHandler hander, Action<FadeEffectGO<SpriteRenderer>> endHander)
     {
+        SetFadeEffect();
         return fadeMode
             .SetFadeColor(color)
             .SetOriginalColor(SquareTarget.color)
@@ -39,16 +46,19 @@ public class SquareEffect : GoEffectController<SpriteRenderer>
     }
     public void StartFadeEffect(Color to, FadeEffectGO<SpriteRenderer>.PercentageHandler persentageHander, Action<FadeEffectGO<SpriteRenderer>> endHander)
     {
+        SetFadeEffect();
         StartFade(SquareTarget, SetFadeColor(to, persentageHander, endHander));
     }
     public void PlaneFadeIn()
     {
+        SetFadeEffect();
         StopCurrentEffect();
         currentEffect = fadeInEffect.Copy(fadeInEffect);
         StartFade(PlaneTarget, currentEffect);
     }
     public void PlaneFadeOut()
     {
+        SetFadeEffect();
         StopCurrentEffect();
         currentEffect = fadeOutEffect.Copy(fadeOutEffect);
         StartFade(PlaneTarget, currentEffect);

@@ -11,6 +11,14 @@ public class LevelSceneManager : MonoBehaviour
     public SceneEnum NextScene;
     public AudioEnum BGMEnum;
     public AudioEnum GameFailAudio;
+    public SpriteRenderer Background;
+    private Vector3 cameraPosition
+    {
+        get
+        {
+            return CameraController.Instance.transform.position;
+        }
+    }
     void Awake()
     {
         Instance = this;
@@ -23,9 +31,19 @@ public class LevelSceneManager : MonoBehaviour
     }
     void Start()
     {
-        LevelSceneUI.Open("1");
-        SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.Out));
+        LevelSelectItemMessage levelSelectItemMessage = SOManager.levelSelectItemMessageSO.GetLevelSelectItemMessage(ThisScene);
 
+        LevelSceneUI.Open(new LevelSceneMessage()
+        {
+            BottomBackground = levelSelectItemMessage.BottomSprite,
+            currentLevel = int.Parse(ThisScene.ToString().Split("Level")[1])
+        });
+        SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.Out));
+        Background.sprite = levelSelectItemMessage.SceneBackground;
+    }
+    void Update()
+    {
+        Background.transform.position = new Vector3(cameraPosition.x, cameraPosition.y, Background.transform.position.z);
     }
     public void LoadNextScene()
     {
