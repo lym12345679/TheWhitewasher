@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using MizukiTool.Audio;
 using MizukiTool.RecyclePool;
+using MizukiTool.UIEffect;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,8 @@ public class TextShowController : MonoBehaviour
     public RectTransform Panel;
     public Image LeftImg;
     public Image RightImg;
+    public Image ShownItemImg;
+    private CGShownItemEnum currentShownItemEnum;
     public static TextShowController Instance;
     private static float originalShowInterval = 0.05f;
     private static float correctedShowInterval = 0f;
@@ -24,7 +27,9 @@ public class TextShowController : MonoBehaviour
     private Stack<char> WordStack = new Stack<char>();
     private bool IsShowing = true;
     private Action OnTextOver;
+    private Image selfImg;
     private GridLayoutGroup gridLayoutGroup;
+    private TextShowUIEffect textShowUIEffect;
     private int leftLongPadding = 125;
     private int leftShortPadding = 20;
     private int rightLongPadding = 275;
@@ -33,6 +38,9 @@ public class TextShowController : MonoBehaviour
     {
         Instance = this;
         gridLayoutGroup = Panel.GetComponent<GridLayoutGroup>();
+        selfImg = GetComponent<Image>();
+        textShowUIEffect = GetComponent<TextShowUIEffect>();
+        currentShownItemEnum = CGShownItemEnum.None;
     }
 
     void FixedUpdate()
@@ -93,9 +101,10 @@ public class TextShowController : MonoBehaviour
                     return false;
                 }
             }
-            SetLeftSprite(line.leftCharacter, line.leftSprite);
-            SetRightSprite(line.rightCharacter, line.rightSprite);
-            SortImg(line.dialogSortEnum);
+            SetLeftSprite(line.LeftCharacter, line.LeftSprite);
+            SetRightSprite(line.RightCharacter, line.RightSprite);
+            SetShownItemSprite(line.ShownItem, line.ShownItemSprite);
+            SortImg(line.DialogSortEnum);
             char[] words = line.dialogText.ToCharArray();
             for (int i = words.Length - 1; i >= 0; i--)
             {
@@ -150,6 +159,43 @@ public class TextShowController : MonoBehaviour
             RightImg.sprite = sprite;
         }
     }
+    private void SetShownItemSprite(CGShownItemEnum shownItemEnum, Sprite sprite)
+    {
+        if (shownItemEnum == currentShownItemEnum)
+        {
+            return;
+        }
+        if (shownItemEnum == CGShownItemEnum.None)
+        {
+            ItemFadeOut((FadeEffect<Image> e) =>
+            {
+                ShownItemImg.gameObject.SetActive(false);
+            });
+            currentShownItemEnum = CGShownItemEnum.None;
+        }
+        else if (currentShownItemEnum == CGShownItemEnum.None)
+        {
+            ShownItemImg.gameObject.SetActive(true);
+            ShownItemImg.sprite = sprite;
+            ItemFadeIn();
+            currentShownItemEnum = shownItemEnum;
+        }
+        else
+        {
+            ShownItemImg.sprite = sprite;
+        }
+    }
+    private void ItemFadeIn(Action<FadeEffect<Image>> endHander = null)
+    {
+        textShowUIEffect.StartShownItemFadeIn(ShownItemImg, endHander);
+        textShowUIEffect.StartbackgroundFadeIn(selfImg);
+    }
+    private void ItemFadeOut(Action<FadeEffect<Image>> endHander = null)
+    {
+        textShowUIEffect.StartShownItemFadeOut(ShownItemImg, endHander);
+        textShowUIEffect.StartbackgroundFadeOut(selfImg);
+    }
+    //排序
     private void SortImg(DialogSortEnum dialogSortEnum)
     {
         switch (dialogSortEnum)
@@ -194,16 +240,19 @@ public class TextShowController : MonoBehaviour
                 break;
         }
     }
+    //排序
     private void SortSilbing(GameObject first, GameObject second, GameObject third)
     {
         first.transform.SetAsFirstSibling();
         second.transform.SetAsFirstSibling();
         third.transform.SetAsFirstSibling();
     }
+    //锁定
     private void LockCharacter(Image img)
     {
         img.color = new Color(0.5f, 0.5f, 0.5f, 1);
     }
+    //解锁
     private void UnLockCharacter(Image img)
     {
         img.color = new Color(1, 1, 1, 1);

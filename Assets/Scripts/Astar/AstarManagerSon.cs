@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using MizukiTool.AStar;
-using MizukiTool.Box;
-using UnityEditor.SearchService;
 using UnityEngine;
 
 public class AstarManagerSon : AstarManager
 {
     public static new AstarManagerSon Instance;
-
+    //2.5D效果
+    public static bool IsTPFDUsed = false;
     new void Awake()
     {
         Instance = this;
@@ -76,5 +73,10 @@ public class AstarManagerSon : AstarManager
                 map[i, j].GetMainCompoment<SquareController>().CheckNeighbourPoint();
             }
         }
+    }
+    public void SetTPFD()
+    {
+        IsTPFDUsed = true;
+        CheckAllPointNeighbour();
     }
 }

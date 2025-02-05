@@ -272,6 +272,13 @@ namespace MizukiTool.UIEffect
             finalFadeColor = color;
         }
         /// <summary>
+        /// 立刻执行一次结束处理
+        /// /// </summary>
+        public void StartEndHander()
+        {
+            endHander?.Invoke(this);
+        }
+        /// <summary>
         /// 改变初始颜色(会忘掉最初的颜色)
         /// </summary>
         public void ChangeOriginalColor(Color color)
