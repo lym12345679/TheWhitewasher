@@ -267,7 +267,7 @@ MonoBehaviour:
   NumRect: {fileID: 3027834037817518450}
   BtnBackground: {fileID: 6784160170859616860}
   TinyPeople: {fileID: 229399960494130710}
-  ClickedSoundEffect: 7
+  ClickedSoundEffect: 20
   selfRectTransform: {fileID: 6784160170909372544}
 --- !u!114 &2316715723692295374
 MonoBehaviour:

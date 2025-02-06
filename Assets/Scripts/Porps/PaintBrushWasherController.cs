@@ -1,13 +1,18 @@
 using MizukiTool.AStar;
+using MizukiTool.Audio;
 using UnityEngine;
 
 public class PaintBrushWasherController : MonoBehaviour
 {
     private bool isPlayerEnter = false;
+
+    public AudioEnum GetPropAudio;
     void Update()
     {
         if (isPlayerEnter && KeyboardSet.IsKeyDown(KeyEnum.Interact))
         {
+            Debug.Log("AudioPlay");
+            AudioUtil.Play(GetPropAudio, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
             PorpsManager.Instance.AddProp(new PropClass(this.Porp, this.ColorMod));
             Destroy(this.gameObject);
         }

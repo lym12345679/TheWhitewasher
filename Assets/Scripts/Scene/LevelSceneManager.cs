@@ -62,6 +62,7 @@ public class LevelSceneManager : MonoBehaviour
 
     public void OnPlayerWin()
     {
+        AudioUtil.Play(AudioEnum.SE_Player_Win, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
         LoadNextScene();
     }
     public void OnPlayerLose()

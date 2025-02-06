@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThisScene: 0
   NextScene: 0
-  BGMEnum: 0
+  BGMEnum: 4
   GameFailAudio: 9
   Background: {fileID: 1578367184518304170}
 --- !u!1 &1267479742466593020

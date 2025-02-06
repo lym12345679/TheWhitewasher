@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dbb2600193a6d34c852825cda2e8124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GetPropAudio: 14
   ColorMod: 1
   Porp: 1
 --- !u!58 &5459601773293149179

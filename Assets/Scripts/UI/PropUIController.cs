@@ -1,4 +1,5 @@
 using MizukiTool.AStar;
+using MizukiTool.Audio;
 using MizukiTool.UIEffect;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,7 +32,7 @@ public class PropUIController : UIEffectController<Image>
             return PorpsManager.Instance.CurrentProp;
         }
     }
-
+    public AudioEnum SelectPropAudio;
     void Awake()
     {
         scaleEffectBigger = new ScaleEffect()
@@ -115,10 +116,12 @@ public class PropUIController : UIEffectController<Image>
     }
     public void OnClicked()
     {
+
         if (KeyboardSet.IsKeyUp(KeyEnum.Click2) || Prop == PorpEnum.Blank)
         {
             return;
         }
+        AudioUtil.Play(SelectPropAudio, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
         if (isSelected == false)
         {
             isSelected = true;

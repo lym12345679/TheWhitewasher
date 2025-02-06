@@ -133,6 +133,7 @@ MonoBehaviour:
   UIImage: {fileID: 8855522838847999284}
   SelectedImage: {fileID: 7025605371287657785}
   SelectedMaterial: {fileID: 2100000, guid: ce79a870a3d810a479f84848bd1c1a09, type: 2}
+  SelectPropAudio: 19
 --- !u!222 &5568166406169661752
 CanvasRenderer:
   m_ObjectHideFlags: 0

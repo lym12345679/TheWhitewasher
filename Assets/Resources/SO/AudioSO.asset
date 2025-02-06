@@ -45,7 +45,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: b8bc323875d2d8340b016b6427bf9083, type: 3}
   - Name: SE_Player_Land
     audioEnum: 11
-    audioClip: {fileID: 8300000, guid: 30c91292125866f40b94373eaec78432, type: 3}
+    audioClip: {fileID: 8300000, guid: e5ab7f7c3f941a343ac1bcf7e31fa392, type: 3}
   - Name: SE_Word_Shown
     audioEnum: 12
     audioClip: {fileID: 8300000, guid: 49a9fd315daa1dc44ae38515a4dc3375, type: 3}
@@ -67,3 +67,6 @@ MonoBehaviour:
   - Name: SE_Prop_Cancel
     audioEnum: 18
     audioClip: {fileID: 8300000, guid: 0f767ec03a7b248438762074b704e928, type: 3}
+  - Name: SE_Prop_Select
+    audioEnum: 19
+    audioClip: {fileID: 8300000, guid: 49a9fd315daa1dc44ae38515a4dc3375, type: 3}

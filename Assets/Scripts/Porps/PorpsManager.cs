@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using MizukiTool.AStar;
+using MizukiTool.Audio;
 using UnityEngine;
 using UnityEngine.Events;
 public class PorpsManager : MonoBehaviour
@@ -83,6 +84,7 @@ public class PorpsManager : MonoBehaviour
                             Debug.Log("不能对无色的方块进行染色");
                             return false;
                         }
+
                         PointMod[] pointMods = new PointMod[1] { point.Mod };
                         UsePaintBrushWasher(point, pointMods);
                         DestroyCurrentProp();
@@ -113,6 +115,7 @@ public class PorpsManager : MonoBehaviour
     {
         //Debug.Log("Use PaintBrushWasher");
         //AstarManagerSon.Instance.UpdateAllAstarPonitInCloseList(AstarManager.Instance.map, position, pointMods, UpdatePoint);
+        AudioUtil.Play(AudioEnum.SE_Prop_Use1, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
         Debug.Log(point.GameObject.transform.position + " (" + point.X + " ," + point.Y + ")");
         SquareController squareController = point.GameObject.GetComponent<SquareController>();
         squareController.StartBrush(point, squareController.ColorMod, CurrentProp.GetComponent<PropUIController>().ColorMod);
@@ -130,6 +133,7 @@ public class PorpsManager : MonoBehaviour
     }
     public void UseStainer()
     {
+        AudioUtil.Play(AudioEnum.SE_Prop_Use2, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
         Player.GetComponent<PlayerController>().SetColorMod(CurrentProp.GetComponent<PropUIController>().ColorMod);
     }
 }

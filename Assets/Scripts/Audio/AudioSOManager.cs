@@ -27,7 +27,10 @@ namespace MizukiTool.Audio
         SE_Prop_Use1,
         SE_Prop_Use2,
         SE_Prop_FailUse,
-        SE_Prop_Cancel
-
+        SE_Prop_Cancel,
+        SE_Prop_Select,
+        SE_LevelSelect_Button_Clicked,
+        SE_SceneChange,
+        SE_Player_Win,
     }
 }
