@@ -53,10 +53,11 @@ public class LevelSceneUI : GeneralBox<LevelSceneUI, LevelSceneMessage, string>
     }
     public void OnGoToMenuBtnClicked()
     {
-        SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
+        AstarManagerSon.Instance.SetTPFD();
+        /*SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
         {
             GamePlayManager.GoToMenu();
-        }));
+        }));*/
     }
 }
 public class LevelSceneMessage

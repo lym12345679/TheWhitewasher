@@ -5,7 +5,7 @@ using UnityEngine;
 public class SquareEffect : GoEffectController<SpriteRenderer>
 {
     public SpriteRenderer SquareTarget;
-    public SpriteRenderer PlaneTarget;
+    public SpriteRenderer SquareTarget2;
     private FadeEffectGO<SpriteRenderer> fadeMode;
     private FadeEffectGO<SpriteRenderer> fadeInEffect;
     private FadeEffectGO<SpriteRenderer> fadeOutEffect;
@@ -22,11 +22,11 @@ public class SquareEffect : GoEffectController<SpriteRenderer>
             .SetFadeMode(FadeMode.Once)
             .SetFadeTime(StaticDatas.ColorFadeTime)
             .SetFadeColor(Color.black);
-        fadeInEffect = new FadeEffectGO<SpriteRenderer>(PlaneTarget)
+        fadeInEffect = new FadeEffectGO<SpriteRenderer>(SquareTarget2)
             .SetFadeMode(FadeMode.Once)
             .SetFadeTime(StaticDatas.ColorFadeTime)
             .SetFadeColor(new Color(1, 1, 1, 1));
-        fadeOutEffect = new FadeEffectGO<SpriteRenderer>(PlaneTarget)
+        fadeOutEffect = new FadeEffectGO<SpriteRenderer>(SquareTarget2)
             .SetFadeMode(FadeMode.Once)
             .SetFadeTime(StaticDatas.ColorFadeTime)
             .SetFadeColor(new Color(1, 1, 1, 0));
@@ -54,14 +54,14 @@ public class SquareEffect : GoEffectController<SpriteRenderer>
         SetFadeEffect();
         StopCurrentEffect();
         currentEffect = fadeInEffect.Copy(fadeInEffect);
-        StartFade(PlaneTarget, currentEffect);
+        StartFade(SquareTarget2, currentEffect);
     }
     public void PlaneFadeOut()
     {
         SetFadeEffect();
         StopCurrentEffect();
         currentEffect = fadeOutEffect.Copy(fadeOutEffect);
-        StartFade(PlaneTarget, currentEffect);
+        StartFade(SquareTarget2, currentEffect);
     }
     private void StopCurrentEffect()
     {

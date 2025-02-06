@@ -9,12 +9,10 @@ public class SquareController : MonoBehaviour
     public bool isFading = false;
     public bool isAskNeighbour = false;
     public SpriteRenderer FadeTarget;
+    public SpriteRenderer SquareTarget2;
     public SquareEffect selfSquareEffect;
     public SquareCorrectPositionMod SquareCorrectPositionMod = SquareCorrectPositionMod.Used;
-    void Start()
-    {
-        this.gameObject.layer = LayerMask.NameToLayer(MPoint.ToString());
-    }
+    public ColorEnum ColorMod;
     public PointMod MPoint
     {
         get
@@ -22,17 +20,30 @@ public class SquareController : MonoBehaviour
             return SOManager.colorSO.GetPointMod(ColorMod);
         }
     }
-    public ColorEnum ColorMod;
+    void Awake()
+    {
+        FadeTarget = GetComponent<SpriteRenderer>();
+        selfSquareEffect = GetComponent<SquareEffect>();
+    }
+    void Start()
+    {
+        this.gameObject.layer = LayerMask.NameToLayer(MPoint.ToString());
+        SetTPFDMod(AstarManagerSon.IsTPFDUsed);
+    }
+
+
     #region OnValidate
     private void OnValidate()
     {
-        FadeTarget.color = SOManager.colorSO.GetColor(ColorMod);
+        Color color = SOManager.colorSO.GetColor(ColorMod);
+        FadeTarget.color = color;
+        SquareTarget2.color = new Color(color.r, color.g, color.b, 0);
         if (SquareCorrectPositionMod == SquareCorrectPositionMod.Start)
         {
             CorrectPosition();
             SquareCorrectPositionMod = SquareCorrectPositionMod.Used;
         }
-        this.gameObject.name = "Go_Plane|" + transform.localPosition.x + "|" + transform.localPosition.y;
+        this.gameObject.name = "Go_Plane_" + transform.localPosition.x + "_" + transform.localPosition.y;
     }
 
     void OnDrawGizmos()
@@ -186,7 +197,10 @@ public class SquareController : MonoBehaviour
     {
         return isFading;
     }
-
+    public void SetTPFDMod(bool b)
+    {
+        SquareTarget2.gameObject.SetActive(b);
+    }
 }
 
 public enum SquareCorrectPositionMod

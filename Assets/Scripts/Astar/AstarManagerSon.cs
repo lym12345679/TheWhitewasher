@@ -26,9 +26,9 @@ public class AstarManagerSon : AstarManager
         GameObject[] go_planes = GameObject.FindGameObjectsWithTag("Go_Plane");
         foreach (var go in go_planes)
         {
-            string[] names = go.name.Split('|');
-            int x = int.Parse(names[1]);
-            int y = int.Parse(names[2]);
+            string[] names = go.name.Split('_');
+            int x = int.Parse(names[2]);
+            int y = int.Parse(names[3]);
             SquareController squareController = go.GetComponent<SquareController>();
             mapData[y, x] = squareController.MPoint;
             gameObjects[y, x] = go;
@@ -125,8 +125,23 @@ public class AstarManagerSon : AstarManager
     }
     public void SetTPFD()
     {
-        IsTPFDUsed = true;
-        CheckAllPointNeighbour();
+        IsTPFDUsed = !IsTPFDUsed;
+        //CheckAllPointNeighbour();
+        Vector3 origin = map.GetOrigin() + new Vector3(cellSize / 2, cellSize / 2, 0);
+        for (int i = 0; i < map.GetMapHeight(); i++)
+        {
+            for (int j = 0; j < map.GetMapWidth(); j++)
+            {
+                if (map[i, j].GameObject != null)
+                {
+                    map[i, j].GetMainCompoment<SquareController>().SetTPFDMod(IsTPFDUsed);
+                }
+                else
+                {
+                    Debug.LogWarning("注意:" + j + "," + i + "没有找到方块!");
+                }
+            }
+        }
     }
     public void RefindPoint(Point point)
     {
