@@ -12,6 +12,7 @@ public class LevelSceneManager : MonoBehaviour
     public AudioEnum BGMEnum;
     public AudioEnum GameFailAudio;
     public SpriteRenderer Background;
+    private int targetCount = 0;
     private Vector3 cameraPosition
     {
         get
@@ -60,6 +61,22 @@ public class LevelSceneManager : MonoBehaviour
         }));
     }
 
+    public void PlayerArrive()
+    {
+        if (ThisScene == SceneEnum.Level8)
+        {
+            targetCount++;
+            if (targetCount == 7)
+            {
+                Debug.Log("集齐七颗龙珠!");
+                OnPlayerWin();
+            }
+        }
+        else
+        {
+            OnPlayerWin();
+        }
+    }
     public void OnPlayerWin()
     {
         AudioUtil.Play(AudioEnum.SE_Player_Win, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
