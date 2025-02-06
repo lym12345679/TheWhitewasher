@@ -73,7 +73,16 @@ public class PorpsManager : MonoBehaviour
                             Debug.Log("不能在同一个颜色的点使用道具");
                             return false;
                         }
-
+                        if (point.GameObject == null)
+                        {
+                            Debug.Log("不能对不存在的方块进行染色");
+                            return false;
+                        }
+                        if (point.Mod == PointMod.None)
+                        {
+                            Debug.Log("不能对无色的方块进行染色");
+                            return false;
+                        }
                         PointMod[] pointMods = new PointMod[1] { point.Mod };
                         UsePaintBrushWasher(point, pointMods);
                         DestroyCurrentProp();

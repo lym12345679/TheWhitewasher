@@ -112,7 +112,14 @@ public class AstarManagerSon : AstarManager
                     }
                 }
                 else*/
-                map[i, j].GetMainCompoment<SquareController>().CheckNeighbourPoint();
+                if (map[i, j].GameObject != null)
+                {
+                    map[i, j].GetMainCompoment<SquareController>().CheckNeighbourPoint();
+                }
+                else
+                {
+                    Debug.LogWarning("注意:" + j + "," + i + "没有找到方块!");
+                }
             }
         }
     }
