@@ -15,12 +15,12 @@ public class CGUI : GeneralBox<CGUI, CGGroup, string>
     private bool isFirstOpen = true;
     public override void Close()
     {
+        if (param.EndHander != null)
+        {
+            param.EndHander();
+        }
         effect.StartFadeOut((FadeEffect<Image> e) =>
         {
-            if (param.EndHander != null)
-            {
-                param.EndHander();
-            }
             base.Close();
         });
     }

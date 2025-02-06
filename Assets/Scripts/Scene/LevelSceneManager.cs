@@ -69,7 +69,20 @@ public class LevelSceneManager : MonoBehaviour
             if (targetCount == 7)
             {
                 Debug.Log("集齐七颗龙珠!");
-                OnPlayerWin();
+                if (!StaticDatas.IsDialogCGShown)
+                {
+                    StaticDatas.IsDialogCGShown = true;
+                    CGUI.Open(new CGGroup()
+                    {
+                        CGEnum = CGEnum.Dialog,
+                        EndHander = () =>
+                        {
+                            OnPlayerWin();
+                        }
+                    });
+                }
+                else
+                    OnPlayerWin();
             }
         }
         else
@@ -80,10 +93,20 @@ public class LevelSceneManager : MonoBehaviour
     public void OnPlayerWin()
     {
         AudioUtil.Play(AudioEnum.SE_Player_Win, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
+        LevelUp();
         LoadNextScene();
     }
     public void OnPlayerLose()
     {
         Reset();
+    }
+    public void LevelUp()
+    {
+        string sceneName = ThisScene.ToString();
+        int currentLevel = int.Parse(sceneName.Split("Level")[1]);
+        if (currentLevel == StaticDatas.MaxLevel)
+        {
+            StaticDatas.MaxLevel++;
+        }
     }
 }

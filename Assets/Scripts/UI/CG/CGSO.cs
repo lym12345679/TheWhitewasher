@@ -13,7 +13,7 @@ public class CGGroupsSO : ScriptableObject
 public enum CGEnum
 {
     Begin,
-    Dialoge,
+    Dialog,
     End,
     Test,
     None,

@@ -58,10 +58,26 @@ public class MenuUI : GeneralBox<MenuUI, string, string>
     }
     public void OnLevelSelectBtnClicked()
     {
-        SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
+        if (!StaticDatas.IsBeginCGShown)
+        {
+            StaticDatas.IsBeginCGShown = true;
+            CGUI.Open(new CGGroup()
+            {
+                CGEnum = CGEnum.Begin,
+                EndHander = () =>
+                {
+                    SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
+                    {
+                        GamePlayManager.GoToLevelSelect();
+                    }));
+                }
+            });
+        }
+        Close();
+        /*SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
         {
             GamePlayManager.GoToLevelSelect();
-        }));
+        }));*/
     }
     public void OnExitBtnClicked()
     {

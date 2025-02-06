@@ -10,7 +10,7 @@ public static class SOManager
     public static SpecialCGSO specialCGSO = Resources.Load<SpecialCGSO>("SO/SpecialCG/SpecialCGSO");
     public static Dictionary<CGEnum, CGGroupsSO> CGGroups = new Dictionary<CGEnum, CGGroupsSO>(){
         {CGEnum.Begin, Resources.Load<CGGroupsSO>("SO/CGSO/BeginCG")},
-        {CGEnum.Dialoge, Resources.Load<CGGroupsSO>("SO/CGSO/DialogCG")},
+        {CGEnum.Dialog, Resources.Load<CGGroupsSO>("SO/CGSO/DialogCG")},
         {CGEnum.End, Resources.Load<CGGroupsSO>("SO/CGSO/EndCG")},
         {CGEnum.Test, Resources.Load<CGGroupsSO>("SO/CGSO/TestCG")},
     };
