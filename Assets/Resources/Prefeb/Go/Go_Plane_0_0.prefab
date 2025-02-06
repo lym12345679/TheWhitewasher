@@ -193,6 +193,7 @@ MonoBehaviour:
   selfSquareEffect: {fileID: 1307995128592685401}
   SquareCorrectPositionMod: 0
   ColorMod: 1
+  ColorEnumSearch: 
 --- !u!61 &2989894700075632096
 BoxCollider2D:
   m_ObjectHideFlags: 0

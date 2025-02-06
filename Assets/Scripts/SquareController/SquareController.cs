@@ -20,6 +20,7 @@ public class SquareController : MonoBehaviour
             return SOManager.colorSO.GetPointMod(ColorMod);
         }
     }
+
     void Awake()
     {
         FadeTarget = GetComponent<SpriteRenderer>();
@@ -33,8 +34,11 @@ public class SquareController : MonoBehaviour
 
 
     #region OnValidate
+    [Header("拼写设置颜色")]
+    public string ColorEnumSearch;
     private void OnValidate()
     {
+        CheckColorEnumSearch();
         Color color = SOManager.colorSO.GetColor(ColorMod);
         FadeTarget.color = color;
         SquareTarget2.color = new Color(color.r, color.g, color.b, 0);
@@ -44,8 +48,22 @@ public class SquareController : MonoBehaviour
             SquareCorrectPositionMod = SquareCorrectPositionMod.Used;
         }
         this.gameObject.name = "Go_Plane_" + transform.localPosition.x + "_" + transform.localPosition.y;
-    }
 
+    }
+    private void CheckColorEnumSearch()
+    {
+        if (ColorEnumSearch.Length > 2)
+        {
+            ColorEnum colorEnum;
+            if (System.Enum.TryParse(ColorEnumSearch, out colorEnum))
+            {
+                ColorMod = colorEnum;
+                ColorEnumSearch = "";
+            }
+
+
+        }
+    }
     void OnDrawGizmos()
     {
         Color color = Color.black;

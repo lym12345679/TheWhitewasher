@@ -57,30 +57,30 @@ MonoBehaviour:
     eColor: 11
     color: {r: 0.28627452, g: 0.44313726, b: 0.47843137, a: 1}
     pointMod: 3
-  - Name: II_1_Layer4
+  - Name: II_1_Layer1
     eColor: 12
     color: {r: 0.20784314, g: 0.35686275, b: 0.39607844, a: 1}
-    pointMod: 4
+    pointMod: 1
   - Name: II_2_Layer2
     eColor: 13
     color: {r: 0.28627452, g: 0.44313726, b: 0.47843137, a: 1}
     pointMod: 2
-  - Name: II_3_Layer6
+  - Name: II_3_Layer3
     eColor: 14
     color: {r: 1, g: 0.34117648, b: 0.2, a: 1}
-    pointMod: 6
+    pointMod: 3
   - Name: III_1_Layer1
     eColor: 15
     color: {r: 0.37254903, g: 0.5254902, b: 0.53333336, a: 1}
     pointMod: 1
-  - Name: III_2_Layer4
+  - Name: III_2_Layer2
     eColor: 16
     color: {r: 0.20784314, g: 0.35686275, b: 0.39607844, a: 1}
-    pointMod: 4
-  - Name: III_3_Layer6
+    pointMod: 2
+  - Name: III_3_Layer3
     eColor: 17
     color: {r: 1, g: 0.34117648, b: 0.2, a: 1}
-    pointMod: 6
+    pointMod: 3
   - Name: IV_1_Layer1
     eColor: 18
     color: {r: 0.5019608, g: 0.5882353, b: 0.54901963, a: 1}
@@ -89,11 +89,95 @@ MonoBehaviour:
     eColor: 19
     color: {r: 0.6392157, g: 0.6862745, b: 1, a: 1}
     pointMod: 2
-  - Name: IV_3_Layer6
+  - Name: IV_3_Layer3
     eColor: 20
     color: {r: 1, g: 0.34117648, b: 0.2, a: 1}
-    pointMod: 6
-  - Name: IV_4_Layer7
+    pointMod: 3
+  - Name: IV_4_Layer4
     eColor: 21
     color: {r: 1, g: 0.80784315, b: 0.49803922, a: 1}
-    pointMod: 7
+    pointMod: 4
+  - Name: V_1_Layer1
+    eColor: 22
+    color: {r: 0.827451, g: 0.6039216, b: 0.5176471, a: 1}
+    pointMod: 1
+  - Name: V_2_Layer2
+    eColor: 23
+    color: {r: 1, g: 0.92941177, b: 0.83137256, a: 1}
+    pointMod: 2
+  - Name: V_3_Layer3
+    eColor: 24
+    color: {r: 1, g: 0.80784315, b: 0.49803922, a: 1}
+    pointMod: 3
+  - Name: V_4_Layer4
+    eColor: 25
+    color: {r: 0.7607843, g: 0.7607843, b: 0.7607843, a: 1}
+    pointMod: 4
+  - Name: V_5_Layer5
+    eColor: 26
+    color: {r: 0.6392157, g: 0.6862745, b: 1, a: 1}
+    pointMod: 5
+  - Name: VI_1_Layer1
+    eColor: 27
+    color: {r: 0.96862745, g: 0.6313726, b: 0.5176471, a: 1}
+    pointMod: 1
+  - Name: VI_2_Layer2
+    eColor: 28
+    color: {r: 1, g: 0.92941177, b: 0.83137256, a: 1}
+    pointMod: 2
+  - Name: VI_3_Layer3
+    eColor: 29
+    color: {r: 1, g: 0.80784315, b: 0.49803922, a: 1}
+    pointMod: 3
+  - Name: VI_4_Layer4
+    eColor: 30
+    color: {r: 0.7607843, g: 0.7607843, b: 0.7607843, a: 1}
+    pointMod: 4
+  - Name: VI_5_Layer5
+    eColor: 31
+    color: {r: 0.6392157, g: 0.6862745, b: 1, a: 1}
+    pointMod: 5
+  - Name: VII_1_Layer1
+    eColor: 32
+    color: {r: 1, g: 0.8352941, b: 0.7411765, a: 1}
+    pointMod: 1
+  - Name: VII_2_Layer2
+    eColor: 33
+    color: {r: 0.96862745, g: 0.6313726, b: 0.5176471, a: 1}
+    pointMod: 2
+  - Name: VII_3_Layer4
+    eColor: 34
+    color: {r: 0.6392157, g: 0.6862745, b: 1, a: 1}
+    pointMod: 4
+  - Name: VII_4_Layer3
+    eColor: 35
+    color: {r: 0.7607843, g: 0.7607843, b: 0.7607843, a: 1}
+    pointMod: 3
+  - Name: VII_5_Layer5
+    eColor: 36
+    color: {r: 1, g: 0.73333335, b: 0.29803923, a: 1}
+    pointMod: 5
+  - Name: VII_6_Layer6
+    eColor: 37
+    color: {r: 1, g: 0.6901961, b: 0.88235295, a: 1}
+    pointMod: 6
+  - Name: VIII_1_Layer1
+    eColor: 38
+    color: {r: 1, g: 0.92941177, b: 0.83137256, a: 1}
+    pointMod: 1
+  - Name: VIII_2_Layer2
+    eColor: 39
+    color: {r: 0.13333334, g: 0.27450982, b: 0.3254902, a: 1}
+    pointMod: 2
+  - Name: VIII_3_Layer3
+    eColor: 40
+    color: {r: 0.37254903, g: 0.5254902, b: 0.53333336, a: 1}
+    pointMod: 3
+  - Name: VIII_4_Layer4
+    eColor: 41
+    color: {r: 0.96862745, g: 0.6313726, b: 0.5176471, a: 1}
+    pointMod: 4
+  - Name: VIII_5_Layer5
+    eColor: 42
+    color: {r: 0.6392157, g: 0.6862745, b: 1, a: 1}
+    pointMod: 5
