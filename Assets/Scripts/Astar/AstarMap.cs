@@ -48,7 +48,7 @@ namespace MizukiTool.AStar
         {
             if (MainCompoment == null)
             {
-                Debug.Log("(" + X + "," + Y + "):MainCompoment is null");
+                //Debug.Log("(" + X + "," + Y + "):MainCompoment is null");
                 return null;
             }
             return MainCompoment as T;

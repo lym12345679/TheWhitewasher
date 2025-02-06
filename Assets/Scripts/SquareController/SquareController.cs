@@ -32,6 +32,7 @@ public class SquareController : MonoBehaviour
             CorrectPosition();
             SquareCorrectPositionMod = SquareCorrectPositionMod.Used;
         }
+        this.gameObject.name = "Go_Plane|" + transform.localPosition.x + "|" + transform.localPosition.y;
     }
 
     void OnDrawGizmos()
@@ -161,6 +162,10 @@ public class SquareController : MonoBehaviour
             return;
         }
         if (upPoint == null)
+        {
+            return;
+        }
+        if (upPoint.GameObject == null)
         {
             return;
         }
