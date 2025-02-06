@@ -25,6 +25,17 @@ public class CGShownItemSO : ScriptableObject
         }
         return null;
     }
+    public Sprite GetPixelSprite(CGShownItemEnum shownItemEnum)
+    {
+        foreach (var item in CGShownItemList)
+        {
+            if (item.ShownItemEnum == shownItemEnum)
+            {
+                return item.PixelSprite;
+            }
+        }
+        return null;
+    }
 }
 [Serializable]
 public class CGShownItem
@@ -34,6 +45,7 @@ public class CGShownItem
 
     public CGShownItemEnum ShownItemEnum;
     public Sprite ShownItemSprite;
+    public Sprite PixelSprite;
 }
 public enum CGShownItemEnum
 {

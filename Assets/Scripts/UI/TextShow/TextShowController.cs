@@ -169,19 +169,20 @@ public class TextShowController : MonoBehaviour
         {
             ItemFadeOut((FadeEffect<Image> e) =>
             {
-                ShownItemImg.gameObject.SetActive(false);
+
             });
             currentShownItemEnum = CGShownItemEnum.None;
         }
         else if (currentShownItemEnum == CGShownItemEnum.None)
         {
-            ShownItemImg.gameObject.SetActive(true);
-            ShownItemImg.sprite = sprite;
+
             ItemFadeIn();
+            ShownItemImg.sprite = sprite;
             currentShownItemEnum = shownItemEnum;
         }
         else
         {
+            ItemFadeIn();
             ShownItemImg.sprite = sprite;
         }
     }
@@ -189,6 +190,7 @@ public class TextShowController : MonoBehaviour
     {
         textShowUIEffect.StartShownItemFadeIn(ShownItemImg, endHander);
         textShowUIEffect.StartbackgroundFadeIn(selfImg);
+
     }
     private void ItemFadeOut(Action<FadeEffect<Image>> endHander = null)
     {

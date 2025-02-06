@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 3962865759731501584}
   - component: {fileID: 1307995128592685401}
   m_Layer: 9
-  m_Name: Go_plane(0,0)
+  m_Name: Go_Plane|0|0
   m_TagString: Go_Plane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

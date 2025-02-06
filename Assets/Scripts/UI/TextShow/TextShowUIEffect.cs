@@ -31,6 +31,7 @@ public class TextShowUIEffect : UIEffectController<Image>
         if (currentBackgroundFadeEffect != null)
         {
             currentBackgroundFadeEffect.StartEndHander();
+            currentShownItemFadeEffect.FinishImmediately();
             currentBackgroundFadeEffect = null;
         }
         currentBackgroundFadeEffect = backgroundFadeInEffect.Copy(backgroundFadeInEffect).SetEndHander(endHander);
@@ -41,6 +42,7 @@ public class TextShowUIEffect : UIEffectController<Image>
         if (currentBackgroundFadeEffect != null)
         {
             currentBackgroundFadeEffect.StartEndHander();
+            currentShownItemFadeEffect.FinishImmediately();
             currentBackgroundFadeEffect = null;
         }
         currentBackgroundFadeEffect = backgroundFadeOutEffect.Copy(backgroundFadeOutEffect).SetEndHander(endHander);
@@ -51,8 +53,10 @@ public class TextShowUIEffect : UIEffectController<Image>
         if (currentShownItemFadeEffect != null)
         {
             currentShownItemFadeEffect.StartEndHander();
+            currentShownItemFadeEffect.FinishImmediately();
             currentShownItemFadeEffect = null;
         }
+        targetImage.color = new Color(1, 1, 1, 0);
         currentShownItemFadeEffect = shownItemFadeInEffect.Copy(shownItemFadeInEffect).SetEndHander(endHander);
         StartFade(targetImage, currentShownItemFadeEffect);
     }
@@ -61,6 +65,7 @@ public class TextShowUIEffect : UIEffectController<Image>
         if (currentShownItemFadeEffect != null)
         {
             currentShownItemFadeEffect.StartEndHander();
+            currentShownItemFadeEffect.FinishImmediately();
             currentShownItemFadeEffect = null;
         }
         currentShownItemFadeEffect = shownItemFadeOutEffect.Copy(shownItemFadeOutEffect).SetEndHander(endHander);

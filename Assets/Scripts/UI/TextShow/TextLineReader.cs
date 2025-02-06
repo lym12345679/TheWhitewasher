@@ -93,7 +93,7 @@ public class TextLineReader
         ShownItemSprite = null;
         if (System.Enum.TryParse(word, true, out ShownItem))
         {
-            Debug.Log("Parsed enum value: " + ShownItem.ToString());
+            //Debug.Log("Parsed enum value: " + ShownItem.ToString());
             if (ShownItem != CGShownItemEnum.None)
             {
                 ShownItemSprite = SOManager.cgShownItemSO.GetSprite(ShownItem);
