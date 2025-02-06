@@ -16,4 +16,5 @@ public enum CGEnum
     Dialoge,
     End,
     Test,
+    None,
 }
