@@ -9,6 +9,7 @@ public class MenuUI : GeneralBox<MenuUI, string, string>
 {
     public RectTransform BackGround1;
     public RectTransform BackGround2;
+    public RectTransform Panel;
     public AudioEnum MenuBGM;
     public bool IsPlayerFinishAllLevel
     {
@@ -45,7 +46,15 @@ public class MenuUI : GeneralBox<MenuUI, string, string>
     }
     public void OnSettingBtnClicked()
     {
-        SettingUI.Open(new SettingUIMessage());
+        Panel.gameObject.SetActive(false);
+        SettingUI.Open(new SettingUIMessage()
+        {
+            EndHander = () =>
+            {
+                Panel.gameObject.SetActive(true);
+            }
+        });
+
     }
     public void OnLevelSelectBtnClicked()
     {
