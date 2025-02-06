@@ -34,5 +34,11 @@ public class CGUIEffect : UIEffectController<Image>
         FadeEffect<Image> fadeEffect = fadeOutEffect.SetEndHander(endHander);
         StartFade(TargetImage, fadeEffect);
     }
+    public void QuicklyFadeIn(Action<FadeEffect<Image>> endHander = null)
+    {
+        TargetImage.color = new Color(1, 1, 1, 1);
+        FadeEffect<Image> fadeEffect = fadeInEffect.SetFadeTime(0.1f).SetEndHander(endHander);
+        StartFade(TargetImage, fadeEffect);
+    }
 
 }

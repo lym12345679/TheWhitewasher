@@ -12,4 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a9443b533f2f84b9bb213815c9138e, type: 3}
   m_Name: BeginCG
   m_EditorClassIdentifier: 
-  CGList: []
+  CGList:
+  - CGSprite: {fileID: 21300000, guid: 3a2987fb45b2dee4486404c00e7939ca, type: 3}
+    TextAsset: {fileID: 4900000, guid: 6442d79eb9d4aaf428ceafc17ca06b2e, type: 3}
+    BGMEnum: 3
+  - CGSprite: {fileID: 21300000, guid: 2d6994e55f1a1744ea3e3f2910d65eeb, type: 3}
+    TextAsset: {fileID: 4900000, guid: 6442d79eb9d4aaf428ceafc17ca06b2e, type: 3}
+    BGMEnum: 3
+  - CGSprite: {fileID: 21300000, guid: 3da6cfa31b4a9244c9baa0321598a2a9, type: 3}
+    TextAsset: {fileID: 4900000, guid: 6442d79eb9d4aaf428ceafc17ca06b2e, type: 3}
+    BGMEnum: 3
+  - CGSprite: {fileID: 21300000, guid: f32429a5dc980034cac9f73d412b7da3, type: 3}
+    TextAsset: {fileID: 4900000, guid: 6442d79eb9d4aaf428ceafc17ca06b2e, type: 3}
+    BGMEnum: 3
+  - CGSprite: {fileID: 21300000, guid: 282a3e417033a83459067b50543c192d, type: 3}
+    TextAsset: {fileID: 4900000, guid: 6442d79eb9d4aaf428ceafc17ca06b2e, type: 3}
+    BGMEnum: 3
+  - CGSprite: {fileID: 21300000, guid: 2764372c6fde4714e87f467c8cb92a7f, type: 3}
+    TextAsset: {fileID: 4900000, guid: 6442d79eb9d4aaf428ceafc17ca06b2e, type: 3}
+    BGMEnum: 3
+  - CGSprite: {fileID: 21300000, guid: 048464f459ff379438392d019e4591f8, type: 3}
+    TextAsset: {fileID: 4900000, guid: 6442d79eb9d4aaf428ceafc17ca06b2e, type: 3}
+    BGMEnum: 3

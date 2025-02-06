@@ -12,6 +12,7 @@ public class CGUI : GeneralBox<CGUI, CGGroup, string>
     public Image TargetImage;
     private TextShowUI textShowUI;
     private Stack<CGMessage> cgMessageStack = new Stack<CGMessage>();
+    private bool isFirstOpen = true;
     public override void Close()
     {
         effect.StartFadeOut((FadeEffect<Image> e) =>
@@ -38,7 +39,23 @@ public class CGUI : GeneralBox<CGUI, CGGroup, string>
             TargetImage.sprite = cgMessage.CGSprite;
             TargetImage.color = new Color(0, 0, 0, 1);
             StartCGBGM(cgMessage.BGMEnum);
-            effect.StartFadeIn(
+            if (param.CGEnum == CGEnum.Begin && !isFirstOpen)
+            {
+                effect.QuicklyFadeIn((FadeEffect<Image> e) =>
+                {
+                    GameObject go = TextShowUI.Open(new TextShowUIMessage()
+                    {
+                        TextAsset = cgMessage.TextAsset,
+                        EndHander = TryToSetNextCG,
+                        SkipHander = SkipCG
+                    });
+                    textShowUI = go.GetComponent<TextShowUI>();
+                });
+
+            }
+            else
+            {
+                effect.StartFadeIn(
                 (FadeEffect<Image> e) =>
                 {
                     GameObject go = TextShowUI.Open(new TextShowUIMessage()
@@ -50,6 +67,9 @@ public class CGUI : GeneralBox<CGUI, CGGroup, string>
                     textShowUI = go.GetComponent<TextShowUI>();
                 }
             );
+                isFirstOpen = false;
+            }
+
         }
         else
         {
