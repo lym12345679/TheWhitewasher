@@ -20,5 +20,5 @@ public static class StaticDatas
     public static bool IsBeginCGShown = false;
     public static bool IsDialogCGShown = false;
     public static bool IsSpecialCGShown = false;
-    public static bool IsEndCGShowm = false;
+    public static bool IsEndCGShown = false;
 }

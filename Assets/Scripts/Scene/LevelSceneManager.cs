@@ -92,9 +92,26 @@ public class LevelSceneManager : MonoBehaviour
     }
     public void OnPlayerWin()
     {
-        AudioUtil.Play(AudioEnum.SE_Player_Win, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
-        LevelUp();
-        LoadNextScene();
+        if (ThisScene == SceneEnum.Level8 && !StaticDatas.IsEndCGShown)
+        {
+            CGUI.Open(new CGGroup()
+            {
+                CGEnum = CGEnum.End,
+                EndHander = () =>
+                {
+                    AudioUtil.Play(AudioEnum.SE_Player_Win, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
+                    LevelUp();
+                    LoadNextScene();
+                }
+            });
+        }
+        else
+        {
+            AudioUtil.Play(AudioEnum.SE_Player_Win, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
+            LevelUp();
+            LoadNextScene();
+        }
+
     }
     public void OnPlayerLose()
     {
