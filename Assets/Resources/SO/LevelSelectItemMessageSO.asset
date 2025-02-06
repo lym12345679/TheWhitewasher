@@ -51,7 +51,7 @@ MonoBehaviour:
   - Name: Level6
     LevelScene: 7
     BtnBackground: {fileID: 21300000, guid: 333ca5a6d68d72844a4c26a3b8af714f, type: 3}
-    SceneBackground: {fileID: 21300000, guid: 333ca5a6d68d72844a4c26a3b8af714f, type: 3}
+    SceneBackground: {fileID: 21300000, guid: 7237e5e434fafdc4aae9bb9cac0d0e20, type: 3}
     NumSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
     BottomSprite: {fileID: 21300000, guid: 371041f8a7981a44f87288fc414522ab, type: 3}
     TopSprite: {fileID: 21300000, guid: 8762a50fc416a8b47ae5281d42d3338d, type: 3}
