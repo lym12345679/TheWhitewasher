@@ -81,6 +81,6 @@ public static class GamePlayManager
     }
     public static void UnlockAllLevel()
     {
-        MaxLevel = 8;
+        MaxLevel = 9;
     }
 }

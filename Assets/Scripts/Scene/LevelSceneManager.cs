@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using MizukiTool.Audio;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class LevelSceneManager : MonoBehaviour
 {
@@ -12,15 +14,13 @@ public class LevelSceneManager : MonoBehaviour
     public AudioEnum BGMEnum;
     public AudioEnum GameFailAudio;
     public SpriteRenderer Background;
+    public Image BGimg;
     public GameObject Destination;
+    //public GameObject Camera;
+    //private Camera camera;
     private int targetCount = 0;
-    private Vector3 cameraPosition
-    {
-        get
-        {
-            return CameraController.Instance.transform.position;
-        }
-    }
+    public Canvas BGcanvas;
+
     void Awake()
     {
         Instance = this;
@@ -30,6 +30,7 @@ public class LevelSceneManager : MonoBehaviour
             AudioUtil.ReturnAllLoopAudio();
             AudioUtil.Play(BGMEnum, AudioMixerGroupEnum.BGM, AudioPlayMod.Loop);
         }
+
     }
     void Start()
     {
@@ -42,10 +43,15 @@ public class LevelSceneManager : MonoBehaviour
         });
         SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.Out));
         Background.sprite = levelSelectItemMessage.SceneBackground;
+        BGimg.sprite = levelSelectItemMessage.SceneBackground;
+        //Camera = GameObject.Find("Main Camera");
+        //camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        //得到主场景的背景canvas
+        BGcanvas.worldCamera = Camera.main;
     }
     void FixedUpdate()
     {
-        Background.transform.position = new Vector3(cameraPosition.x, cameraPosition.y, Background.transform.position.z);
+        //transform.position = new Vector3(Camera.transform.position.x, Camera.transform.position.y, Background.transform.position.z);
     }
     public void LoadNextScene()
     {

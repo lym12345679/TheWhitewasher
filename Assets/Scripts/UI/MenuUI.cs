@@ -72,8 +72,17 @@ public class MenuUI : GeneralBox<MenuUI, string, string>
                     }));
                 }
             });
+            Close();
         }
-        Close();
+        else
+        {
+            SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
+            {
+                Close();
+                GamePlayManager.GoToLevelSelect();
+            }));
+        }
+
         /*SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
         {
             GamePlayManager.GoToLevelSelect();

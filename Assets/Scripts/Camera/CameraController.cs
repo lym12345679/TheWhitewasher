@@ -5,15 +5,15 @@ public class CameraController : MonoBehaviour
     public static CameraController Instance;
     public GameObject FollowTarget;
     private new Camera camera;
-
+    
     [Header("相机模式")]
     public bool ChangeState = true;
     public CameraMoveMode CameraMode = CameraMoveMode.Follow;
 
     [Header("相机跟随")]
-    public float CameraMinVelocity = 1;
+    private float CameraMinVelocity = 20f;
     private float currentCameraVelocity;
-    public float CatchUpTime = 0.1f;
+    private float CatchUpTime = 0.0001f;
     private float distance;
     private Vector2 moveDirection;
 
