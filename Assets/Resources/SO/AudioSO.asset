@@ -72,7 +72,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 49a9fd315daa1dc44ae38515a4dc3375, type: 3}
   - Name: SE_LevelSelect_Button_Clicked
     audioEnum: 20
-    audioClip: {fileID: 8300000, guid: c14914c4f10490344b889f537a7b9107, type: 3}
+    audioClip: {fileID: 8300000, guid: b8bc323875d2d8340b016b6427bf9083, type: 3}
   - Name: SE_SceneChange
     audioEnum: 21
     audioClip: {fileID: 8300000, guid: b8bc323875d2d8340b016b6427bf9083, type: 3}
