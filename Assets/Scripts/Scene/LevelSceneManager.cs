@@ -44,6 +44,8 @@ public class LevelSceneManager : MonoBehaviour
         SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.Out));
         Background.sprite = levelSelectItemMessage.SceneBackground;
         BGimg.sprite = levelSelectItemMessage.SceneBackground;
+        BGimg.color = new Color(1, 1, 1, 1);
+        //BGimg.gameObject.SetActive(true);
         //Camera = GameObject.Find("Main Camera");
         //camera = GameObject.Find("Main Camera").GetComponent<Camera>();
         //得到主场景的背景canvas

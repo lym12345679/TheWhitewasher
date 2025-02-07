@@ -5,15 +5,15 @@ public class CameraController : MonoBehaviour
     public static CameraController Instance;
     public GameObject FollowTarget;
     private new Camera camera;
-    
+
     [Header("相机模式")]
     public bool ChangeState = true;
     public CameraMoveMode CameraMode = CameraMoveMode.Follow;
 
     [Header("相机跟随")]
-    private float CameraMinVelocity = 20f;
+    private float CameraMinVelocity = 0.1f;
     private float currentCameraVelocity;
-    private float CatchUpTime = 0.0001f;
+    private float CatchUpTime = 0.1f;
     private float distance;
     private Vector2 moveDirection;
 
@@ -227,7 +227,7 @@ public class CameraController : MonoBehaviour
         }
         else if (transform.position.x < CameraMinX + orthographicSize * aspectRatio)
         {
-            if (transform.position.x < CameraMaxX - orthographicSize * aspectRatio - 0.01f)
+            if (transform.position.x < CameraMaxX - orthographicSize * aspectRatio)
             {
                 transform.position = new Vector3(CameraMinX + orthographicSize * aspectRatio, transform.position.y, transform.position.z);
             }
@@ -238,7 +238,7 @@ public class CameraController : MonoBehaviour
         }
         else if (transform.position.y < CameraMinY + orthographicSize)
         {
-            if (transform.position.y < CameraMaxY - orthographicSize - 0.01f)
+            if (transform.position.y < CameraMaxY - orthographicSize)
             {
                 transform.position = new Vector3(transform.position.x, CameraMinY + orthographicSize, transform.position.z);
             }
