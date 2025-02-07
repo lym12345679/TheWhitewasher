@@ -16,7 +16,7 @@ namespace MizukiTool.Audio
             AudioMixerGroup entry = AudioSOManager.audioMixerGroupSO.GetAudioMixerGroup(audioMixerEnum);
             if (entry != null)
             {
-                entry.audioMixer.SetFloat("Vol_" + audioMixerEnum.ToString(), volume);
+                entry.audioMixer.SetFloat(audioMixerEnum.ToString(), volume);
             }
         }
 

@@ -8,6 +8,7 @@ public class SaveTest : MonoBehaviour
     void Start()
     {
         SaveSystem.SaveData();
+        SaveSystem.LoadData();
     }
 
     // Update is called once per frame

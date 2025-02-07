@@ -50,7 +50,7 @@ public class SaveDataInfor
     public void ToJson()
     {
         string json = JsonUtility.ToJson(this);
-        Debug.Log(json);
+        Debug.Log("SaveData:" + json);
         if (!Directory.Exists(Application.streamingAssetsPath))
         {
             Directory.CreateDirectory(Application.streamingAssetsPath);
@@ -68,7 +68,12 @@ public class SaveDataInfor
             Debug.Log("SaveData.json not found");
             return;
         }
-        File.ReadAllText(Application.streamingAssetsPath + "/SaveData.json");
+        else
+        {
+            string json = File.ReadAllText(Application.streamingAssetsPath + "/SaveData.json");
+            FromJson(json);
+            Debug.Log("SaveData.json loaded:" + json);
+        }
     }
     public void FromJson(string json)
     {
