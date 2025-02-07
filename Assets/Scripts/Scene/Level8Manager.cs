@@ -5,7 +5,7 @@ using UnityEngine;
 public class Level8Manager : MonoBehaviour
 {
     public static Level8Manager Instance;
-    public List<DestinationController> Destinations = new List<DestinationController>();
+    public List<CollectionController> Destinations = new List<CollectionController>();
     public static void EnsureInstance()
     {
         if (Instance == null)
@@ -14,25 +14,15 @@ public class Level8Manager : MonoBehaviour
             Instance = go.AddComponent<Level8Manager>();
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-    public void RigisterDestination(DestinationController destination)
+    public void RigisterDestination(CollectionController destination)
     {
         Destinations.Add(destination);
         Destinations.Sort((a, b) => a.Type.CompareTo(b.Type));
         SetAllDestinationUnActive();
         SetNextDestinationActive();
     }
-    public void GetDestination(DestinationController destination)
+    public void GetDestination(CollectionController destination)
     {
         Destinations.Remove(destination);
         if (Destinations.Count == 0)
@@ -47,16 +37,17 @@ public class Level8Manager : MonoBehaviour
 
     public void SetNextDestinationActive()
     {
+        Debug.Log("SetNextDestinationActive");
         if (Destinations.Count > 0)
         {
-            Destinations[0].gameObject.SetActive(true);
+            Destinations[0].SetSelected();
         }
     }
     public void SetAllDestinationUnActive()
     {
         foreach (var item in Destinations)
         {
-            item.gameObject.SetActive(false);
+            item.SetUnSelected();
         }
     }
 }

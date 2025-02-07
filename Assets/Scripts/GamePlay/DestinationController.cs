@@ -11,22 +11,12 @@ public class DestinationController : MonoBehaviour
     private bool isGoingToNextScene = false;
     public Vector3 PositionFixer = new Vector3(0, 0, 0);
     public TextMeshProUGUI WinText;
-    public DestinationType Type;
 
     void Start()
     {
         StayTimeCounter = StayTime;
         WinText.gameObject.SetActive(false);
 
-        if (Type == DestinationType.Destination)
-        {
-
-        }
-        else
-        {
-            Level8Manager.EnsureInstance();
-            Level8Manager.Instance.RigisterDestination(this);
-        }
 
     }
     void Update()
@@ -34,7 +24,6 @@ public class DestinationController : MonoBehaviour
         if (IsPlayerOn)
         {
             WinText.gameObject.SetActive(true);
-
             WinText.text = StayTimeCounter.ToString("F1");
         }
         else
@@ -46,7 +35,6 @@ public class DestinationController : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-
             Debug.Log("Destination Reached");
             IsPlayerOn = true;
         }
@@ -87,26 +75,8 @@ public class DestinationController : MonoBehaviour
 
     public void OnGameWin()
     {
-        if (Type == DestinationType.Destination)
-        {
-            LevelSceneManager.Instance.PlayerArrive();
-        }
-        else
-        {
-            Level8Manager.Instance.GetDestination(this);
-        }
+
+        LevelSceneManager.Instance.PlayerArrive();
         Destroy(this.gameObject);
     }
-}
-public enum DestinationType
-{
-    Destination,
-    FirstCollection,
-    SecondCollection,
-    ThirdCollection,
-    FourthCollection,
-    FifthCollection,
-    SixthCollection,
-    SeventhCollection,
-    EighthCollection,
 }
