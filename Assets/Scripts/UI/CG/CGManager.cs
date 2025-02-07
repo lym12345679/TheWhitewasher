@@ -18,22 +18,22 @@ public class CGManager : MonoBehaviour
 
     void Start()
     {
-        /*CGUI.Open(new CGGroup()
+        CGUI.Open(new CGGroup()
         {
             CGEnum = CGEnum,
             EndHander = () =>
             {
                 Debug.Log("CG Over");
             }
-        });*/
-        SpecialCGUI.Open(new CGGroup()
+        });
+        /*SpecialCGUI.Open(new CGGroup()
         {
             CGEnum = CGEnum,
             EndHander = () =>
             {
                 Debug.Log("SpecialCG Over");
             }
-        });
+        });*/
     }
     /*public void StartCG()
     {
