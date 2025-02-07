@@ -12,6 +12,7 @@ public class DestinationController : MonoBehaviour
     public Vector3 PositionFixer = new Vector3(0, 0, 0);
     public TextMeshProUGUI WinText;
     public DestinationType Type;
+
     void Start()
     {
         StayTimeCounter = StayTime;
@@ -19,9 +20,13 @@ public class DestinationController : MonoBehaviour
 
         if (Type == DestinationType.Destination)
         {
-            LevelSceneManager.Instance.AddDestination(this.gameObject);
+            LevelSceneManager.Instance.OnPlayerWin();
         }
-
+        else
+        {
+            Level8Manager.EnsureInstance();
+            Level8Manager.Instance.RigisterDestination(this);
+        }
 
     }
     void Update()
@@ -86,9 +91,9 @@ public class DestinationController : MonoBehaviour
         {
             LevelSceneManager.Instance.PlayerArrive();
         }
-        else if (Type == DestinationType.Collection)
+        else
         {
-            LevelSceneManager.Instance.PlayerCollect();
+            Level8Manager.Instance.GetDestination(this);
         }
         Destroy(this.gameObject);
     }
@@ -96,5 +101,12 @@ public class DestinationController : MonoBehaviour
 public enum DestinationType
 {
     Destination,
-    Collection
+    FirstCollection,
+    SecondCollection,
+    ThirdCollection,
+    FourthCollection,
+    FifthCollection,
+    SixthCollection,
+    SeventhCollection,
+    EighthCollection,
 }

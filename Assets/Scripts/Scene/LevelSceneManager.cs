@@ -18,7 +18,6 @@ public class LevelSceneManager : MonoBehaviour
     public GameObject Destination;
     //public GameObject Camera;
     //private Camera camera;
-    private int targetCount = 0;
     public Canvas BGcanvas;
 
     void Awake()
@@ -69,15 +68,6 @@ public class LevelSceneManager : MonoBehaviour
             GamePlayManager.LoadScene(ThisScene);
         }));
     }
-    public void AddDestination(GameObject destination)
-    {
-        Destination = destination;
-        if (ThisScene == SceneEnum.Level8)
-        {
-            targetCount = 0;
-            Destination.SetActive(false);
-        }
-    }
     public void ShowDestination()
     {
         if (Destination != null)
@@ -110,7 +100,6 @@ public class LevelSceneManager : MonoBehaviour
             {
                 ShowEndCG();
             }
-
         }
         else
         {
@@ -119,14 +108,6 @@ public class LevelSceneManager : MonoBehaviour
             LoadNextScene();
         }
 
-    }
-    public void PlayerCollect()
-    {
-        targetCount++;
-        if (targetCount == 7)
-        {
-            ShowDestination();
-        }
     }
     public void OnPlayerLose()
     {
