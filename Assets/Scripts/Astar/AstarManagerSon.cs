@@ -125,6 +125,7 @@ public class AstarManagerSon : AstarManager
     }
     public void SetTPFD()
     {
+        //Debug.Log("SetTPFD");
         IsTPFDUsed = !IsTPFDUsed;
         //CheckAllPointNeighbour();
         Vector3 origin = map.GetOrigin() + new Vector3(cellSize / 2, cellSize / 2, 0);
