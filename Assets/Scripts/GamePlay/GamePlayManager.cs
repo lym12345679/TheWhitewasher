@@ -79,4 +79,8 @@ public static class GamePlayManager
     {
         Application.Quit();
     }
+    public static void UnlockAllLevel()
+    {
+        MaxLevel = 8;
+    }
 }

@@ -84,4 +84,8 @@ public class MenuUI : GeneralBox<MenuUI, string, string>
         GamePlayManager.ExitGame();
         Close();
     }
+    public void OnUnlockAllLevelBtnClicked()
+    {
+        GamePlayManager.UnlockAllLevel();
+    }
 }

@@ -221,7 +221,7 @@ public class CameraController : MonoBehaviour
         float orthographicSize = camera.orthographicSize;
         float aspectRatio = camera.aspect;
 
-        if (transform.position.x > CameraMaxX - orthographicSize * aspectRatio)
+        /*if (transform.position.x > CameraMaxX - orthographicSize * aspectRatio)
         {
             transform.position = new Vector3(CameraMaxX - orthographicSize * aspectRatio, transform.position.y, transform.position.z);
         }
@@ -242,12 +242,12 @@ public class CameraController : MonoBehaviour
             {
                 transform.position = new Vector3(transform.position.x, CameraMinY + orthographicSize, transform.position.z);
             }
-        }
+        }*/
 
-        /*transform.position = new Vector3(
+        transform.position = new Vector3(
             Mathf.Clamp(transform.position.x, CameraMinX + orthographicSize * aspectRatio, CameraMaxX - orthographicSize * aspectRatio),
             Mathf.Clamp(transform.position.y, CameraMinY + orthographicSize, CameraMaxY - orthographicSize),
-            transform.position.z);*/
+            transform.position.z);
     }
     void OnDrawGizmos()
     {

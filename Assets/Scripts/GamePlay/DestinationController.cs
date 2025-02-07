@@ -5,23 +5,31 @@ using UnityEngine;
 
 public class DestinationController : MonoBehaviour
 {
-    public float StayTime = 3f;
-    public float StayTimeCounter = 3f;
+    public float StayTime = 2f;
+    private float StayTimeCounter = 2f;
     private bool IsPlayerOn = false;
     private bool isGoingToNextScene = false;
     public Vector3 PositionFixer = new Vector3(0, 0, 0);
     public TextMeshProUGUI WinText;
+    public DestinationType Type;
     void Start()
     {
         StayTimeCounter = StayTime;
         WinText.gameObject.SetActive(false);
-        WinText.transform.position = Camera.main.WorldToScreenPoint(transform.position + PositionFixer);
+
+        if (Type == DestinationType.Destination)
+        {
+            LevelSceneManager.Instance.AddDestination(this.gameObject);
+        }
+
+
     }
     void Update()
     {
         if (IsPlayerOn)
         {
             WinText.gameObject.SetActive(true);
+
             WinText.text = StayTimeCounter.ToString("F1");
         }
         else
@@ -33,6 +41,7 @@ public class DestinationController : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+
             Debug.Log("Destination Reached");
             IsPlayerOn = true;
         }
@@ -53,6 +62,7 @@ public class DestinationController : MonoBehaviour
         {
             if (IsPlayerOn)
             {
+                WinText.transform.position = Camera.main.WorldToScreenPoint(transform.position + PositionFixer);
                 StayTimeCounter -= Time.fixedDeltaTime;
             }
             else
@@ -72,6 +82,19 @@ public class DestinationController : MonoBehaviour
 
     public void OnGameWin()
     {
-        LevelSceneManager.Instance.PlayerArrive();
+        if (Type == DestinationType.Destination)
+        {
+            LevelSceneManager.Instance.PlayerArrive();
+        }
+        else if (Type == DestinationType.Collection)
+        {
+            LevelSceneManager.Instance.PlayerCollect();
+        }
+        Destroy(this.gameObject);
     }
+}
+public enum DestinationType
+{
+    Destination,
+    Collection
 }

@@ -12,6 +12,7 @@ public class LevelSceneManager : MonoBehaviour
     public AudioEnum BGMEnum;
     public AudioEnum GameFailAudio;
     public SpriteRenderer Background;
+    public GameObject Destination;
     private int targetCount = 0;
     private Vector3 cameraPosition
     {
@@ -42,7 +43,7 @@ public class LevelSceneManager : MonoBehaviour
         SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.Out));
         Background.sprite = levelSelectItemMessage.SceneBackground;
     }
-    void Update()
+    void FixedUpdate()
     {
         Background.transform.position = new Vector3(cameraPosition.x, cameraPosition.y, Background.transform.position.z);
     }
@@ -60,50 +61,48 @@ public class LevelSceneManager : MonoBehaviour
             GamePlayManager.LoadScene(ThisScene);
         }));
     }
-
-    public void PlayerArrive()
+    public void AddDestination(GameObject destination)
     {
+        Destination = destination;
         if (ThisScene == SceneEnum.Level8)
         {
-            targetCount++;
-            if (targetCount == 7)
-            {
-                Debug.Log("集齐七颗龙珠!");
-                if (!StaticDatas.IsDialogCGShown)
-                {
-                    StaticDatas.IsDialogCGShown = true;
-                    CGUI.Open(new CGGroup()
-                    {
-                        CGEnum = CGEnum.Dialog,
-                        EndHander = () =>
-                        {
-                            OnPlayerWin();
-                        }
-                    });
-                }
-                else
-                    OnPlayerWin();
-            }
+            targetCount = 0;
+            Destination.SetActive(false);
         }
-        else
+    }
+    public void ShowDestination()
+    {
+        if (Destination != null)
         {
-            OnPlayerWin();
+            Destination.SetActive(true);
         }
+    }
+    public void PlayerArrive()
+    {
+        OnPlayerWin();
     }
     public void OnPlayerWin()
     {
         if (ThisScene == SceneEnum.Level8 && !StaticDatas.IsEndCGShown)
         {
-            CGUI.Open(new CGGroup()
+            StaticDatas.IsEndCGShown = true;
+            if (!StaticDatas.IsDialogCGShown)
             {
-                CGEnum = CGEnum.End,
-                EndHander = () =>
+                StaticDatas.IsDialogCGShown = true;
+                CGUI.Open(new CGGroup()
                 {
-                    AudioUtil.Play(AudioEnum.SE_Player_Win, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
-                    LevelUp();
-                    LoadNextScene();
-                }
-            });
+                    CGEnum = CGEnum.Dialog,
+                    EndHander = () =>
+                    {
+                        ShowEndCG();
+                    }
+                });
+            }
+            else
+            {
+                ShowEndCG();
+            }
+
         }
         else
         {
@@ -113,9 +112,30 @@ public class LevelSceneManager : MonoBehaviour
         }
 
     }
+    public void PlayerCollect()
+    {
+        targetCount++;
+        if (targetCount == 7)
+        {
+            ShowDestination();
+        }
+    }
     public void OnPlayerLose()
     {
         Reset();
+    }
+    public void ShowEndCG()
+    {
+        CGUI.Open(new CGGroup()
+        {
+            CGEnum = CGEnum.End,
+            EndHander = () =>
+            {
+                AudioUtil.Play(AudioEnum.SE_Player_Win, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
+                LevelUp();
+                LoadNextScene();
+            }
+        });
     }
     public void LevelUp()
     {
