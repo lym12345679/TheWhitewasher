@@ -148,8 +148,9 @@ public class SquareController : MonoBehaviour
         if (ColorMod == from)
         {
             Point p = AstarManagerSon.Instance.GetPointOnMap(transform.position);
-            p.Mod = MPoint;
+
             ColorMod = to;
+            p.Mod = MPoint;
             SetIsFading(true);
             isAskNeighbour = false;
             ChanngeLayer();
