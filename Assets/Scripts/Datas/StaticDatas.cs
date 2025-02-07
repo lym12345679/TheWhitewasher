@@ -1,3 +1,6 @@
+
+using MizukiTool.Audio;
+
 public static class StaticDatas
 {
     public static SceneEnum CurrentScene;
@@ -21,4 +24,27 @@ public static class StaticDatas
     public static bool IsDialogCGShown = false;
     public static bool IsSpecialCGShown = false;
     public static bool IsEndCGShown = false;
+    public static float SESoundVolume
+    {
+        get
+        {
+            return AudioMixerGroupManager.GetAudioMixerGroupValume(AudioMixerGroupEnum.Effect);
+        }
+        set
+        {
+            AudioUtil.SetAudioVolume(AudioMixerGroupEnum.Effect, value);
+        }
+    }
+    public static float BGMVolume
+    {
+        get
+        {
+            return AudioMixerGroupManager.GetAudioMixerGroupValume(AudioMixerGroupEnum.BGM);
+        }
+        set
+        {
+            AudioUtil.SetAudioVolume(AudioMixerGroupEnum.BGM, value);
+        }
+    }
+
 }
