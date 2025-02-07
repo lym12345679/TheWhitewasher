@@ -410,11 +410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3703558620759233242, guid: 8130fd9ee5ea2754585b022743ac1cd8, type: 3}
       propertyPath: ColorMod
-<<<<<<< HEAD
-      value: 31
-=======
       value: 26
->>>>>>> fb26c2ec6cfe81605a0775d62484929b23e7e838
       objectReference: {fileID: 0}
     - target: {fileID: 6959672849960870367, guid: 8130fd9ee5ea2754585b022743ac1cd8, type: 3}
       propertyPath: m_Color.b
