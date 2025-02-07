@@ -5,7 +5,17 @@ public class AstarManagerSon : AstarManager
 {
     public static new AstarManagerSon Instance;
     //2.5D效果
-    public static bool IsTPFDUsed = false;
+    public static bool IsTPFDUsed
+    {
+        get
+        {
+            return StaticDatas.IsTPFDUsed;
+        }
+        set
+        {
+            StaticDatas.IsTPFDUsed = value;
+        }
+    }
     new void Awake()
     {
         Instance = this;

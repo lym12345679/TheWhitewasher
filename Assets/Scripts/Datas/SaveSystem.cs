@@ -18,8 +18,10 @@ public class SaveSystem
         StaticDatas.IsBeginCGShown = saveDataInfor.IsBeginCGShown;
         StaticDatas.IsDialogCGShown = saveDataInfor.IsDialogCGShown;
         StaticDatas.IsEndCGShown = saveDataInfor.IsEndCGShown;
+        StaticDatas.IsTPFDUsed = saveDataInfor.IsTPFDUsed;
         StaticDatas.SESoundVolume = saveDataInfor.SESoundVolume;
         StaticDatas.BGMVolume = saveDataInfor.BGMVolume;
+
     }
     public static void SaveData()
     {
@@ -28,6 +30,7 @@ public class SaveSystem
         saveDataInfor.IsBeginCGShown = StaticDatas.IsBeginCGShown;
         saveDataInfor.IsDialogCGShown = StaticDatas.IsDialogCGShown;
         saveDataInfor.IsEndCGShown = StaticDatas.IsEndCGShown;
+        saveDataInfor.IsTPFDUsed = StaticDatas.IsTPFDUsed;
         saveDataInfor.SESoundVolume = StaticDatas.SESoundVolume;
         saveDataInfor.BGMVolume = StaticDatas.BGMVolume;
         saveDataInfor.ToJson();
@@ -41,6 +44,7 @@ public class SaveDataInfor
     public bool IsBeginCGShown = false;
     public bool IsDialogCGShown = false;
     public bool IsEndCGShown = false;
+    public bool IsTPFDUsed = false;
     public float SESoundVolume = 0.75f;
     public float BGMVolume = 0.75f;
     public void ToJson()
@@ -73,7 +77,9 @@ public class SaveDataInfor
         IsBeginCGShown = saveDataInfor.IsBeginCGShown;
         IsDialogCGShown = saveDataInfor.IsDialogCGShown;
         IsEndCGShown = saveDataInfor.IsEndCGShown;
+        IsTPFDUsed = saveDataInfor.IsTPFDUsed;
         SESoundVolume = saveDataInfor.SESoundVolume;
         BGMVolume = saveDataInfor.BGMVolume;
+
     }
 }
