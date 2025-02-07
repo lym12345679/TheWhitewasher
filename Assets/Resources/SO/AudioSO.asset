@@ -27,7 +27,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: ad18b234e60cf5246b41f01cb6edfc96, type: 3}
   - Name: BGM_Test3
     audioEnum: 4
-    audioClip: {fileID: 8300000, guid: a613b1766c22b4246af223f10510308f, type: 3}
+    audioClip: {fileID: 8300000, guid: 9ae5e451882b2a647b7d9370c0abee51, type: 3}
   - Name: BGM_Test4
     audioEnum: 5
     audioClip: {fileID: 8300000, guid: a613b1766c22b4246af223f10510308f, type: 3}

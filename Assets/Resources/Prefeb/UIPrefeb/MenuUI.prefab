@@ -256,7 +256,8 @@ MonoBehaviour:
   BackGround1: {fileID: 3022372816361952837}
   BackGround2: {fileID: 2609256412074165012}
   Panel: {fileID: 2723806990247722675}
-  MenuBGM: 2
+  MenuBGM1: 2
+  MenuBGM2: 4
 --- !u!1 &3022372816361952838
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,6 +682,10 @@ PrefabInstance:
     - target: {fileID: 6784160170909372551, guid: 7ecb109bf485de645bfa2f2e59ed9816, type: 3}
       propertyPath: m_Name
       value: UnLockAllLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784160170909372551, guid: 7ecb109bf485de645bfa2f2e59ed9816, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6784160171713007938, guid: 7ecb109bf485de645bfa2f2e59ed9816, type: 3}
       propertyPath: m_text

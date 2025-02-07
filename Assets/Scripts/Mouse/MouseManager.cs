@@ -32,7 +32,7 @@ public class MouseManager : MonoBehaviour
     public void OnMouse0ClickDown()
     {
         Vector3 mousePosition = Input.mousePosition;
-        Debug.Log("Mouse Position: " + mousePosition);
+        //Debug.Log("Mouse Position: " + mousePosition);
         if (mousePosition.y < 360)
         {
             return;
