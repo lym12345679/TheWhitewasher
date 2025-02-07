@@ -20,7 +20,7 @@ public class DestinationController : MonoBehaviour
 
         if (Type == DestinationType.Destination)
         {
-            LevelSceneManager.Instance.OnPlayerWin();
+            
         }
         else
         {
