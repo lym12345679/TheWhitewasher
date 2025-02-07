@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 329717876827090779, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: Type
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 329717876827090779, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: StayTime
@@ -142,6 +142,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 16d066ef855028d4ca7d63187ea4a07b, type: 3}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2612464504107084615, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.89
@@ -294,7 +306,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 329717876827090779, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: Type
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 329717876827090779, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: StayTime
@@ -304,6 +316,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2449630b42c90164d90e1836b44cdf1a, type: 3}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2612464504107084615, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.47
@@ -536,7 +560,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 329717876827090779, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: Type
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 329717876827090779, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: StayTime
@@ -546,6 +570,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: dd964dce3fd822244a9d499076fd67d8, type: 3}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2612464504107084615, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.26
@@ -686,7 +722,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 329717876827090779, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: Type
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 329717876827090779, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: StayTime
@@ -696,6 +732,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: c097e322d5331c14cbb69d2fb6080ed2, type: 3}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2612464504107084615, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.57
@@ -763,7 +811,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 329717876827090779, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: Type
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 329717876827090779, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: StayTime
@@ -777,6 +825,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 1713d0fcc03bac04f98487f2c6918e97, type: 3}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2612464504107084615, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.79
@@ -1036,6 +1096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b9205fd0a39999459d6d9452047cea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Destinations: []
 --- !u!1001 &1432733703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1267,6 +1328,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: fec8468538142ea459d53ccd2a97bd24, type: 3}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2612464504107084615, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.6
@@ -1414,6 +1487,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 329717876827090779, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: Type
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 329717876827090779, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: StayTime
       value: 3
       objectReference: {fileID: 0}
@@ -1476,7 +1553,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 329717876827090779, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: Type
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 329717876827090779, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: StayTime
@@ -1486,6 +1563,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 61364ab1e14e1ce41a7f1db82041ddc1, type: 3}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 938896197042974954, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2612464504107084615, guid: f31d8d92b2bf5014ea282a8f5f39e7fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.68
