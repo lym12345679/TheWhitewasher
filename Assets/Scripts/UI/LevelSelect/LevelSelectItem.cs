@@ -17,7 +17,7 @@ public class LevelSelectItem : MonoBehaviour
     public RectTransform selfRectTransform;
     private LevelSelectItemEffect levelSelectItemEffect;
     private Sprite sceneBackground;
-    private float tinyPeopleOffset = 30;
+    private float tinyPeopleOffset = 50;
     public delegate void OnLevelSelectItemClickedCallback();
     public OnLevelSelectItemClickedCallback OnLevelSelectItemClicked;
     private bool interactable = true;
@@ -69,10 +69,10 @@ public class LevelSelectItem : MonoBehaviour
     {
         LevelSelectSceneManager.Instance.LockScene = true;
         AudioUtil.Play(ClickedSoundEffect, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
-        levelSelectItemEffect.StartPositionUpEffect((PositionEffect e) =>
-        {
-            OnLevelSelectItemClicked?.Invoke();
-        });
+        //levelSelectItemEffect.StartPositionUpEffect((PositionEffect e) =>
+        //{
+        OnLevelSelectItemClicked?.Invoke();
+        //});
 
     }
     public void SetLevelText(string s)
