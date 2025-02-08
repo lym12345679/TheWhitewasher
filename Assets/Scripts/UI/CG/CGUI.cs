@@ -126,6 +126,8 @@ public class CGUI : GeneralBox<CGUI, CGGroup, string>
         {
             RectTransform rectTransform = textShowController.Panel.GetComponent<RectTransform>();
             rectTransform.localPosition = new Vector3(-100, -240, 0);
+            RectTransform leftTransform = textShowController.LeftImg.GetComponent<RectTransform>();
+            leftTransform.localPosition = new Vector3(-580, -230, 0);
             //textShowController.Panel.position = new Vector3(textShowController.Panel.position.x, -260, 0);
         }
     }
