@@ -4,7 +4,7 @@ public class CameraController : MonoBehaviour
 {
     public static CameraController Instance;
     public GameObject FollowTarget;
-    private new Camera camera;
+    private Camera camera;
 
     [Header("相机模式")]
     public bool ChangeState = true;

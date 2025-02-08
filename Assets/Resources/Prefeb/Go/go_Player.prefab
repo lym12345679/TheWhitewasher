@@ -214,6 +214,7 @@ MonoBehaviour:
   IsLeftWall: 0
   IsRightWall: 0
   IsPlayerDead: 0
+  IsPlayerWin: 0
   StayResetTime: 2
   StayResetTimeCounter: 2
   OriginalDirection: 1
