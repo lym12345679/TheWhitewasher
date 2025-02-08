@@ -51,6 +51,7 @@ public class CGUI : GeneralBox<CGUI, CGGroup, string>
                         SkipHander = SkipCG
                     });
                     textShowUI = go.GetComponent<TextShowUI>();
+                    DilaogCGTextShowUICorrect(textShowUI.GetComponent<TextShowController>());
                 });
 
             }
@@ -66,11 +67,11 @@ public class CGUI : GeneralBox<CGUI, CGGroup, string>
                         SkipHander = SkipCG
                     });
                     textShowUI = go.GetComponent<TextShowUI>();
+                    DilaogCGTextShowUICorrect(textShowUI.GetComponent<TextShowController>());
                 }
             );
                 isFirstOpen = false;
             }
-
         }
         else
         {
@@ -117,6 +118,15 @@ public class CGUI : GeneralBox<CGUI, CGGroup, string>
             RectTransform rectTransform = TargetImage.GetComponent<RectTransform>();
             rectTransform.offsetMin = new Vector2(0, 0); // Adjust the padding from the left and bottom
             rectTransform.offsetMax = new Vector2(0, 0); // Adjust the padding from the right and top
+        }
+    }
+    private void DilaogCGTextShowUICorrect(TextShowController textShowController)
+    {
+        if (param.CGEnum == CGEnum.Dialog)
+        {
+            RectTransform rectTransform = textShowController.Panel.GetComponent<RectTransform>();
+            rectTransform.localPosition = new Vector3(-100, -240, 0);
+            //textShowController.Panel.position = new Vector3(textShowController.Panel.position.x, -260, 0);
         }
     }
 }
