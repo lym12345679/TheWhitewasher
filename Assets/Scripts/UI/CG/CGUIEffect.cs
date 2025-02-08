@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class CGUIEffect : UIEffectController<Image>
 {
-    [HideInInspector]
     public Image TargetImage;
+    public Image BackImage;
     private FadeEffect<Image> fadeInEffect;
     private FadeEffect<Image> fadeOutEffect;
     void Awake()
@@ -36,7 +36,7 @@ public class CGUIEffect : UIEffectController<Image>
     }
     public void QuicklyFadeIn(Action<FadeEffect<Image>> endHander = null)
     {
-        TargetImage.color = new Color(1, 1, 1, 1);
+        TargetImage.color = new Color(1, 1, 1, 1f);
         FadeEffect<Image> fadeEffect = fadeInEffect.SetFadeTime(0.1f).SetEndHander(endHander);
         StartFade(TargetImage, fadeEffect);
     }

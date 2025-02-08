@@ -9,8 +9,16 @@ public class SaveSystem
     public static void LoadData()
     {
         SaveDataInfor saveDataInfor = new SaveDataInfor();
-        saveDataInfor.GetJson();
-        SetDatas(saveDataInfor);
+        if (saveDataInfor.GetJson())
+        {
+            //Debug.Log("SaveDataInfor loaded");
+            SetDatas(saveDataInfor);
+        }
+        else
+        {
+            SaveData();
+        }
+
     }
     private static void SetDatas(SaveDataInfor saveDataInfor)
     {
@@ -44,31 +52,45 @@ public class SaveDataInfor
     public bool IsBeginCGShown = false;
     public bool IsDialogCGShown = false;
     public bool IsEndCGShown = false;
-    public bool IsTPFDUsed = false;
+    public bool IsTPFDUsed = true;
     public float SESoundVolume = 0.75f;
     public float BGMVolume = 0.75f;
     public void ToJson()
     {
         string json = JsonUtility.ToJson(this);
-        Debug.Log(json);
+        //Debug.Log("SaveData:" + json);
         if (!Directory.Exists(Application.streamingAssetsPath))
         {
             Directory.CreateDirectory(Application.streamingAssetsPath);
         }
         if (!File.Exists(Application.streamingAssetsPath + "/SaveData.json"))
         {
-            File.Create(Application.streamingAssetsPath + "/SaveData.json");
+            using (FileStream fs = File.Create(Application.streamingAssetsPath + "/SaveData.json"))
+            {
+                // Close the file stream immediately after creating the file
+            }
         }
         File.WriteAllText(Application.streamingAssetsPath + "/SaveData.json", json);
     }
-    public void GetJson()
+    public bool GetJson()
     {
         if (!File.Exists(Application.streamingAssetsPath + "/SaveData.json"))
         {
             Debug.Log("SaveData.json not found");
-            return;
+            return false;
         }
-        File.ReadAllText(Application.streamingAssetsPath + "/SaveData.json");
+        else
+        {
+            string json = File.ReadAllText(Application.streamingAssetsPath + "/SaveData.json");
+            if (json.Length < 10)
+            {
+                Debug.Log("SaveData.json is empty");
+                return false;
+            }
+            FromJson(json);
+            //Debug.Log("SaveData.json loaded:" + json);
+            return true;
+        }
     }
     public void FromJson(string json)
     {

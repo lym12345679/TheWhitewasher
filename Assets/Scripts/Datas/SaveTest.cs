@@ -7,6 +7,8 @@ public class SaveTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        SaveSystem.LoadData();
         SaveSystem.SaveData();
     }
 

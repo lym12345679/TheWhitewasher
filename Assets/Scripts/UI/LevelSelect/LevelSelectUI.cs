@@ -9,7 +9,8 @@ using UnityEngine.UI;
 public class LevelSelectUI : GeneralBox<LevelSelectUI, string, string>
 {
     public RectTransform LevelScelectContent;
-    public AudioEnum LevelSelectBGM;
+    public AudioEnum LevelSelectBGM1;
+    public AudioEnum LevelSelectBGM2;
     public Image Background;
     private List<LevelSelectItemMessage> levelSelectItemMessageList;
     private float btnHight = 111;
@@ -20,11 +21,23 @@ public class LevelSelectUI : GeneralBox<LevelSelectUI, string, string>
     {
         levelSelectItemMessageList = SOManager.levelSelectItemMessageSO.LevelSelectItemMessages;
         InitLevelSelectUI();
-        if (!AudioUtil.CheckEnumInLoopAudio(LevelSelectBGM))
+        if (GamePlayManager.IsPlayerFinishAllLevel)
         {
-            AudioUtil.ReturnAllLoopAudio();
-            AudioUtil.Play(LevelSelectBGM, AudioMixerGroupEnum.BGM, AudioPlayMod.Loop);
+            if (!AudioUtil.CheckEnumInLoopAudio(LevelSelectBGM2))
+            {
+                AudioUtil.ReturnAllLoopAudio();
+                AudioUtil.Play(LevelSelectBGM2, AudioMixerGroupEnum.BGM, AudioPlayMod.Loop);
+            }
         }
+        else
+        {
+            if (!AudioUtil.CheckEnumInLoopAudio(LevelSelectBGM1))
+            {
+                AudioUtil.ReturnAllLoopAudio();
+                AudioUtil.Play(LevelSelectBGM1, AudioMixerGroupEnum.BGM, AudioPlayMod.Loop);
+            }
+        }
+
     }
     public override void GetParams(string param)
     {

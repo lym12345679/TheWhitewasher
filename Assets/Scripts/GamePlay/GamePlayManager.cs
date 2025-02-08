@@ -61,6 +61,7 @@ public static class GamePlayManager
     public static void LoadScene(SceneEnum scene)
     {
         CurrentScene = scene;
+        SaveSystem.SaveData();
         UnityEngine.SceneManagement.SceneManager.LoadScene(scene.ToString());
     }
     public static void ResetGame()

@@ -24,7 +24,7 @@ public static class StaticDatas
     public static bool IsDialogCGShown = false;
     public static bool IsSpecialCGShown = false;
     public static bool IsEndCGShown = false;
-    public static bool IsTPFDUsed = false;
+    public static bool IsTPFDUsed = true;
     public static float SESoundVolume
     {
         get

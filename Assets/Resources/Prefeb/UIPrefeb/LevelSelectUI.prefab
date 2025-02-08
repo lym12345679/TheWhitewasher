@@ -120,7 +120,8 @@ MonoBehaviour:
   param: 
   SendParam: 
   LevelScelectContent: {fileID: 6237293584665212105}
-  LevelSelectBGM: 2
+  LevelSelectBGM1: 2
+  LevelSelectBGM2: 3
   Background: {fileID: 3022372816361952836}
 --- !u!1 &3022372816361952838
 GameObject:

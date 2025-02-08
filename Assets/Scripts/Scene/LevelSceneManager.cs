@@ -81,6 +81,7 @@ public class LevelSceneManager : MonoBehaviour
     }
     public void OnPlayerWin()
     {
+        PlayerController.Instance.IsPlayerWin = true;
         Debug.Log("Player Win");
         if (ThisScene == SceneEnum.Level8 && !StaticDatas.IsEndCGShown)
         {
@@ -101,6 +102,7 @@ public class LevelSceneManager : MonoBehaviour
             {
                 ShowEndCG();
             }
+            StaticDatas.MaxLevel = 9;
         }
         else
         {
