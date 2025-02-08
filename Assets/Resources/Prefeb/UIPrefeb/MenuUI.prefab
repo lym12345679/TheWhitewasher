@@ -257,7 +257,7 @@ MonoBehaviour:
   BackGround2: {fileID: 2609256412074165012}
   Panel: {fileID: 2723806990247722675}
   MenuBGM1: 2
-  MenuBGM2: 4
+  MenuBGM2: 3
 --- !u!1 &3022372816361952838
 GameObject:
   m_ObjectHideFlags: 0

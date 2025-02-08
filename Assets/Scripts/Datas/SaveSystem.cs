@@ -65,7 +65,10 @@ public class SaveDataInfor
         }
         if (!File.Exists(Application.streamingAssetsPath + "/SaveData.json"))
         {
-            File.Create(Application.streamingAssetsPath + "/SaveData.json");
+            using (FileStream fs = File.Create(Application.streamingAssetsPath + "/SaveData.json"))
+            {
+                // Close the file stream immediately after creating the file
+            }
         }
         File.WriteAllText(Application.streamingAssetsPath + "/SaveData.json", json);
     }

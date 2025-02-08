@@ -16,21 +16,21 @@ MonoBehaviour:
   - Name: BGM_Arknight_Babel1
     audioEnum: 0
     audioClip: {fileID: 8300000, guid: c14914c4f10490344b889f537a7b9107, type: 3}
-  - Name: BGM_Arknight_Babel2
-    audioEnum: 1
-    audioClip: {fileID: 8300000, guid: 3144aec3c54f6874c82cbd0b3f4cf1b2, type: 3}
-  - Name: BGM_Test1
+  - Name: BGM_CG_End
+    audioEnum: 6
+    audioClip: {fileID: 8300000, guid: 044458598de0f514cbe8e07539578ed5, type: 3}
+  - Name: BGM_Menu_Star
     audioEnum: 2
-    audioClip: {fileID: 8300000, guid: ea95b72118b5a1748beb73a3846e6859, type: 3}
-  - Name: BGM_Test2
+    audioClip: {fileID: 8300000, guid: 1bf9af22929961145a7836396ced797a, type: 3}
+  - Name: BGM_Menu_End
     audioEnum: 3
-    audioClip: {fileID: 8300000, guid: ad18b234e60cf5246b41f01cb6edfc96, type: 3}
-  - Name: BGM_Test3
+    audioClip: {fileID: 8300000, guid: cc7cd68d5e015e64a865bed16fc5cac2, type: 3}
+  - Name: BGM_Level1
     audioEnum: 4
-    audioClip: {fileID: 8300000, guid: 9ae5e451882b2a647b7d9370c0abee51, type: 3}
-  - Name: BGM_Test4
+    audioClip: {fileID: 8300000, guid: 7c824c8ba90f23c4cbb96c2b1b9a66ce, type: 3}
+  - Name: BGM_Level2
     audioEnum: 5
-    audioClip: {fileID: 8300000, guid: a613b1766c22b4246af223f10510308f, type: 3}
+    audioClip: {fileID: 8300000, guid: 6aa75aba2b23ac544ad0f9d439b6c9ec, type: 3}
   - Name: SE_Button_Clicked
     audioEnum: 7
     audioClip: {fileID: 8300000, guid: c13dfdc413f895d46b28788fb7e11fbf, type: 3}
