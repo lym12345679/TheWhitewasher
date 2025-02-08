@@ -25,10 +25,10 @@ MonoBehaviour:
   - CGSprite: {fileID: 21300000, guid: f32429a5dc980034cac9f73d412b7da3, type: 3}
     TextAsset: {fileID: 4900000, guid: 6442d79eb9d4aaf428ceafc17ca06b2e, type: 3}
     BGMEnum: 2
-  - CGSprite: {fileID: 21300000, guid: 282a3e417033a83459067b50543c192d, type: 3}
+  - CGSprite: {fileID: 21300000, guid: d456cc52a31467b4b8cb8429af37525f, type: 3}
     TextAsset: {fileID: 4900000, guid: 6442d79eb9d4aaf428ceafc17ca06b2e, type: 3}
     BGMEnum: 2
-  - CGSprite: {fileID: 21300000, guid: 2764372c6fde4714e87f467c8cb92a7f, type: 3}
+  - CGSprite: {fileID: 21300000, guid: c2e95adffe19b444590d6b556e9afd03, type: 3}
     TextAsset: {fileID: 4900000, guid: 6442d79eb9d4aaf428ceafc17ca06b2e, type: 3}
     BGMEnum: 2
   - CGSprite: {fileID: 21300000, guid: 048464f459ff379438392d019e4591f8, type: 3}

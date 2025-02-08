@@ -105,23 +105,22 @@ public class TextShowController : MonoBehaviour
             SetRightSprite(line.RightCharacter, line.RightSprite);
             SetShownItemSprite(line.ShownItem, line.ShownItemSprite);
             SortImg(line.DialogSortEnum);
-            if (line.dialogText.Length <= 2)
-            {
-                Panel.gameObject.SetActive(false);
-            }
-            else
-            {
-                Panel.gameObject.SetActive(true);
-            }
+
             char[] words = line.dialogText.ToCharArray();
             for (int i = words.Length - 1; i >= 0; i--)
             {
                 WordStack.Push(words[i]);
             }
+            if (CheckDialogText(line.dialogText))
+            {
+                ShowNextLine();
+                return true;
+            }
             return true;
         }
         return false;
     }
+    //显示下一行
     public void ShowNextLine()
     {
         if (IsShowing)
@@ -135,6 +134,7 @@ public class TextShowController : MonoBehaviour
         {
             if (OnTextOver != null)
             {
+                //Debug.Log("该文本已经读完，执行后续操作");
                 OnTextOver.Invoke();
             }
             else
@@ -290,6 +290,24 @@ public class TextShowController : MonoBehaviour
                 GamePlayManager.ContinueGame();
             }
         });
+    }
+    private bool CheckDialogText(string text)
+    {
+        if (text.Length <= 2)
+        {
+            Panel.gameObject.SetActive(false);
+        }
+        else
+        {
+            Panel.gameObject.SetActive(true);
+        }
+        if (text.Length <= 2 && text[0] == '1')
+        {
+            Debug.Log("检测到特殊字符:" + text[0]);
+            IsShowing = false;
+            return true;
+        }
+        return false;
     }
     #endregion
 }

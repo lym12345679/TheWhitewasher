@@ -18,8 +18,9 @@ public class TextShowUI : GeneralBox<TextShowUI, TextShowUIMessage, string>
     public override void GetParams(TextShowUIMessage param)
     {
         base.GetParams(param);
-        controller.GetTextAsset(param.TextAsset);
         controller.SetEndHander(Close);
+        controller.GetTextAsset(param.TextAsset);
+
     }
     public void Skip()
     {

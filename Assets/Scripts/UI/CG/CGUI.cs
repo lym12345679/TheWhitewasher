@@ -10,11 +10,12 @@ public class CGUI : GeneralBox<CGUI, CGGroup, string>
 {
     public CGUIEffect effect;
     public Image TargetImage;
+    public Image BackImage;
     private TextShowUI textShowUI;
     private Stack<CGMessage> cgMessageStack = new Stack<CGMessage>();
-    private bool isFirstOpen = true;
     public override void Close()
     {
+        BackImage.color = new Color(1, 1, 1, 0);
         if (param.EndHander != null)
         {
             param.EndHander();
@@ -38,40 +39,27 @@ public class CGUI : GeneralBox<CGUI, CGGroup, string>
         {
             CGMessage cgMessage = cgMessageStack.Pop();
             TargetImage.sprite = cgMessage.CGSprite;
-            TargetImage.color = new Color(0, 0, 0, 1);
+            TargetImage.color = new Color(1, 1, 1, 0);
             StartCGBGM(cgMessage.BGMEnum);
-            if (param.CGEnum == CGEnum.Begin && !isFirstOpen)
-            {
-                effect.QuicklyFadeIn((FadeEffect<Image> e) =>
+            effect.StartFadeIn(
+            (FadeEffect<Image> e) =>
                 {
                     GameObject go = TextShowUI.Open(new TextShowUIMessage()
                     {
                         TextAsset = cgMessage.TextAsset,
                         EndHander = TryToSetNextCG,
-                        SkipHander = SkipCG
-                    });
-                    textShowUI = go.GetComponent<TextShowUI>();
-                    DilaogCGTextShowUICorrect(textShowUI.GetComponent<TextShowController>());
-                });
+                        SkipHander = SkipCG,
 
-            }
-            else
-            {
-                effect.StartFadeIn(
-                (FadeEffect<Image> e) =>
-                {
-                    GameObject go = TextShowUI.Open(new TextShowUIMessage()
-                    {
-                        TextAsset = cgMessage.TextAsset,
-                        EndHander = TryToSetNextCG,
-                        SkipHander = SkipCG
                     });
                     textShowUI = go.GetComponent<TextShowUI>();
                     DilaogCGTextShowUICorrect(textShowUI.GetComponent<TextShowController>());
+                    BackImage.sprite = cgMessage.CGSprite;
+                    BackImage.color = new Color(1, 1, 1, 1);
+                    //BackImage.sprite = cgMessage.CGSprite;
                 }
             );
-                isFirstOpen = false;
-            }
+
+
         }
         else
         {

@@ -13,12 +13,21 @@ MonoBehaviour:
   m_Name: EndCG
   m_EditorClassIdentifier: 
   CGList:
-  - CGSprite: {fileID: 21300000, guid: 3a2987fb45b2dee4486404c00e7939ca, type: 3}
+  - CGSprite: {fileID: 21300000, guid: f1cacf3428ca14c489b897916d697b73, type: 3}
     TextAsset: {fileID: 4900000, guid: d7ba10d97996a6248bfdd17503365e2b, type: 3}
     BGMEnum: 6
-  - CGSprite: {fileID: 21300000, guid: 048464f459ff379438392d019e4591f8, type: 3}
-    TextAsset: {fileID: 4900000, guid: d7ba10d97996a6248bfdd17503365e2b, type: 3}
+  - CGSprite: {fileID: 21300000, guid: 4c6fd10bf3cdb8a46b5775d215ed8ed5, type: 3}
+    TextAsset: {fileID: 4900000, guid: ef3fc5ab376129a4b805b9752819ee2b, type: 3}
     BGMEnum: 6
-  - CGSprite: {fileID: 21300000, guid: 99b2e3c3b366fb344b5437c6a89cbe7f, type: 3}
+  - CGSprite: {fileID: 21300000, guid: 1b019f51ec3395f4eaace9db8e7f34f9, type: 3}
+    TextAsset: {fileID: 4900000, guid: ef3fc5ab376129a4b805b9752819ee2b, type: 3}
+    BGMEnum: 6
+  - CGSprite: {fileID: 21300000, guid: 939c0d2cd84472748a9d9aac28c45685, type: 3}
+    TextAsset: {fileID: 4900000, guid: ef3fc5ab376129a4b805b9752819ee2b, type: 3}
+    BGMEnum: 6
+  - CGSprite: {fileID: 21300000, guid: 94b2f80e332c4df489ecf6ee1fdf1366, type: 3}
+    TextAsset: {fileID: 4900000, guid: ef3fc5ab376129a4b805b9752819ee2b, type: 3}
+    BGMEnum: 6
+  - CGSprite: {fileID: 21300000, guid: 9ddeb6c4771bfb14aa3fe0340bd73fd5, type: 3}
     TextAsset: {fileID: 4900000, guid: 3448ed38c8ac7a14d87a6324fdca110e, type: 3}
     BGMEnum: 6
