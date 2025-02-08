@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     public bool IsLeftWall;
     public bool IsRightWall;
     public bool IsPlayerDead = false;
-
+    public bool IsPlayerWin = false;
     public float StayResetTime = 2f;
     public float StayResetTimeCounter = 2f;
     public int OriginalDirection = 1;
@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour
     }
     public void CheckPlayerDead()
     {
-        if (IsPlayerDead)
+        if (IsPlayerDead || IsPlayerWin)
         {
             return;
         }
