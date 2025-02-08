@@ -58,30 +58,32 @@ public class SaveDataInfor
     public void ToJson()
     {
         string json = JsonUtility.ToJson(this);
+        string path = Application.streamingAssetsPath;
         //Debug.Log("SaveData:" + json);
-        if (!Directory.Exists(Application.streamingAssetsPath))
+        if (!Directory.Exists(path))
         {
-            Directory.CreateDirectory(Application.streamingAssetsPath);
+            Directory.CreateDirectory(path);
         }
-        if (!File.Exists(Application.streamingAssetsPath + "/SaveData.json"))
+        if (!File.Exists(path + "/SaveData.json"))
         {
-            using (FileStream fs = File.Create(Application.streamingAssetsPath + "/SaveData.json"))
+            using (FileStream fs = File.Create(path + "/SaveData.json"))
             {
                 // Close the file stream immediately after creating the file
             }
         }
-        File.WriteAllText(Application.streamingAssetsPath + "/SaveData.json", json);
+        File.WriteAllText(path + "/SaveData.json", json);
     }
     public bool GetJson()
     {
-        if (!File.Exists(Application.streamingAssetsPath + "/SaveData.json"))
+        string path = Application.streamingAssetsPath;
+        if (!File.Exists(path + "/SaveData.json"))
         {
             Debug.Log("SaveData.json not found");
             return false;
         }
         else
         {
-            string json = File.ReadAllText(Application.streamingAssetsPath + "/SaveData.json");
+            string json = File.ReadAllText(path + "/SaveData.json");
             if (json.Length < 10)
             {
                 Debug.Log("SaveData.json is empty");
