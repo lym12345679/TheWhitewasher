@@ -11,7 +11,7 @@ public class SaveSystem
         SaveDataInfor saveDataInfor = new SaveDataInfor();
         if (saveDataInfor.GetJson())
         {
-            Debug.Log("SaveDataInfor loaded");
+            //Debug.Log("SaveDataInfor loaded");
             SetDatas(saveDataInfor);
         }
         else
@@ -58,7 +58,7 @@ public class SaveDataInfor
     public void ToJson()
     {
         string json = JsonUtility.ToJson(this);
-        Debug.Log("SaveData:" + json);
+        //Debug.Log("SaveData:" + json);
         if (!Directory.Exists(Application.streamingAssetsPath))
         {
             Directory.CreateDirectory(Application.streamingAssetsPath);
@@ -88,7 +88,7 @@ public class SaveDataInfor
                 return false;
             }
             FromJson(json);
-            Debug.Log("SaveData.json loaded:" + json);
+            //Debug.Log("SaveData.json loaded:" + json);
             return true;
         }
     }

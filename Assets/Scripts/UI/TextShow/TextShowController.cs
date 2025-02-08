@@ -303,7 +303,7 @@ public class TextShowController : MonoBehaviour
         }
         if (text.Length <= 2 && text[0] == '1')
         {
-            Debug.Log("检测到特殊字符:" + text[0]);
+            //Debug.Log("检测到特殊字符:" + text[0]);
             IsShowing = false;
             return true;
         }
