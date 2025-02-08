@@ -28,6 +28,7 @@ public class CGUI : GeneralBox<CGUI, CGGroup, string>
     {
         base.GetParams(param);
         LoadCGMessage(param.CGEnum);
+        DialogCGCorrect();
         effect.TargetImage = TargetImage;
         StartCG();
     }
@@ -106,6 +107,16 @@ public class CGUI : GeneralBox<CGUI, CGGroup, string>
         {
             AudioUtil.ReturnAllLoopAudio();
             AudioUtil.Play(e, AudioMixerGroupEnum.BGM, AudioPlayMod.Loop);
+        }
+    }
+    private void DialogCGCorrect()
+    {
+        if (param.CGEnum == CGEnum.Dialog)
+        {
+            Debug.Log("Begin");
+            RectTransform rectTransform = TargetImage.GetComponent<RectTransform>();
+            rectTransform.offsetMin = new Vector2(0, 0); // Adjust the padding from the left and bottom
+            rectTransform.offsetMax = new Vector2(0, 0); // Adjust the padding from the right and top
         }
     }
 }
