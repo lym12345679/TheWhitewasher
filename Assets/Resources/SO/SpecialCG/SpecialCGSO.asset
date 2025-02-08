@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df6b79444241334ab2cf3f8b6cc344a, type: 3}
+  m_Name: SpecialCGSO
+  m_EditorClassIdentifier: 
+  SpecialCGList:
+  - Name: "\u94F6\u6CB3"
+    ShownItemEnum: 1
+    TextAsset: {fileID: 4900000, guid: 4a41bc5a6c127c84aa95c8f867cb8920, type: 3}
+  - Name: "\u5199\u751F\u518C"
+    ShownItemEnum: 2
+    TextAsset: {fileID: 4900000, guid: 4a41bc5a6c127c84aa95c8f867cb8920, type: 3}
+  - Name: "\u79C3\u5934\u94C5\u7B14"
+    ShownItemEnum: 3
+    TextAsset: {fileID: 4900000, guid: 4a41bc5a6c127c84aa95c8f867cb8920, type: 3}
+  - Name: "\u6CB9\u753B\u677F"
+    ShownItemEnum: 4
+    TextAsset: {fileID: 4900000, guid: 4a41bc5a6c127c84aa95c8f867cb8920, type: 3}
+  - Name: "\u73BB\u7483\u753B"
+    ShownItemEnum: 5
+    TextAsset: {fileID: 4900000, guid: 4a41bc5a6c127c84aa95c8f867cb8920, type: 3}
+  - Name: "\u5496\u5561\u9EC4\u660F"
+    ShownItemEnum: 6
+    TextAsset: {fileID: 4900000, guid: 4a41bc5a6c127c84aa95c8f867cb8920, type: 3}
+  - Name: "\u5E9F\u7A3F"
+    ShownItemEnum: 7
+    TextAsset: {fileID: 4900000, guid: 4a41bc5a6c127c84aa95c8f867cb8920, type: 3}

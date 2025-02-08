@@ -11,9 +11,9 @@ public class CameraController : MonoBehaviour
     public CameraMoveMode CameraMode = CameraMoveMode.Follow;
 
     [Header("相机跟随")]
-    public float CameraMinVelocity = 1;
+    private float CameraMinVelocity = 0.1f;
     private float currentCameraVelocity;
-    public float CatchUpTime = 0.1f;
+    private float CatchUpTime = 0.1f;
     private float distance;
     private Vector2 moveDirection;
 
@@ -221,13 +221,13 @@ public class CameraController : MonoBehaviour
         float orthographicSize = camera.orthographicSize;
         float aspectRatio = camera.aspect;
 
-        if (transform.position.x > CameraMaxX - orthographicSize * aspectRatio)
+        /*if (transform.position.x > CameraMaxX - orthographicSize * aspectRatio)
         {
             transform.position = new Vector3(CameraMaxX - orthographicSize * aspectRatio, transform.position.y, transform.position.z);
         }
         else if (transform.position.x < CameraMinX + orthographicSize * aspectRatio)
         {
-            if (transform.position.x < CameraMaxX - orthographicSize * aspectRatio - 0.01f)
+            if (transform.position.x < CameraMaxX - orthographicSize * aspectRatio)
             {
                 transform.position = new Vector3(CameraMinX + orthographicSize * aspectRatio, transform.position.y, transform.position.z);
             }
@@ -238,16 +238,16 @@ public class CameraController : MonoBehaviour
         }
         else if (transform.position.y < CameraMinY + orthographicSize)
         {
-            if (transform.position.y < CameraMaxY - orthographicSize - 0.01f)
+            if (transform.position.y < CameraMaxY - orthographicSize)
             {
                 transform.position = new Vector3(transform.position.x, CameraMinY + orthographicSize, transform.position.z);
             }
-        }
+        }*/
 
-        /*transform.position = new Vector3(
+        transform.position = new Vector3(
             Mathf.Clamp(transform.position.x, CameraMinX + orthographicSize * aspectRatio, CameraMaxX - orthographicSize * aspectRatio),
             Mathf.Clamp(transform.position.y, CameraMinY + orthographicSize, CameraMaxY - orthographicSize),
-            transform.position.z);*/
+            transform.position.z);
     }
     void OnDrawGizmos()
     {

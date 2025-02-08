@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1963114159, guid: b4dc369fe09ab0f46becd9375520b75e, type: 3}
+  m_Sprite: {fileID: 2115334011, guid: 7705ce353daddcd4691551ad7b37dd4b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -132,6 +132,7 @@ MonoBehaviour:
   UIImage: {fileID: 8420600124804402793}
   SelectedImage: {fileID: 1834814076283946998}
   SelectedMaterial: {fileID: 2100000, guid: ce79a870a3d810a479f84848bd1c1a09, type: 2}
+  SelectPropAudio: 19
 --- !u!222 &8482588706709871454
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -297,7 +298,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 811347445, guid: b4dc369fe09ab0f46becd9375520b75e, type: 3}
+  m_Sprite: {fileID: -1948710704, guid: 7705ce353daddcd4691551ad7b37dd4b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

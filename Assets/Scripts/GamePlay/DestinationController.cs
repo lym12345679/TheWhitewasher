@@ -5,17 +5,19 @@ using UnityEngine;
 
 public class DestinationController : MonoBehaviour
 {
-    public static float StayTime = 3f;
-    public static float StayTimeCounter = 3f;
+    public float StayTime = 2f;
+    private float StayTimeCounter = 2f;
     private bool IsPlayerOn = false;
     private bool isGoingToNextScene = false;
     public Vector3 PositionFixer = new Vector3(0, 0, 0);
     public TextMeshProUGUI WinText;
+
     void Start()
     {
         StayTimeCounter = StayTime;
         WinText.gameObject.SetActive(false);
-        WinText.transform.position = Camera.main.WorldToScreenPoint(transform.position + PositionFixer);
+
+
     }
     void Update()
     {
@@ -53,6 +55,7 @@ public class DestinationController : MonoBehaviour
         {
             if (IsPlayerOn)
             {
+                WinText.transform.position = Camera.main.WorldToScreenPoint(transform.position + PositionFixer);
                 StayTimeCounter -= Time.fixedDeltaTime;
             }
             else
@@ -72,6 +75,8 @@ public class DestinationController : MonoBehaviour
 
     public void OnGameWin()
     {
-        LevelSceneManager.Instance.OnPlayerWin();
+
+        LevelSceneManager.Instance.PlayerArrive();
+        Destroy(this.gameObject);
     }
 }

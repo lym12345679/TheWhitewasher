@@ -9,12 +9,10 @@ public class SquareController : MonoBehaviour
     public bool isFading = false;
     public bool isAskNeighbour = false;
     public SpriteRenderer FadeTarget;
+    public SpriteRenderer SquareTarget2;
     public SquareEffect selfSquareEffect;
     public SquareCorrectPositionMod SquareCorrectPositionMod = SquareCorrectPositionMod.Used;
-    void Start()
-    {
-        this.gameObject.layer = LayerMask.NameToLayer(MPoint.ToString());
-    }
+    public ColorEnum ColorMod;
     public PointMod MPoint
     {
         get
@@ -22,18 +20,50 @@ public class SquareController : MonoBehaviour
             return SOManager.colorSO.GetPointMod(ColorMod);
         }
     }
-    public ColorEnum ColorMod;
+
+    void Awake()
+    {
+        FadeTarget = GetComponent<SpriteRenderer>();
+        selfSquareEffect = GetComponent<SquareEffect>();
+    }
+    void Start()
+    {
+        this.gameObject.layer = LayerMask.NameToLayer(MPoint.ToString());
+        SetTPFDMod(AstarManagerSon.IsTPFDUsed);
+    }
+
+
     #region OnValidate
+    [Header("拼写设置颜色")]
+    public string ColorEnumSearch;
     private void OnValidate()
     {
-        FadeTarget.color = SOManager.colorSO.GetColor(ColorMod);
+        CheckColorEnumSearch();
+        Color color = SOManager.colorSO.GetColor(ColorMod);
+        FadeTarget.color = color;
+        SquareTarget2.color = new Color(color.r, color.g, color.b, 0);
         if (SquareCorrectPositionMod == SquareCorrectPositionMod.Start)
         {
             CorrectPosition();
             SquareCorrectPositionMod = SquareCorrectPositionMod.Used;
         }
-    }
+        this.gameObject.name = "Go_Plane_" + transform.localPosition.x + "_" + transform.localPosition.y;
 
+    }
+    private void CheckColorEnumSearch()
+    {
+        if (ColorEnumSearch.Length > 2)
+        {
+            ColorEnum colorEnum;
+            if (System.Enum.TryParse(ColorEnumSearch, out colorEnum))
+            {
+                ColorMod = colorEnum;
+                ColorEnumSearch = "";
+            }
+
+
+        }
+    }
     void OnDrawGizmos()
     {
         Color color = Color.black;
@@ -118,8 +148,9 @@ public class SquareController : MonoBehaviour
         if (ColorMod == from)
         {
             Point p = AstarManagerSon.Instance.GetPointOnMap(transform.position);
-            p.Mod = MPoint;
+
             ColorMod = to;
+            p.Mod = MPoint;
             SetIsFading(true);
             isAskNeighbour = false;
             ChanngeLayer();
@@ -164,6 +195,10 @@ public class SquareController : MonoBehaviour
         {
             return;
         }
+        if (upPoint.GameObject == null)
+        {
+            return;
+        }
         if (ColorMod != upPoint.GetMainCompoment<SquareController>().ColorMod)
         {
             selfSquareEffect.PlaneFadeIn();
@@ -181,7 +216,10 @@ public class SquareController : MonoBehaviour
     {
         return isFading;
     }
-
+    public void SetTPFDMod(bool b)
+    {
+        SquareTarget2.gameObject.SetActive(b);
+    }
 }
 
 public enum SquareCorrectPositionMod

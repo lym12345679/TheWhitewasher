@@ -28,15 +28,15 @@ public static class GamePlayManager
         }
     }
 
-    public static int TopUnlockedLevel
+    public static int MaxLevel
     {
         get
         {
-            return StaticDatas.TopUnlockedLevel;
+            return StaticDatas.MaxLevel;
         }
         set
         {
-            StaticDatas.TopUnlockedLevel = value;
+            StaticDatas.MaxLevel = value;
         }
     }
     public static bool IsPlayerFinishAllLevel
@@ -44,10 +44,6 @@ public static class GamePlayManager
         get
         {
             return StaticDatas.IsPlayerFinishAllLevel;
-        }
-        set
-        {
-            StaticDatas.IsPlayerFinishAllLevel = value;
         }
     }
     public static void PauseGame()
@@ -83,8 +79,8 @@ public static class GamePlayManager
     {
         Application.Quit();
     }
-    public static void FinishAllLevel()
+    public static void UnlockAllLevel()
     {
-        IsPlayerFinishAllLevel = true;
+        MaxLevel = 9;
     }
 }

@@ -1,11 +1,14 @@
 using System;
+using MizukiTool.Audio;
 using MizukiTool.Box;
 
 public class SceneChangeUI : GeneralBox<SceneChangeUI, SceneChangeMessage, string>
 {
     public SceneChangeEffect SceneChangeEffectScript;
+    private AudioEnum SceneChangeAudio = AudioEnum.SE_SceneChange;
     public override void GetParams(SceneChangeMessage param)
     {
+        AudioUtil.Play(SceneChangeAudio, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
         base.GetParams(param);
         CheckSceneChangeType();
     }

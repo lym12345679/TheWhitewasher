@@ -107,6 +107,7 @@ public class PlayerController : MonoBehaviour
         {
             playerAnimator.Jump();
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * JumpForce);
+            AudioUtil.Play(AudioEnum.SE_Player_Jump, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
         }
     }
 

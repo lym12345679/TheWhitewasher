@@ -33,7 +33,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: a613b1766c22b4246af223f10510308f, type: 3}
   - Name: SE_Button_Clicked
     audioEnum: 7
-    audioClip: {fileID: 8300000, guid: 49a9fd315daa1dc44ae38515a4dc3375, type: 3}
+    audioClip: {fileID: 8300000, guid: c13dfdc413f895d46b28788fb7e11fbf, type: 3}
   - Name: SE_Button_Hover
     audioEnum: 8
     audioClip: {fileID: 8300000, guid: dfabc22ed7705b74cbe3691705af4fde, type: 3}
@@ -54,7 +54,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 26546017141355f499616aca78f8998f, type: 3}
   - Name: SE_Prop_Get
     audioEnum: 14
-    audioClip: {fileID: 8300000, guid: 6f2f883402d18e140bf522957366b1d6, type: 3}
+    audioClip: {fileID: 8300000, guid: d1791da6628893c4a9eb0adb25344702, type: 3}
   - Name: SE_Prop_Use1
     audioEnum: 15
     audioClip: {fileID: 8300000, guid: 0469782e849d8b74d88af4ecb9e492b9, type: 3}
@@ -67,3 +67,15 @@ MonoBehaviour:
   - Name: SE_Prop_Cancel
     audioEnum: 18
     audioClip: {fileID: 8300000, guid: 0f767ec03a7b248438762074b704e928, type: 3}
+  - Name: SE_Prop_Select
+    audioEnum: 19
+    audioClip: {fileID: 8300000, guid: 49a9fd315daa1dc44ae38515a4dc3375, type: 3}
+  - Name: SE_LevelSelect_Button_Clicked
+    audioEnum: 20
+    audioClip: {fileID: 8300000, guid: b8bc323875d2d8340b016b6427bf9083, type: 3}
+  - Name: SE_SceneChange
+    audioEnum: 21
+    audioClip: {fileID: 8300000, guid: b8bc323875d2d8340b016b6427bf9083, type: 3}
+  - Name: SE_Player_Win
+    audioEnum: 22
+    audioClip: {fileID: 8300000, guid: f9738148328ac9e4487718afeeb78768, type: 3}

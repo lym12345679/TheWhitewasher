@@ -31,6 +31,12 @@ public class MouseManager : MonoBehaviour
 
     public void OnMouse0ClickDown()
     {
+        Vector3 mousePosition = Input.mousePosition;
+        Debug.Log("Mouse Position: " + mousePosition);
+        if (mousePosition.y < 360)
+        {
+            return;
+        }
         Vector3 position = CheckMousePositionOnWorld();
         //Debug.Log("Mouse Position: " + position);
         if (!PorpsManager.Instance.UseProp(position))

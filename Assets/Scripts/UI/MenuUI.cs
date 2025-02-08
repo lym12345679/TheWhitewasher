@@ -9,6 +9,7 @@ public class MenuUI : GeneralBox<MenuUI, string, string>
 {
     public RectTransform BackGround1;
     public RectTransform BackGround2;
+    public RectTransform Panel;
     public AudioEnum MenuBGM;
     public bool IsPlayerFinishAllLevel
     {
@@ -45,18 +46,55 @@ public class MenuUI : GeneralBox<MenuUI, string, string>
     }
     public void OnSettingBtnClicked()
     {
-        SettingUI.Open(new SettingUIMessage());
+        Panel.gameObject.SetActive(false);
+        SettingUI.Open(new SettingUIMessage()
+        {
+            EndHander = () =>
+            {
+                Panel.gameObject.SetActive(true);
+            }
+        });
+
     }
     public void OnLevelSelectBtnClicked()
     {
-        SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
+        if (!StaticDatas.IsBeginCGShown)
+        {
+            StaticDatas.IsBeginCGShown = true;
+            CGUI.Open(new CGGroup()
+            {
+                CGEnum = CGEnum.Begin,
+                EndHander = () =>
+                {
+                    SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
+                    {
+                        GamePlayManager.GoToLevelSelect();
+                    }));
+                }
+            });
+            Close();
+        }
+        else
+        {
+            SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
+            {
+                Close();
+                GamePlayManager.GoToLevelSelect();
+            }));
+        }
+
+        /*SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.In, () =>
         {
             GamePlayManager.GoToLevelSelect();
-        }));
+        }));*/
     }
     public void OnExitBtnClicked()
     {
         GamePlayManager.ExitGame();
         Close();
+    }
+    public void OnUnlockAllLevelBtnClicked()
+    {
+        GamePlayManager.UnlockAllLevel();
     }
 }

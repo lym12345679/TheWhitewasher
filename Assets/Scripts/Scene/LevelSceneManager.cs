@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using MizukiTool.Audio;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class LevelSceneManager : MonoBehaviour
 {
@@ -12,13 +14,12 @@ public class LevelSceneManager : MonoBehaviour
     public AudioEnum BGMEnum;
     public AudioEnum GameFailAudio;
     public SpriteRenderer Background;
-    private Vector3 cameraPosition
-    {
-        get
-        {
-            return CameraController.Instance.transform.position;
-        }
-    }
+    public Image BGimg;
+    public GameObject Destination;
+    //public GameObject Camera;
+    //private Camera camera;
+    public Canvas BGcanvas;
+
     void Awake()
     {
         Instance = this;
@@ -28,6 +29,7 @@ public class LevelSceneManager : MonoBehaviour
             AudioUtil.ReturnAllLoopAudio();
             AudioUtil.Play(BGMEnum, AudioMixerGroupEnum.BGM, AudioPlayMod.Loop);
         }
+
     }
     void Start()
     {
@@ -40,10 +42,17 @@ public class LevelSceneManager : MonoBehaviour
         });
         SceneChangeUI.Open(new SceneChangeMessage(SceneChangeType.Out));
         Background.sprite = levelSelectItemMessage.SceneBackground;
+        BGimg.sprite = levelSelectItemMessage.SceneBackground;
+        BGimg.color = new Color(1, 1, 1, 1);
+        //BGimg.gameObject.SetActive(true);
+        //Camera = GameObject.Find("Main Camera");
+        //camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        //得到主场景的背景canvas
+        BGcanvas.worldCamera = Camera.main;
     }
-    void Update()
+    void FixedUpdate()
     {
-        Background.transform.position = new Vector3(cameraPosition.x, cameraPosition.y, Background.transform.position.z);
+        //transform.position = new Vector3(Camera.transform.position.x, Camera.transform.position.y, Background.transform.position.z);
     }
     public void LoadNextScene()
     {
@@ -59,13 +68,72 @@ public class LevelSceneManager : MonoBehaviour
             GamePlayManager.LoadScene(ThisScene);
         }));
     }
-
+    public void ShowDestination()
+    {
+        if (Destination != null)
+        {
+            Destination.SetActive(true);
+        }
+    }
+    public void PlayerArrive()
+    {
+        OnPlayerWin();
+    }
     public void OnPlayerWin()
     {
-        LoadNextScene();
+        Debug.Log("Player Win");
+        if (ThisScene == SceneEnum.Level8 && !StaticDatas.IsEndCGShown)
+        {
+            StaticDatas.IsEndCGShown = true;
+            if (!StaticDatas.IsDialogCGShown)
+            {
+                StaticDatas.IsDialogCGShown = true;
+                CGUI.Open(new CGGroup()
+                {
+                    CGEnum = CGEnum.Dialog,
+                    EndHander = () =>
+                    {
+                        ShowEndCG();
+                    }
+                });
+            }
+            else
+            {
+                ShowEndCG();
+            }
+        }
+        else
+        {
+            AudioUtil.Play(AudioEnum.SE_Player_Win, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
+            LevelUp();
+            LoadNextScene();
+        }
+
     }
     public void OnPlayerLose()
     {
         Reset();
+    }
+    public void ShowEndCG()
+    {
+        CGUI.Open(new CGGroup()
+        {
+            CGEnum = CGEnum.End,
+            EndHander = () =>
+            {
+                AudioUtil.Play(AudioEnum.SE_Player_Win, AudioMixerGroupEnum.Effect, AudioPlayMod.Normal);
+                LevelUp();
+                LoadNextScene();
+            }
+        });
+    }
+    public void LevelUp()
+    {
+        string sceneName = ThisScene.ToString();
+        int currentLevel = int.Parse(sceneName.Split("Level")[1]);
+        if (currentLevel == StaticDatas.MaxLevel)
+        {
+            StaticDatas.MaxLevel++;
+        }
     }
 }

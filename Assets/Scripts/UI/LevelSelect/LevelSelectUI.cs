@@ -63,11 +63,11 @@ public class LevelSelectUI : GeneralBox<LevelSelectUI, string, string>
                     GamePlayManager.LoadScene(levelScelectItem.TargetScene);
                 }));
             };
-            if (i == GamePlayManager.TopUnlockedLevel - 1)
+            if (i == GamePlayManager.MaxLevel - 1)
             {
                 ChangeBackground(levelSelectItemMessageList[i].SceneBackground);
             }
-            if (i >= GamePlayManager.TopUnlockedLevel)
+            if (i >= GamePlayManager.MaxLevel)
             {
                 levelScelectItem.SetLock();
             }

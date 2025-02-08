@@ -14,7 +14,8 @@ namespace MizukiTool.Box
         LevelSceneUI,
         SceneChangeUI,
         TextShowUI,
-        CGUI
+        CGUI,
+        SpecialCGUI
     }
     public static class BoxDict
     {
@@ -29,7 +30,8 @@ namespace MizukiTool.Box
             {typeof(LevelSceneUI),BoxEnum.LevelSceneUI},
             {typeof(SceneChangeUI),BoxEnum.SceneChangeUI},
             {typeof(TextShowUI),BoxEnum.TextShowUI},
-            {typeof(CGUI),BoxEnum.CGUI}
+            {typeof(CGUI),BoxEnum.CGUI},
+            {typeof(SpecialCGUI),BoxEnum.SpecialCGUI}
         };
         //用字典存储所有的UI预制体路径
         public static Dictionary<BoxEnum, string> BoxPathDic = new Dictionary<BoxEnum, string>{
@@ -41,7 +43,8 @@ namespace MizukiTool.Box
             { BoxEnum.LevelSceneUI, "Prefeb/UIPrefeb/LevelScene/LevelSceneUI" },
             { BoxEnum.SceneChangeUI, "Prefeb/UIPrefeb/SceneChangeUI" },
             { BoxEnum.TextShowUI, "Prefeb/UIPrefeb/TextShow/TextShowUI" },
-            { BoxEnum.CGUI, "Prefeb/UIPrefeb/TextShow/CGUI" }
+            { BoxEnum.CGUI, "Prefeb/UIPrefeb/TextShow/CGUI" },
+            { BoxEnum.SpecialCGUI, "Prefeb/UIPrefeb/TextShow/SpecialCGUI" }
         };
     }
 }
