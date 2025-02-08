@@ -17,20 +17,20 @@ MonoBehaviour:
     TextAsset: {fileID: 4900000, guid: 02573defbf8f1a64bb9c0a6307fa2494, type: 3}
     BGMEnum: 2
   - CGSprite: {fileID: 21300000, guid: 600de5a78296e244bb8cefaa9f696aac, type: 3}
-    TextAsset: {fileID: 4900000, guid: 6442d79eb9d4aaf428ceafc17ca06b2e, type: 3}
+    TextAsset: {fileID: 4900000, guid: 99f8705d32807cf4d8b9b6dd88b851d7, type: 3}
     BGMEnum: 2
   - CGSprite: {fileID: 21300000, guid: 595b722c2dcc2a44a8b23f173634336d, type: 3}
-    TextAsset: {fileID: 4900000, guid: 6442d79eb9d4aaf428ceafc17ca06b2e, type: 3}
+    TextAsset: {fileID: 4900000, guid: e809d185e33897f43b8896a75457b48f, type: 3}
     BGMEnum: 2
   - CGSprite: {fileID: 21300000, guid: f32429a5dc980034cac9f73d412b7da3, type: 3}
     TextAsset: {fileID: 4900000, guid: 6442d79eb9d4aaf428ceafc17ca06b2e, type: 3}
     BGMEnum: 2
   - CGSprite: {fileID: 21300000, guid: 0819b8bca62923f46b0b0b00926c4399, type: 3}
-    TextAsset: {fileID: 4900000, guid: 6442d79eb9d4aaf428ceafc17ca06b2e, type: 3}
+    TextAsset: {fileID: 4900000, guid: 7e11ffedc81aa7947a37d787905ec8f1, type: 3}
     BGMEnum: 2
   - CGSprite: {fileID: 21300000, guid: db68581faf8a1e842bd3f80f3bb6d536, type: 3}
-    TextAsset: {fileID: 4900000, guid: 6442d79eb9d4aaf428ceafc17ca06b2e, type: 3}
+    TextAsset: {fileID: 4900000, guid: 206da65552e7b0445979e5c2bfec5e7c, type: 3}
     BGMEnum: 2
   - CGSprite: {fileID: 21300000, guid: 048464f459ff379438392d019e4591f8, type: 3}
-    TextAsset: {fileID: 4900000, guid: 206da65552e7b0445979e5c2bfec5e7c, type: 3}
+    TextAsset: {fileID: 4900000, guid: 6442d79eb9d4aaf428ceafc17ca06b2e, type: 3}
     BGMEnum: 2
