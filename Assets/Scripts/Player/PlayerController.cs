@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
 
-        if ((KeyboardSet.IsKeyDown(KeyEnum.Jump) || KeyboardSet.IsKeyDown(KeyEnum.Up)) && IsGround)
+        if (KeyboardSet.IsKeyDown(KeyEnum.Jump) && IsGround)
         {
             playerAnimator.Jump();
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * JumpForce);

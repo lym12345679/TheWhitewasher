@@ -13,11 +13,7 @@ namespace MizukiTool.Audio
         }
         public static void SetAudioVolume(AudioMixerGroupEnum audioMixerEnum, float volume)
         {
-            AudioMixerGroup entry = AudioSOManager.audioMixerGroupSO.GetAudioMixerGroup(audioMixerEnum);
-            if (entry != null)
-            {
-                entry.audioMixer.SetFloat(audioMixerEnum.ToString(), volume);
-            }
+            AudioMixerGroupManager.SetAudioVolume(audioMixerEnum, volume);
         }
 
         public static void PauseAllLoopAudio()
